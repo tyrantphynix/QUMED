@@ -1,0 +1,57 @@
+.hero { background: linear-gradient(135deg, #1A3468, #25498F); padding: 120px 0 80px; }
+.eyebrow { font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clr-tint); margin-bottom: 12px; }
+.heading { font-family: 'Sora', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+.sub { font-size: var(--fs-lg); color: rgba(255,255,255,0.65); max-width: 640px; line-height: 1.6; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-md);
+  margin-top: var(--sp-xl);
+}
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+
+.accordion { margin-top: var(--sp-xl); border: 1px solid var(--clr-border); border-radius: var(--radius-md); overflow: hidden; }
+.summary { padding: 18px 24px; font-weight: 600; color: var(--clr-brand); cursor: pointer; background: var(--clr-tint-soft); list-style: none; transition: background var(--transition-fast); }
+.summary:hover { background: var(--clr-tint); }
+.ceList { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 24px; }
+.ceItem {
+  font-size: var(--fs-sm);
+  color: var(--clr-ink);
+  padding: 10px 14px;
+  background: var(--clr-tint-soft);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--clr-border);
+}
+@media (max-width: 768px) { .ceList { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .ceList { grid-template-columns: 1fr; } }
+
+.enquiryCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: var(--sp-xl);
+  padding: 28px 32px;
+  background: var(--clr-tint-soft);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--clr-border);
+}
+.enquiryCta p { font-size: var(--fs-lg); color: var(--clr-brand); font-weight: 500; }
+.ctaBtn {
+  display: inline-flex;
+  background: var(--clr-action);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+.ctaBtn:hover { background: var(--clr-action-light); box-shadow: var(--shadow-blue); }

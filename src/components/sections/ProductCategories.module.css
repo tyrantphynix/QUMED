@@ -1,0 +1,80 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: var(--sp-lg);
+}
+.viewAll {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--clr-action);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: gap var(--transition-fast);
+}
+.viewAll:hover { text-decoration: underline; }
+
+/* Tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--sp-lg);
+  border-bottom: 1px solid var(--clr-border);
+  padding-bottom: 12px;
+}
+.tab {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--clr-muted);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+.tab:hover { color: var(--clr-brand); background: var(--clr-tint-soft); }
+.tabActive {
+  color: var(--clr-action);
+  background: var(--clr-tint-soft);
+  border-color: var(--clr-action);
+  font-weight: 600;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-md);
+  margin-bottom: var(--sp-xl);
+}
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+
+/* Catalogue CTA */
+.catalogueCta { display: flex; justify-content: center; }
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1.5px solid var(--clr-action);
+  color: var(--clr-action);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.ctaBtn:hover {
+  background: var(--clr-action);
+  color: #fff;
+}

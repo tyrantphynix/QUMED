@@ -1,0 +1,81 @@
+.pageHero {
+  background: linear-gradient(135deg, #1A3468, #25498F);
+  padding: 120px 0 80px;
+  color: #fff;
+}
+.eyebrow {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-tint);
+  margin-bottom: 12px;
+}
+.heading {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.sub {
+  font-size: var(--fs-lg);
+  color: rgba(255,255,255,0.65);
+  max-width: 560px;
+  line-height: 1.6;
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--clr-border);
+  padding-bottom: 12px;
+}
+.tab {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--clr-muted);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+.tab:hover { color: var(--clr-brand); background: var(--clr-tint-soft); }
+.tabActive { color: var(--clr-action); background: var(--clr-tint-soft); border-color: var(--clr-action); font-weight: 600; }
+.count { font-size: var(--fs-xs); color: var(--clr-muted); }
+.catDesc { font-size: var(--fs-sm); color: var(--clr-muted); margin-bottom: var(--sp-lg); line-height: 1.5; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-md);
+  margin-bottom: var(--sp-xl);
+}
+@media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .grid { grid-template-columns: 1fr; } }
+
+.cta { display: flex; justify-content: center; }
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--clr-action);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+.ctaBtn:hover { background: var(--clr-action-light); box-shadow: var(--shadow-blue); }

@@ -1,0 +1,160 @@
+.card {
+  position: relative;
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-mid), border-color var(--transition-mid), box-shadow var(--transition-mid);
+  cursor: default;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--clr-action);
+  box-shadow: var(--shadow-blue);
+}
+
+/* ── Image slot — 4:3 ratio ── */
+.imageSlot {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--clr-off-white);
+}
+
+/* Real image */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.card:hover .image { transform: scale(1.04); }
+
+/* Structured placeholder */
+.placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, var(--clr-brand-deep) 0%, var(--clr-brand-mid) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.accentBar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+
+.crossSvg {
+  width: 44px;
+  height: 44px;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* Category watermark — large, translucent background text */
+.watermark {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.15);
+  text-align: center;
+  padding: 0 12px;
+  position: absolute;
+  bottom: 12px;
+  left: 0; right: 0;
+}
+
+/* Category badge overlay */
+.categoryBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,255,255,0.92);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--clr-brand);
+  backdrop-filter: blur(4px);
+}
+.categoryDot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Card body ── */
+.body {
+  padding: 18px 20px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.brand {
+  font-family: 'Sora', sans-serif;
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--clr-brand);
+  line-height: 1.2;
+}
+.generic {
+  font-size: var(--fs-sm);
+  color: var(--clr-muted);
+  line-height: 1.4;
+  flex: 1;
+  margin-bottom: 8px;
+}
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.ref {
+  font-size: var(--fs-xs);
+  color: var(--clr-muted);
+  margin-top: 6px;
+}
+.refCode {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--clr-nav);
+  font-size: var(--fs-xs);
+}
+
+/* ── Hover CTA bar ── */
+.hover {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: var(--clr-action);
+  color: #fff;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  transform: translateY(100%);
+  transition: transform var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card:hover .hover { transform: translateY(0); }

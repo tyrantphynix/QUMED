@@ -1,0 +1,19 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.default  { background: var(--clr-tint-soft); color: var(--clr-nav); border: 1px solid var(--clr-border); }
+.active   { background: #D1FAE5; color: var(--clr-cert-active); border: 1px solid #6EE7B7; }
+.pending  { background: #FEF3C7; color: var(--clr-cert-pending); border: 1px solid #FCD34D; }
+.expired  { background: #FEE2E2; color: var(--clr-cert-expired); border: 1px solid #FCA5A5; }
+.category { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+.spec     { background: var(--clr-tint-soft); color: var(--clr-brand); border: 1px solid var(--clr-tint); font-size: 0.65rem; }

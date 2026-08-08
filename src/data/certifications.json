@@ -1,0 +1,74 @@
+[
+  {
+    "id": "ce-marking",
+    "name": "CE Marking",
+    "type": "International",
+    "issuer": "Royal Stancert B.V.",
+    "directive": "Medical Devices Directive 93/42/EEC — Class I",
+    "refNo": "RSBV-2302-6080",
+    "issued": "2023-02-23",
+    "expiry": "2026-02-22",
+    "status": "active",
+    "products": ["QU-Win", "QU-Mask", "QU-Vent (Multi Flow)", "QU-Vent (Single Dial)", "QU-Con", "QU-Fume (Nebulizer Mask)", "QU-Fume (T-PC)", "QU-Ciser (3 Ball)", "QU-Ciser (Intensive)", "QU-Clean", "QU-Urobag", "QU-3 Way", "QU-Mount (Expandable)", "QU-Mount"]
+  },
+  {
+    "id": "iso-13485",
+    "name": "ISO 13485:2016",
+    "type": "International",
+    "issuer": "Quality Austria Central Asia",
+    "directive": "Medical Device Quality Management System",
+    "refNo": "IND/MDQMS/2023/N/03",
+    "issued": "2023-06-20",
+    "expiry": "2026-06-19",
+    "status": "active",
+    "products": []
+  },
+  {
+    "id": "iec",
+    "name": "Importer-Exporter Code",
+    "type": "National",
+    "issuer": "Government of India — DGFT",
+    "directive": "Import-Export Authorization",
+    "refNo": "AAAFQ3678G",
+    "issued": "2022-10-19",
+    "expiry": null,
+    "status": "active",
+    "products": []
+  },
+  {
+    "id": "trademark",
+    "name": "Registered Trademark",
+    "type": "National",
+    "issuer": "Trade Marks Registry, Govt of India",
+    "directive": "Class 10 — Medical Devices",
+    "refNo": "TM No. 5467015",
+    "issued": "2023-08-14",
+    "expiry": null,
+    "status": "active",
+    "products": []
+  },
+  {
+    "id": "msme",
+    "name": "MSME Udyam Registration",
+    "type": "National",
+    "issuer": "Ministry of MSME, India",
+    "directive": "Small Enterprise — NIC 3250",
+    "refNo": "UDYAM-HR-05-0016518",
+    "issued": "2021-03-20",
+    "expiry": null,
+    "status": "active",
+    "products": []
+  },
+  {
+    "id": "fda-haryana",
+    "name": "FDA Haryana Manufacturing Licence",
+    "type": "State",
+    "issuer": "State Drugs Controller, Haryana",
+    "directive": "Manufacturing Licence — Medical Devices",
+    "refNo": "MFG/MD/2022/000675",
+    "issued": "2023-05-30",
+    "expiry": null,
+    "status": "active",
+    "products": []
+  }
+]

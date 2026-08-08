@@ -1,0 +1,32 @@
+.wrap { max-width: 640px; }
+.center { margin: 0 auto; text-align: center; }
+.left   { text-align: left; }
+
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-action);
+  margin-bottom: 10px;
+}
+.heading {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--clr-brand);
+  margin-bottom: 16px;
+}
+.sub {
+  font-size: var(--fs-lg);
+  color: var(--clr-muted);
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+/* Dark theme overrides (on navy/brand sections) */
+.dark .eyebrow { color: var(--clr-tint); }
+.dark .heading { color: var(--clr-white); }
+.dark .sub     { color: rgba(255,255,255,0.72); }

@@ -1,0 +1,151 @@
+/* ─── QU-MED Design Tokens & Base Reset ─── */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+
+/* ─── Brand Blues (extracted from qumed.in) ─── */
+:root {
+  --clr-action:       #0067FF;
+  --clr-action-dark:  #004FCC;
+  --clr-action-light: #3385FF;
+  --clr-brand:        #25498F;
+  --clr-brand-deep:   #1A3468;
+  --clr-brand-mid:    #2F5BA8;
+  --clr-nav:          #244C8C;
+  --clr-hover:        #1D81F9;
+  --clr-tint:         #C7DBF8;
+  --clr-tint-soft:    #EBF2FE;
+
+  /* Neutrals */
+  --clr-white:        #FFFFFF;
+  --clr-off-white:    #F4F7FD;
+  --clr-ink:          #0C1829;
+  --clr-muted:        #5A6E8C;
+  --clr-border:       #D0DEF5;
+
+  /* Cert status */
+  --clr-cert-active:  #0D7A4E;
+  --clr-cert-pending: #B45309;
+  --clr-cert-expired: #B91C1C;
+
+  /* Category bands */
+  --cat-infusion:       #0067FF;
+  --cat-anesthesia:     #25498F;
+  --cat-urology:        #0891B2;
+  --cat-surgery:        #0E7490;
+  --cat-critical:       #1A3468;
+
+  /* Spacing scale */
+  --sp-xs:  4px;
+  --sp-sm:  8px;
+  --sp-md:  16px;
+  --sp-lg:  32px;
+  --sp-xl:  64px;
+  --sp-2xl: 96px;
+  --sp-3xl: 128px;
+
+  /* Type scale */
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-lg:   1.125rem;
+  --fs-xl:   1.25rem;
+  --fs-2xl:  1.5rem;
+  --fs-3xl:  1.875rem;
+  --fs-4xl:  2.25rem;
+  --fs-5xl:  3rem;
+  --fs-6xl:  3.75rem;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(12,24,41,0.08);
+  --shadow-md:  0 4px 16px rgba(12,24,41,0.10);
+  --shadow-lg:  0 8px 32px rgba(12,24,41,0.12);
+  --shadow-blue: 0 4px 24px rgba(0,103,255,0.25);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-mid:  0.25s ease;
+  --transition-slow: 0.4s ease;
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-pad: clamp(20px, 5vw, 80px);
+  --section-py:    clamp(64px, 8vw, 120px);
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: var(--fs-base);
+  color: var(--clr-ink);
+  background: var(--clr-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+
+/* ─── Container ─── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* ─── Section base ─── */
+.section { padding: var(--section-py) 0; position: relative; }
+.section--white    { background: var(--clr-white); }
+.section--soft     { background: var(--clr-tint-soft); }
+.section--off      { background: var(--clr-off-white); }
+.section--navy     { background: var(--clr-brand-deep); color: var(--clr-white); }
+.section--brand    { background: var(--clr-brand); color: var(--clr-white); }
+
+/* ─── Angled section divider ─── */
+.section--angled-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+  padding-bottom: calc(var(--section-py) + 40px);
+}
+.section--angled-top {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+  padding-top: calc(var(--section-py) + 40px);
+}
+
+/* ─── Grid utilities ─── */
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--sp-lg); }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--sp-lg); }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: var(--sp-lg); }
+
+@media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 600px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+
+/* ─── Flex utilities ─── */
+.flex        { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between{ display: flex; align-items: center; justify-content: space-between; }
+.flex-col    { display: flex; flex-direction: column; }
+.gap-sm      { gap: var(--sp-sm); }
+.gap-md      { gap: var(--sp-md); }
+.gap-lg      { gap: var(--sp-lg); }
+
+/* ─── Text utilities ─── */
+.text-center { text-align: center; }
+.text-muted  { color: var(--clr-muted); }
+.text-white  { color: var(--clr-white); }
+.uppercase   { text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ─── Visibility (GSAP initial states) ─── */
+.reveal { opacity: 0; transform: translateY(30px); }
