@@ -1,14 +1,14 @@
 .hero {
   position: relative;
-  min-height: 88vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   background: linear-gradient(135deg, #1A3468 0%, #25498F 60%, #2F5BA8 100%);
   overflow: hidden;
-  padding-top: 80px;
+  padding-top: 80px; /* navbar offset */
 }
 
-/* ── Background ── */
+/* Background */
 .bg {
   position: absolute;
   inset: 0;
@@ -20,28 +20,26 @@
   width: 100%;
   height: 100%;
 }
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 
-/* ── 2-column layout — content-dominant ── */
-.layout {
+/* Content */
+.content {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 48px;
-  align-items: center;
-  padding-top: 44px;
-  padding-bottom: 60px;
-  min-height: calc(88vh - 80px);
-}
-
-/* ── LEFT: Content column ── */
-.contentCol {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 28px;
+  padding-top: 60px;
+  padding-bottom: 80px;
+  max-width: 720px;
 }
 
-/* Cert badge */
+/* Badge */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -49,9 +47,9 @@
   background: rgba(199,219,248,0.12);
   border: 1px solid rgba(199,219,248,0.22);
   border-radius: var(--radius-full);
-  padding: 6px 16px;
+  padding: 7px 18px;
   font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -67,46 +65,28 @@
   animation: pulse-glow 2s infinite;
 }
 
-/* Headline — tighter, less dominant */
+/* Headline */
 .headline {
   font-family: 'Sora', sans-serif;
-  font-size: clamp(1.9rem, 3.6vw, 3rem);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
   font-weight: 700;
-  line-height: 1.12;
+  line-height: 1.1;
   color: #fff;
 }
 .accent { color: var(--clr-tint); }
 
-/* Sub + product cues — combined in a single block */
+/* Sub */
 .sub {
-  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
-  color: rgba(255,255,255,0.70);
-  line-height: 1.7;
-  margin-bottom: 6px;
-}
-
-/* Product domain pills — desktop only */
-.productCues {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.productCue {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.55);
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.11);
-  border-radius: var(--radius-full);
-  padding: 3px 11px;
-  letter-spacing: 0.03em;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255,255,255,0.72);
+  line-height: 1.65;
+  max-width: 560px;
 }
 
 /* CTAs */
 .ctas {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 .ctaPrimary {
@@ -115,11 +95,11 @@
   background: var(--clr-action);
   color: #fff;
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 12px 26px;
+  padding: 14px 32px;
   border-radius: var(--radius-sm);
   text-decoration: none;
   transition: background var(--transition-fast), box-shadow var(--transition-fast);
@@ -133,13 +113,13 @@
   align-items: center;
   background: transparent;
   color: #fff;
-  border: 1.5px solid rgba(255,255,255,0.45);
+  border: 2px solid rgba(255,255,255,0.5);
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 12px 26px;
+  padding: 14px 32px;
   border-radius: var(--radius-sm);
   text-decoration: none;
   transition: background var(--transition-fast), border-color var(--transition-fast);
@@ -154,204 +134,24 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
-  margin-top: 4px;
+  gap: 8px;
+  margin-top: 20px;
 }
 .scrollLine {
   display: block;
   width: 1px;
-  height: 36px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  animation: fadeUp 1.5s ease infinite alternate;
 }
 .scrollLabel {
   font-size: var(--fs-xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.28);
-}
-
-/* ── RIGHT: Visual column — supportive, not dominant ── */
-.visualCol {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-
-/* Main panel — portrait orientation suits IV drip illustration */
-.visualPanel {
-  position: relative;
-  width: 100%;
-  max-width: 380px;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.10);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* Three.js canvas — fills panel, hidden until mounted */
-.threeCanvas {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-}
-
-/* Clinical placeholder — visible when Three.js is not mounted */
-.visualPlaceholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  z-index: 1;
-  padding: 24px;
-}
-
-/* IV drip SVG — sized down proportionally */
-.medSvg {
-  width: 140px;
-  height: auto;
-  filter: drop-shadow(0 4px 20px rgba(0,103,255,0.18));
-}
-
-.visualLabel {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: rgba(255,255,255,0.35);
-  text-align: center;
 }
 
-/* Dev slot hint */
-.slotHint {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  font-size: 0.55rem;
-  color: rgba(255,255,255,0.18);
-  background: rgba(0,0,0,0.14);
-  padding: 2px 7px;
-  border-radius: var(--radius-full);
-  letter-spacing: 0.04em;
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* Product reference chips — desktop only, below panel */
-.productChips {
-  display: flex;
-  gap: 8px;
-  width: 100%;
-  max-width: 380px;
-}
-.chip {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  padding: 8px 6px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: var(--radius-md);
-  transition: background var(--transition-fast), border-color var(--transition-fast);
-  cursor: default;
-}
-.chip:hover {
-  background: rgba(255,255,255,0.09);
-  border-color: rgba(255,255,255,0.18);
-}
-.chipCode {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.62rem;
-  color: var(--clr-tint);
-  letter-spacing: 0.06em;
-}
-.chipLabel {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.64rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.50);
-  text-align: center;
-  line-height: 1.25;
-}
-
-/* ─────────────────────────────────────────
-   RESPONSIVE — Tablet ≤960px
-   Single column. Visual goes BELOW content
-   (not above — user reads headline first)
-───────────────────────────────────────── */
-@media (max-width: 960px) {
-  .hero {
-    min-height: auto;
-    padding-top: 72px;
-  }
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding-top: 28px;
-    padding-bottom: 48px;
-    min-height: auto;
-  }
-
-  /* Visual column below content — intentional */
-  .visualCol {
-    order: 1;
-  }
-
-  /* Wide letterbox on tablet/mobile — shorter, reads like a facility frame */
-  .visualPanel {
-    max-width: 100%;
-    aspect-ratio: 16 / 9;
-    border-radius: var(--radius-lg);
-  }
-
-  /* Hide product domain pills — sub-copy carries the signal */
-  .productCues {
-    display: none;
-  }
-
-  /* Hide product chips — clean, focused first screen */
-  .productChips {
-    display: none;
-  }
-
-  /* Hide scroll cue on mobile — not needed */
-  .scrollCue {
-    display: none;
-  }
-}
-
-/* ─────────────────────────────────────────
-   RESPONSIVE — Small mobile ≤480px
-───────────────────────────────────────── */
-@media (max-width: 480px) {
-  .headline {
-    font-size: clamp(1.75rem, 8vw, 2.2rem);
-  }
-  .contentCol {
-    gap: 18px;
-  }
-}
-
-/* ─────────────────────────────────────────
-   RESPONSIVE — Very small ≤400px
-   Only here do CTAs stack vertically
-───────────────────────────────────────── */
-@media (max-width: 400px) {
-  .ctas {
-    flex-direction: column;
-  }
-  .ctaPrimary,
-  .ctaOutline {
-    justify-content: center;
-    text-align: center;
-  }
+@media (max-width: 600px) {
+  .ctas { flex-direction: column; }
+  .ctaPrimary, .ctaOutline { justify-content: center; }
 }

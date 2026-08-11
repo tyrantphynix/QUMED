@@ -2,14 +2,11 @@
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: var(--sp-xl);
-  align-items: start;
+  align-items: center;
 }
-
 .textCol { display: flex; flex-direction: column; gap: 20px; }
 .body { font-size: var(--fs-base); color: var(--clr-muted); line-height: 1.7; }
-
-/* Pillars */
-.pillars { display: flex; flex-direction: column; gap: 16px; margin-top: 12px; }
+.pillars { display: flex; flex-direction: column; gap: 20px; margin-top: 12px; }
 .pillar {
   display: flex;
   align-items: flex-start;
@@ -21,49 +18,26 @@
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 .pillar:hover { border-color: var(--clr-action); box-shadow: 0 2px 14px rgba(0,103,255,0.08); }
-
-/* Phosphor icon wrap */
-.pillarIconWrap {
-  width: 40px;
-  height: 40px;
-  background: var(--clr-tint-soft);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
+.pillarIcon { font-size: 1.6rem; flex-shrink: 0; }
 .pillarTitle { font-family: 'Sora', sans-serif; font-size: var(--fs-base); font-weight: 600; color: var(--clr-brand); margin-bottom: 4px; }
 .pillarBody  { font-size: var(--fs-sm); color: var(--clr-muted); line-height: 1.55; }
 
-/* ── Image column ── */
-.imageCol {
-  position: relative;
-  padding-bottom: 80px; /* space for secondary overlap */
-}
-
-.primarySlot {
-  width: 100%;
-}
-
-/* Secondary image — overlaps primary at bottom-right */
-.secondaryWrap {
-  position: absolute;
-  bottom: 0;
-  right: -16px;
-  width: 45%;
-  box-shadow: var(--shadow-lg);
-  border-radius: var(--radius-md);
+/* Visual placeholder */
+.visual {
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  border: 3px solid var(--clr-white);
+  aspect-ratio: 4/5;
+  background: linear-gradient(145deg, var(--clr-brand-deep), var(--clr-brand-mid));
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.visualInner { text-align: center; padding: 32px; }
+.visualIcon  { font-size: 4rem; display: block; margin-bottom: 16px; }
+.visualLabel { font-family: 'Sora', sans-serif; font-size: var(--fs-lg); font-weight: 600; color: #fff; margin-bottom: 8px; }
+.visualSub   { font-size: var(--fs-sm); color: rgba(255,255,255,0.55); }
 
-.secondarySlot {
-  width: 100%;
-}
-
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .grid { grid-template-columns: 1fr; }
-  .imageCol { padding-bottom: 0; }
-  .secondaryWrap { position: static; width: 160px; margin-top: 16px; }
+  .visual { aspect-ratio: 16/9; }
 }

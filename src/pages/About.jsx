@@ -2,16 +2,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 import SectionHeading from '../components/ui/SectionHeading';
-import ImageSlot from '../components/ui/ImageSlot';
-import { Factory } from '@phosphor-icons/react';
 import styles from './About.module.css';
-
-// Client image integration — place files in /public/images/facility/
-const FACILITY_GALLERY = [
-  { src: null, label: 'Manufacturing Floor',   alt: 'QU-MED manufacturing floor' },
-  { src: null, label: 'Cleanroom Environment', alt: 'Cleanroom environment' },
-  { src: null, label: 'Quality Control Lab',   alt: 'Quality control laboratory' },
-];
 
 export default function About() {
   const ref1 = useGsapReveal({ stagger: 0.1, y: 24 });
@@ -52,23 +43,12 @@ export default function About() {
           <div className="container">
             <SectionHeading eyebrow="Our Story" heading="Started small. Built for purpose." align="center" theme="light" />
             <div className={`reveal ${styles.founderCard}`}>
-              {/* Founder image slot — replace src when client provides photo */}
-              <ImageSlot
-                src={null}
-                alt="QU-MED Disposable founders"
-                ratio="1:1"
-                placeholderLabel="Founders Photo"
-                rounded="md"
-                className={styles.founderImage}
-              />
-              <div className={styles.founderText}>
-                <p>
-                  <strong>KP Singhania and Vijay Kumar Soni</strong> started QU-MED Disposable with a small space and a handful of products. Driven by a vision to create high-quality medical devices that improve the lives of patients worldwide, they built a company now known for its commitment to quality, innovation, and customer service.
-                </p>
-                <p>
-                  Today, QU-MED Disposable is a trusted name in the medical device industry, and our products are used by healthcare providers and patients across the globe.
-                </p>
-              </div>
+              <p className={styles.founderText}>
+                <strong>KP Singhania and Vijay Kumar Soni</strong> started QU-MED Disposable with a small space and a handful of products. Driven by a vision to create high-quality medical devices that improve the lives of patients worldwide, they built a company now known for its commitment to quality, innovation, and customer service.
+              </p>
+              <p className={styles.founderText}>
+                Today, QU-MED Disposable is a trusted name in the medical device industry, and our products are used by healthcare providers and patients across the globe.
+              </p>
             </div>
           </div>
         </section>
@@ -83,29 +63,11 @@ export default function About() {
                 { city: 'Bawal', addr: 'Bawal, Haryana', note: 'Secondary manufacturing facility' },
               ].map(p => (
                 <div key={p.city} className={`reveal ${styles.plantCard}`}>
-                  <div className={styles.plantIconWrap}>
-                    <Factory size={22} weight="duotone" color="var(--clr-action)" />
-                  </div>
+                  <span className={styles.plantIcon}>🏭</span>
                   <h3 className={styles.plantCity}>{p.city}</h3>
                   <p className={styles.plantAddr}>{p.addr}</p>
                   <p className={styles.plantNote}>{p.note}</p>
                 </div>
-              ))}
-            </div>
-
-            {/* Facility photo gallery — 3 slots, replace src when client provides images */}
-            <div className={styles.facilityGallery}>
-              {FACILITY_GALLERY.map(({ src, label, alt }) => (
-                <ImageSlot
-                  key={label}
-                  src={src}
-                  alt={alt}
-                  ratio="4:3"
-                  caption={label}
-                  placeholderLabel={label}
-                  rounded="md"
-                  badge={src ? label : null}
-                />
               ))}
             </div>
           </div>

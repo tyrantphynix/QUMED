@@ -4,7 +4,6 @@ import { useGsapReveal } from '../hooks/useGsapReveal';
 import { useProductFilter } from '../hooks/useProductFilter';
 import SectionHeading from '../components/ui/SectionHeading';
 import ProductCard from '../components/ui/ProductCard';
-import allProducts from '../data/products.json';
 import styles from './Products.module.css';
 
 const CATALOGUE_URL = 'https://qumed.in/wp-content/uploads/2024/05/QUMED_CATALOUGE.pdf';
@@ -21,14 +20,6 @@ const CATEGORY_DESCRIPTIONS = {
 export default function Products() {
   const { active, setActive, filtered, categories } = useProductFilter();
   const gridRef = useGsapReveal({ stagger: 0.06, y: 20, start: 'top 85%' });
-
-  // Per-category counts (computed from full product list, not filtered)
-  const categoryCounts = categories.reduce((acc, cat) => {
-    acc[cat.id] = cat.id === 'all'
-      ? allProducts.length
-      : allProducts.filter(p => p.category === cat.id).length;
-    return acc;
-  }, {});
 
   return (
     <>
@@ -56,7 +47,7 @@ export default function Products() {
                   onClick={() => setActive(cat.id)}
                 >
                   {cat.label}
-                  <span className={styles.count}>({categoryCounts[cat.id] ?? 0})</span>
+                  <span className={styles.count}>({cat.id === 'all' ? filtered.length : filtered.length})</span>
                 </button>
               ))}
             </div>

@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { useGsapReveal } from '../../hooks/useGsapReveal';
-import { MapPin, Phone, EnvelopeSimple } from '@phosphor-icons/react';
 import styles from './ContactStrip.module.css';
 
 const USE_MAP_EMBED = import.meta.env.VITE_USE_MAP_EMBED === 'true';
@@ -66,21 +65,21 @@ export default function ContactStrip() {
         <div className={`reveal ${styles.infoCol}`}>
           <div className={styles.contactInfo}>
             <div className={styles.infoItem}>
-              <div className={styles.infoIcon}><MapPin size={18} weight="duotone" color="var(--clr-tint)" /></div>
+              <span className={styles.infoIcon}>📍</span>
               <div>
                 <p className={styles.infoLabel}>Address</p>
                 <p className={styles.infoText}>Plot No. 38, Udyog Vihar, Phase VI,<br />Sector 37, Gurugram, Haryana 122001</p>
               </div>
             </div>
             <div className={styles.infoItem}>
-              <div className={styles.infoIcon}><Phone size={18} weight="duotone" color="var(--clr-tint)" /></div>
+              <span className={styles.infoIcon}>📞</span>
               <div>
                 <p className={styles.infoLabel}>Phone</p>
                 <a href="tel:01244014139" className={styles.infoLink}>0124-4014139</a>
               </div>
             </div>
             <div className={styles.infoItem}>
-              <div className={styles.infoIcon}><EnvelopeSimple size={18} weight="duotone" color="var(--clr-tint)" /></div>
+              <span className={styles.infoIcon}>✉</span>
               <div>
                 <p className={styles.infoLabel}>Email</p>
                 <a href="mailto:info.qumed@yahoo.in" className={styles.infoLink}>info.qumed@yahoo.in</a>
@@ -102,7 +101,7 @@ export default function ContactStrip() {
             ) : (
               <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className={styles.mapLink}>
                 <div className={styles.mapStatic}>
-                  <MapPin size={28} weight="duotone" color="var(--clr-tint)" />
+                  <span className={styles.mapPin}>📍</span>
                   <span className={styles.mapText}>View on Google Maps →</span>
                   <span className={styles.mapAddr}>Gurugram, Haryana</span>
                 </div>
