@@ -104,4 +104,5 @@
 @media (max-width: 768px) {
   .grid { grid-template-columns: 1fr; }
   .row  { grid-template-columns: 1fr; }
+  .input { font-size: 16px; } /* Prevents iOS auto-zoom */
 }

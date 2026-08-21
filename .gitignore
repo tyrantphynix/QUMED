@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# Extras
+
+qumed-antigravity-handoff.pdf
+update_products.py

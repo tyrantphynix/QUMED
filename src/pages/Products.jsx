@@ -2,6 +2,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 import { useProductFilter } from '../hooks/useProductFilter';
+import products from '../data/products.json';
 import SectionHeading from '../components/ui/SectionHeading';
 import ProductCard from '../components/ui/ProductCard';
 import styles from './Products.module.css';
@@ -20,6 +21,14 @@ const CATEGORY_DESCRIPTIONS = {
 export default function Products() {
   const { active, setActive, filtered, categories } = useProductFilter();
   const gridRef = useGsapReveal({ stagger: 0.06, y: 20, start: 'top 85%' });
+
+  // Helper for variant counts
+  const getCountLabel = (catId) => {
+    const count = catId === 'all' ? products.length : products.filter(p => p.category === catId).length;
+    if (catId === 'all') return `(${count})`;
+    if (['surgery-suction', 'critical-care', 'urology'].includes(catId)) return `(${count} variants)`;
+    return `(${count})`;
+  };
 
   return (
     <>
@@ -44,17 +53,24 @@ export default function Products() {
                   role="tab"
                   aria-selected={active === cat.id}
                   className={[styles.tab, active === cat.id ? styles.tabActive : ''].join(' ')}
-                  onClick={() => setActive(cat.id)}
+                  onClick={() => {
+                    setActive(cat.id);
+                    const target = document.getElementById(`prod-tab-${cat.id}`);
+                    if (target && window.innerWidth < 600) {
+                      target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+                  }}
+                  id={`prod-tab-${cat.id}`}
                 >
                   {cat.label}
-                  <span className={styles.count}>({cat.id === 'all' ? filtered.length : filtered.length})</span>
+                  <span className={styles.count}>{getCountLabel(cat.id)}</span>
                 </button>
               ))}
             </div>
 
             <p className={styles.catDesc}>{CATEGORY_DESCRIPTIONS[active]}</p>
 
-            <div ref={gridRef} className={styles.grid}>
+            <div ref={gridRef} className={styles.grid} key={active}>
               {filtered.map(p => (
                 <div key={p.id} className="reveal">
                   <ProductCard product={p} />

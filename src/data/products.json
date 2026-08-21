@@ -1,37 +1,416 @@
 [
-  { "id": "qu-flon", "brandName": "QU-FLON", "genericName": "I.V. Cannula", "category": "infusion", "refNo": null, "specs": ["Sterile", "Single Use", "Latex Free"] },
-  { "id": "qu-drip", "brandName": "QU-DRIP", "genericName": "I.V. Set", "category": "infusion", "refNo": null, "specs": ["Sterile", "Single Use", "Kink Resistant"] },
-  { "id": "qu-vols", "brandName": "QU-VOLS", "genericName": "M.V. Set", "category": "infusion", "refNo": null, "specs": ["Sterile", "Single Use"] },
-  { "id": "qu-3way", "brandName": "QU-3 WAY", "genericName": "Three Way Stop Cock", "category": "infusion", "refNo": null, "specs": ["Sterile", "Single Use", "Luer Lock"] },
-  { "id": "qu-3way-ext", "brandName": "QU-3 WAY EXT", "genericName": "Three Way Stop Cock with Extension Line", "category": "infusion", "refNo": null, "specs": ["Sterile", "Single Use", "Luer Lock"] },
-  { "id": "qu-veins", "brandName": "QU-VEINS", "genericName": "Extension Set", "category": "infusion", "refNo": null, "specs": ["Sterile", "Single Use", "Flexible"] },
-  { "id": "qu-microdrip", "brandName": "QU-MICRODRIP", "genericName": "Microdrip IV Set", "category": "infusion", "refNo": null, "specs": ["Sterile", "Single Use", "60 drops/ml"] },
-  { "id": "qu-flow", "brandName": "QU-FLOW", "genericName": "Flow Regulator", "category": "infusion", "refNo": null, "specs": ["Sterile", "Single Use", "Precise Control"] },
-
-  { "id": "qu-mount", "brandName": "QU-MOUNT", "genericName": "Catheter Mount", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "Flexible"] },
-  { "id": "qu-ciser-3ball", "brandName": "QU-CISER", "genericName": "Respiratory Exerciser — Three Ball Spirometer", "category": "anesthesia", "refNo": null, "specs": ["Non-Sterile", "Reusable", "CE Marked"] },
-  { "id": "qu-ciser-1ball", "brandName": "QU-CISER", "genericName": "Respiratory Exerciser — Single Ball Spirometer", "category": "anesthesia", "refNo": null, "specs": ["Non-Sterile", "Reusable", "CE Marked"] },
-  { "id": "qu-fume-kit", "brandName": "QU-FUME", "genericName": "Nebulizer Mask Kit", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "CE Marked"] },
-  { "id": "qu-fume-mpc", "brandName": "QU-FUME", "genericName": "Nebulizer Mask M Pcs", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "CE Marked"] },
-  { "id": "qu-del", "brandName": "QU-DEL", "genericName": "Guedel Airways", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "Multiple Sizes"] },
-  { "id": "qu-clean", "brandName": "QU-CLEAN", "genericName": "HME Filter", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "CE Marked"] },
-  { "id": "qu-win", "brandName": "QU-WIN", "genericName": "Nasal Cannula", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "CE Marked"] },
-  { "id": "qu-vent-multi", "brandName": "QU-VENT", "genericName": "Multi Flow Ventury Mask", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "CE Marked"] },
-  { "id": "qu-vent-single", "brandName": "QU-VENT", "genericName": "Single Dial Ventury Mask", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "CE Marked"] },
-  { "id": "qu-con", "brandName": "QU-CON", "genericName": "High Concentration Oxygen Mask", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "CE Marked"] },
-  { "id": "qu-mask", "brandName": "QU-MASK", "genericName": "Oxygen Mask", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "CE Marked"] },
-  { "id": "qu-eal-plain", "brandName": "QU-EAL", "genericName": "Endotracheal Tube Plain", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "Multiple Sizes"] },
-  { "id": "qu-eal-cuffed", "brandName": "QU-EAL", "genericName": "Endotracheal Tube Cuffed", "category": "anesthesia", "refNo": null, "specs": ["Sterile", "Single Use", "Low Pressure Cuff"] },
-
-  { "id": "qu-uro-with", "brandName": "QU-URO", "genericName": "Urine Collection Bag with Measured Chamber", "category": "urology", "refNo": null, "specs": ["Sterile", "Single Use", "CE Marked"] },
-  { "id": "qu-uro-without", "brandName": "QU-URO", "genericName": "Urine Collection Bag without Measured Chamber", "category": "urology", "refNo": null, "specs": ["Sterile", "Single Use", "CE Marked"] },
-
-  { "id": "yankaur-a", "brandName": "YANKAUR SUCTION SET", "genericName": "Standard Open Tip with 4 Side Holes", "category": "surgery-suction", "refNo": "Q0030-A", "specs": ["Sterile", "Single Use", "Kink Resistant"] },
-  { "id": "yankaur-b", "brandName": "YANKAUR SUCTION SET", "genericName": "Crown Tip with 4 Side Holes", "category": "surgery-suction", "refNo": "Q0030-B", "specs": ["Sterile", "Single Use", "Universal Connector"] },
-
-  { "id": "qu-tubi-exp", "brandName": "QU-TUBI", "genericName": "Ventilator Circuit — Expandable", "category": "critical-care", "refNo": "Q0034", "specs": ["Sterile", "Single Use", "Adult"] },
-  { "id": "qu-tubi-std", "brandName": "QU-TUBI", "genericName": "Ventilator Circuit — Standard Adult", "category": "critical-care", "refNo": "Q0035", "specs": ["Sterile", "Single Use", "Adult"] },
-  { "id": "qu-tubi-port", "brandName": "QU-TUBI", "genericName": "Ventilator Circuit with Port on Y-Piece", "category": "critical-care", "refNo": "Q0038", "specs": ["Sterile", "Single Use", "Adult"] },
-  { "id": "qu-tubi-sw", "brandName": "QU-TUBI", "genericName": "Ventilator Circuit with SW Trap (Adult)", "category": "critical-care", "refNo": "Q0039", "specs": ["Sterile", "Single Use", "Water Trap"] },
-  { "id": "qu-tubi-dw", "brandName": "QU-TUBI", "genericName": "Ventilator Circuit with DW Trap (Adult)", "category": "critical-care", "refNo": "Q0040", "specs": ["Sterile", "Single Use", "Double Water Trap"] }
+  {
+    "id": "qu-flon",
+    "brandName": "QU-FLON",
+    "genericName": "I.V. Cannula",
+    "category": "infusion",
+    "refNo": null,
+    "specs": [
+      "Latex Free"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-drip",
+    "brandName": "QU-DRIP",
+    "genericName": "I.V. Set",
+    "category": "infusion",
+    "refNo": null,
+    "specs": [
+      "Kink Resistant"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-vols",
+    "brandName": "QU-VOLS",
+    "genericName": "M.V. Set",
+    "category": "infusion",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-3way",
+    "brandName": "QU-3 WAY",
+    "genericName": "Three Way Stop Cock",
+    "category": "infusion",
+    "refNo": null,
+    "specs": [
+      "Luer Lock"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-3way-ext",
+    "brandName": "QU-3 WAY EXT",
+    "genericName": "Three Way Stop Cock with Extension Line",
+    "category": "infusion",
+    "refNo": null,
+    "specs": [
+      "Luer Lock"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-veins",
+    "brandName": "QU-VEINS",
+    "genericName": "Extension Set",
+    "category": "infusion",
+    "refNo": null,
+    "specs": [
+      "Flexible"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-microdrip",
+    "brandName": "QU-MICRODRIP",
+    "genericName": "Microdrip IV Set",
+    "category": "infusion",
+    "refNo": null,
+    "specs": [
+      "60 drops/ml"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-flow",
+    "brandName": "QU-FLOW",
+    "genericName": "Flow Regulator",
+    "category": "infusion",
+    "refNo": null,
+    "specs": [
+      "Precise Control"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-mount",
+    "brandName": "QU-MOUNT",
+    "genericName": "Catheter Mount",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [
+      "Flexible"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-ciser-3ball",
+    "brandName": "QU-CISER",
+    "genericName": "Respiratory Exerciser \u2014 Three Ball Spirometer",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [
+      "Non-Sterile",
+      "Reusable"
+    ],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": false,
+    "isSingleUse": false
+  },
+  {
+    "id": "qu-ciser-1ball",
+    "brandName": "QU-CISER",
+    "genericName": "Respiratory Exerciser \u2014 Single Ball Spirometer",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [
+      "Non-Sterile",
+      "Reusable"
+    ],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": false,
+    "isSingleUse": false
+  },
+  {
+    "id": "qu-fume-kit",
+    "brandName": "QU-FUME",
+    "genericName": "Nebulizer Mask Kit",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-fume-mpc",
+    "brandName": "QU-FUME",
+    "genericName": "Nebulizer Mask M Pcs",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-del",
+    "brandName": "QU-DEL",
+    "genericName": "Guedel Airways",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [
+      "Multiple Sizes"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-clean",
+    "brandName": "QU-CLEAN",
+    "genericName": "HME Filter",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-win",
+    "brandName": "QU-WIN",
+    "genericName": "Nasal Cannula",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-vent-multi",
+    "brandName": "QU-VENT",
+    "genericName": "Multi Flow Ventury Mask",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-vent-single",
+    "brandName": "QU-VENT",
+    "genericName": "Single Dial Ventury Mask",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-con",
+    "brandName": "QU-CON",
+    "genericName": "High Concentration Oxygen Mask",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-mask",
+    "brandName": "QU-MASK",
+    "genericName": "Oxygen Mask",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-eal-plain",
+    "brandName": "QU-EAL",
+    "genericName": "Endotracheal Tube Plain",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [
+      "Multiple Sizes"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-eal-cuffed",
+    "brandName": "QU-EAL",
+    "genericName": "Endotracheal Tube Cuffed",
+    "category": "anesthesia",
+    "refNo": null,
+    "specs": [
+      "Low Pressure Cuff"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-uro-with",
+    "brandName": "QU-URO",
+    "genericName": "Urine Collection Bag with Measured Chamber",
+    "category": "urology",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-uro-without",
+    "brandName": "QU-URO",
+    "genericName": "Urine Collection Bag without Measured Chamber",
+    "category": "urology",
+    "refNo": null,
+    "specs": [],
+    "imageUrl": null,
+    "ceMarked": true,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "yankaur-a",
+    "brandName": "YANKAUR SUCTION SET",
+    "genericName": "Standard Open Tip with 4 Side Holes",
+    "category": "surgery-suction",
+    "refNo": "Q0030-A",
+    "specs": [
+      "Kink Resistant"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "yankaur-b",
+    "brandName": "YANKAUR SUCTION SET",
+    "genericName": "Crown Tip with 4 Side Holes",
+    "category": "surgery-suction",
+    "refNo": "Q0030-B",
+    "specs": [
+      "Universal Connector"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-tubi-exp",
+    "brandName": "QU-TUBI",
+    "genericName": "Ventilator Circuit \u2014 Expandable",
+    "category": "critical-care",
+    "refNo": "Q0034",
+    "specs": [
+      "Adult"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-tubi-std",
+    "brandName": "QU-TUBI",
+    "genericName": "Ventilator Circuit \u2014 Standard Adult",
+    "category": "critical-care",
+    "refNo": "Q0035",
+    "specs": [
+      "Adult"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-tubi-port",
+    "brandName": "QU-TUBI",
+    "genericName": "Ventilator Circuit with Port on Y-Piece",
+    "category": "critical-care",
+    "refNo": "Q0038",
+    "specs": [
+      "Adult"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-tubi-sw",
+    "brandName": "QU-TUBI",
+    "genericName": "Ventilator Circuit with SW Trap (Adult)",
+    "category": "critical-care",
+    "refNo": "Q0039",
+    "specs": [
+      "Water Trap"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  },
+  {
+    "id": "qu-tubi-dw",
+    "brandName": "QU-TUBI",
+    "genericName": "Ventilator Circuit with DW Trap (Adult)",
+    "category": "critical-care",
+    "refNo": "Q0040",
+    "specs": [
+      "Double Water Trap"
+    ],
+    "imageUrl": null,
+    "ceMarked": false,
+    "isSterile": true,
+    "isSingleUse": true
+  }
 ]

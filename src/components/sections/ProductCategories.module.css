@@ -44,6 +44,14 @@
   border-color: var(--clr-action);
   font-weight: 600;
 }
+.tabCount {
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  .tab { font-size: 0.75rem; padding: 6px 14px; }
+}
 
 /* Grid */
 .grid {

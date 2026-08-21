@@ -1,7 +1,10 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from '../../utils/gsap.config';
 import styles from './Hero.module.css';
+import HeroVisualFallback from '../3d/HeroVisualFallback';
+
+const HeroScene = lazy(() => import('../3d/HeroScene'));
 
 const CATALOGUE_URL = 'https://qumed.in/wp-content/uploads/2024/05/QUMED_CATALOUGE.pdf';
 
@@ -30,8 +33,12 @@ export default function Hero() {
           <line x1="0" y1="500" x2="600" y2="200" stroke="rgba(199,219,248,0.06)" strokeWidth="1"/>
           <line x1="200" y1="700" x2="700" y2="100" stroke="rgba(199,219,248,0.04)" strokeWidth="1"/>
         </svg>
-        {/* Three.js hook — reserved */}
-        <div id="hero-canvas" aria-hidden="true" />
+        {/* Three.js visual slot */}
+        <div id="hero-visual-slot" className={styles.visualSlot} aria-hidden="true">
+          <Suspense fallback={<HeroVisualFallback />}>
+            <HeroScene fallback={<HeroVisualFallback />} />
+          </Suspense>
+        </div>
       </div>
 
       <div className={`container ${styles.content}`}>

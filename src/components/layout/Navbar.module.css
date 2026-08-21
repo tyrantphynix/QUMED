@@ -94,6 +94,7 @@
   display: none;
   color: #fff;
   margin-left: auto;
+  padding: 8px;
 }
 
 /* Mobile drawer */
@@ -114,7 +115,7 @@
   color: rgba(255,255,255,0.80);
   font-size: var(--fs-base);
   font-weight: 500;
-  padding: 12px 0;
+  padding: 16px 0;
   border-bottom: 1px solid rgba(255,255,255,0.07);
   text-decoration: none;
   transition: color var(--transition-fast);
