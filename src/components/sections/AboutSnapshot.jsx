@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom';
 import { useGsapReveal } from '../../hooks/useGsapReveal';
 import SectionHeading from '../ui/SectionHeading';
+import TubeSegmentSVG from '../layout/TubeSegmentSVG';
 import styles from './AboutSnapshot.module.css';
 
 export default function AboutSnapshot() {
   const ref = useGsapReveal({ stagger: 0.1, y: 28 });
   return (
     <section className={`section section--soft ${styles.section}`} ref={ref} aria-labelledby="about-heading">
+      <TubeSegmentSVG 
+        position="left" 
+        viewBox="0 0 100 600"
+        pathData="M 40 -20 C 40 200, 10 400, 40 620" 
+      />
       <div className={`container ${styles.grid}`}>
         {/* Pull-quote col */}
         <div className={`reveal ${styles.quoteCol}`}>

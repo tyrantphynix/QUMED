@@ -102,6 +102,7 @@
 .mapAddr { font-size: var(--fs-xs); color: rgba(255,255,255,0.45); }
 
 @media (max-width: 768px) {
+  .section { padding-top: calc(var(--section-py) + 80px); }
   .grid { grid-template-columns: 1fr; }
   .row  { grid-template-columns: 1fr; }
   .input { font-size: 16px; } /* Prevents iOS auto-zoom */

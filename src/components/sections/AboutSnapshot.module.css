@@ -1,5 +1,12 @@
-.section { clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); padding-bottom: calc(var(--section-py) + 48px); }
+.section { 
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); 
+  padding-bottom: calc(var(--section-py) + 48px); 
+}
 .grid {
+  position: relative;
+  z-index: 10;
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: var(--sp-xl);
