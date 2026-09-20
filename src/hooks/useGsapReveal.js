@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { gsap, ScrollTrigger } from '../utils/gsap.config';
+import { gsap } from '../utils/gsap.config';
 
 /**
  * Attach a GSAP ScrollTrigger fade-up reveal to a container ref.

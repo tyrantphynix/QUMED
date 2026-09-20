@@ -3,7 +3,7 @@ import Footer from '../components/layout/Footer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 import { useProductFilter } from '../hooks/useProductFilter';
 import products from '../data/products.json';
-import SectionHeading from '../components/ui/SectionHeading';
+
 import ProductCard from '../components/ui/ProductCard';
 import styles from './Products.module.css';
 

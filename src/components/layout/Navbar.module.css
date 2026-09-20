@@ -102,14 +102,20 @@
   display: none;
   flex-direction: column;
   background: var(--clr-brand-deep);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding: var(--sp-md) var(--container-pad);
+  border-top: none;
+  padding: 0 var(--container-pad);
   gap: 4px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--transition-slow);
+  pointer-events: none;
+  transition: max-height var(--transition-slow), padding var(--transition-slow);
 }
-.drawerOpen { max-height: 400px; }
+.drawerOpen {
+  max-height: 450px;
+  padding: var(--sp-md) var(--container-pad);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  pointer-events: auto;
+}
 .drawerLinks { display: flex; flex-direction: column; gap: 4px; }
 .drawerLink {
   color: rgba(255,255,255,0.80);

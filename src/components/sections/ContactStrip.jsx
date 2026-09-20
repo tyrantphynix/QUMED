@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React from 'react';
 import { useGsapReveal } from '../../hooks/useGsapReveal';
 import styles from './ContactStrip.module.css';
 

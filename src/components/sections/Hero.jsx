@@ -1,18 +1,40 @@
-import React, { useEffect, useRef, Suspense, lazy } from 'react';
+import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from '../../utils/gsap.config';
 import styles from './Hero.module.css';
 import HeroVisualFallback from '../3d/HeroVisualFallback';
+import SyringeSVG from '../3d/SyringeSVG';
 
 const HeroScene = lazy(() => import('../3d/HeroScene'));
 
 const CATALOGUE_URL = 'https://qumed.in/wp-content/uploads/2024/05/QUMED_CATALOUGE.pdf';
 
-export default function Hero() {
+export default function Hero({ scrollProgress = 0 }) {
   const headlineRef = useRef(null);
   const subRef      = useRef(null);
   const ctaRef      = useRef(null);
   const badgeRef    = useRef(null);
+  const heroRef     = useRef(null);
+
+  const [localProgress, setLocalProgress] = useState(0);
+
+  // Scroll listener for hero-specific progress if external scrollProgress not passed
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return;
+      const heroHeight = heroRef.current.offsetHeight || window.innerHeight;
+      const currentScroll = window.scrollY;
+      const prog = Math.max(0, Math.min(1, currentScroll / heroHeight));
+      setLocalProgress(prog);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const activeProgress = scrollProgress || localProgress;
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
@@ -23,7 +45,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className={styles.hero} aria-label="QU-MED Disposable — Hero">
+    <section ref={heroRef} className={styles.hero} aria-label="QU-MED Disposable — Hero">
       {/* Background geometric lines */}
       <div className={styles.bg} aria-hidden="true">
         <svg className={styles.bgSvg} viewBox="0 0 1200 700" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -33,15 +55,21 @@ export default function Hero() {
           <line x1="0" y1="500" x2="600" y2="200" stroke="rgba(199,219,248,0.06)" strokeWidth="1"/>
           <line x1="200" y1="700" x2="700" y2="100" stroke="rgba(199,219,248,0.04)" strokeWidth="1"/>
         </svg>
-        {/* Three.js visual slot */}
+
+        {/* Three.js 3D Syringe slot (desktop & tablet) */}
         <div id="hero-visual-slot" className={styles.visualSlot} aria-hidden="true">
           <Suspense fallback={<HeroVisualFallback />}>
-            <HeroScene fallback={<HeroVisualFallback />} />
+            <HeroScene scrollProgress={activeProgress} fallback={<HeroVisualFallback />} />
           </Suspense>
         </div>
       </div>
 
       <div className={`container ${styles.content}`}>
+        {/* Mobile Syringe Display (visible < 768px above headline) */}
+        <div className={styles.mobileSyringeSlot} aria-hidden="true">
+          <SyringeSVG scrollProgress={activeProgress} />
+        </div>
+
         {/* Badge */}
         <div ref={badgeRef} className={styles.badge} style={{ opacity: 0 }}>
           <span className={styles.badgeDot} />
