@@ -19,23 +19,25 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
 
   // Barrel coordinates (in straight 0 0 340 680 system):
   // Barrel top y = 160, barrel bottom nozzle y = 430 (barrel height = 270)
-  // At rest (progress = 0): stopper rests at y = 200 (approx 4ml mark)
-  // At full scroll (progress = 1): stopper travels down to y = 415 (travel = 215px)
-  const maxTravel = 215;
+  // Extended handle & increased travel so piston can press deeper on scroll
+  // At rest (progress = 0): stopper rests at y = 190 (near 5ml mark)
+  // At full scroll (progress = 1): stopper travels down to y = 424 (travel = 234px)
+  const maxTravel = 234;
   const stopperTravel = progress * maxTravel;
-  const stopperY = 200 + stopperTravel;
+  const stopperY = 190 + stopperTravel;
 
   // Liquid fills from bottom of stopper down to nozzle (y = 428)
   const liquidTop = stopperY + 22;
-  const liquidHeight = Math.max(6, 428 - liquidTop);
+  const liquidHeight = Math.max(5, 428 - liquidTop);
 
-  // Plunger stem & thumb disc position (tied directly to stopper)
-  const plungerDiscY = stopperY - 115;
-  const stemY = stopperY - 100;
+  // Longer plunger handle (extended by 85px) for a deeper, more dramatic press
+  const handleLength = 200;
+  const plungerDiscY = stopperY - handleLength;
+  const stemY = stopperY - (handleLength - 16);
 
   return (
     <svg
-      viewBox="0 0 380 760"
+      viewBox="0 -45 390 810"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
