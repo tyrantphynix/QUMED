@@ -35,7 +35,7 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
 
   return (
     <svg
-      viewBox="0 0 460 760"
+      viewBox="0 0 380 760"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -110,50 +110,6 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
-
-      {/* ========================================================
-          1. REAR TUBE LOOP & IV DRIP CHAMBER (From Reference Image)
-          ======================================================== */}
-      <g id="rear-tube-assembly">
-        {/* Rear silicone tube arching over top-right down to drip chamber */}
-        <path
-          d="M 235,210 C 275,150 355,140 380,225 C 392,275 392,480 392,660"
-          stroke="rgba(255,255,255,0.30)"
-          strokeWidth="11"
-          strokeLinecap="round"
-          fill="none"
-        />
-        <path
-          d="M 235,210 C 275,150 355,140 380,225 C 392,275 392,480 392,660"
-          stroke="#4F46E5"
-          strokeWidth="4.5"
-          strokeLinecap="round"
-          fill="none"
-          opacity="0.65"
-        />
-        <path
-          d="M 237,208 C 276,148 354,138 377,222 C 389,272 389,478 389,658"
-          stroke="rgba(255,255,255,0.75)"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          fill="none"
-        />
-
-        {/* IV Drip Chamber on the right */}
-        <g id="iv-drip-chamber" transform="translate(372, 520)">
-          {/* Top white collar cap */}
-          <rect x="0" y="0" width="40" height="16" rx="4" fill="#F1F5F9" stroke="#CBD5E1" strokeWidth="1" />
-          {/* Transparent drip chamber cylinder */}
-          <rect x="2" y="16" width="36" height="90" rx="3" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.6)" strokeWidth="1" />
-          {/* Liquid level inside drip chamber */}
-          <rect x="4" y="58" width="32" height="46" rx="2" fill="#4F46E5" opacity="0.8" />
-          <ellipse cx="20" cy="58" rx="16" ry="3" fill="#818CF8" opacity="0.8" />
-          {/* Gloss reflection on chamber */}
-          <line x1="6" y1="20" x2="6" y2="102" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinecap="round" />
-          {/* Bottom white exit cap */}
-          <polygon points="4,106 36,106 26,126 14,126" fill="#F1F5F9" stroke="#CBD5E1" strokeWidth="1" />
-        </g>
-      </g>
 
       {/* ========================================================
           2. MAIN SYRINGE ASSEMBLY (Rotated -22° like Reference Image)
