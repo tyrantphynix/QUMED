@@ -1,44 +1,35 @@
 import React from 'react';
 
 /**
- * MedicalSyringe2D — Pure 2D vector asset replicating the reference image:
- * - 22° diagonal posture
- * - Flared white molded plunger handle & thumb push-disc
- * - Wide oval finger flange on the glass barrel
- * - Crystal-clear glass barrel with black graduation ticks & numbers
- * - Triple-lip black rubber piston stopper
- * - Soft translucent purple-blue fluid inside the barrel
- * - Translucent ice-blue luer lock collar
- * - White medical 3-way stopcock T-valve with horizontal side port and turn handle
- * - Tapered connector sleeve with fluid core
- * - Rear tube loop with IV drip chamber
- * - Smooth scroll-driven plunger compression & fluid expulsion
+ * MedicalSyringe2D — Gemini-generated high-fidelity SVG syringe
+ * integrated with scroll-driven plunger compression & fluid expulsion.
+ *
+ * Props:
+ *   scrollProgress {number} 0–1  — drives plunger travel
+ *   className      {string}
+ *   style          {object}
  */
 export default function MedicalSyringe2D({ scrollProgress = 0, className = '', style = {} }) {
   const progress = Math.max(0, Math.min(1, scrollProgress));
 
-  // Barrel coordinates (in straight 0 0 340 680 system):
-  // Barrel top y = 160, barrel bottom nozzle y = 430 (barrel height = 270)
-  // Extended handle & increased travel so piston can press deeper on scroll
-  // At rest (progress = 0): stopper rests at y = 190 (near 5ml mark)
-  // At full scroll (progress = 1): stopper travels down to y = 424 (travel = 234px)
-  const maxTravel = 234;
-  const stopperTravel = progress * maxTravel;
-  const stopperY = 190 + stopperTravel;
+  // Piston rests at y=200 (the anchor Gemini placed).
+  // At full scroll it travels 254px downward — enough to expel all fluid.
+  const restY       = 200;
+  const maxTravel   = 254;
+  const stopperY    = restY + progress * maxTravel;   // 200 → 454
 
-  // Liquid fills from bottom of stopper down to nozzle (y = 428)
-  const liquidTop = stopperY + 22;
-  const liquidHeight = Math.max(5, 428 - liquidTop);
+  // Fluid sits directly below the piston bottom face (piston height = 26px)
+  const fluidTop    = stopperY + 26;
+  // Fluid bottom is fixed at the taper start (y ≈ 480)
+  const fluidBottom = 480;
+  const fluidHeight = Math.max(0, fluidBottom - fluidTop);
 
-  // Longer plunger handle (extended by 85px) for a deeper, more dramatic press
-  const handleLength = 200;
-  const plungerDiscY = stopperY - handleLength;
-  const stemY = stopperY - (handleLength - 16);
+  // Handle slides down with the piston
+  const handleOffsetY = progress * maxTravel;
 
   return (
     <svg
       viewBox="0 -45 390 810"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       style={{
@@ -46,468 +37,212 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
         height: '100%',
         maxWidth: '480px',
         display: 'block',
-        filter: 'drop-shadow(-12px 18px 36px rgba(15, 23, 42, 0.45))',
+        overflow: 'visible',
         ...style
       }}
       aria-label="QU-MED Disposable Medical Syringe"
       role="img"
     >
       <defs>
-        {/* Crystal Clear Glass Barrel Gradient */}
-        <linearGradient id="glassBarrelGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.55" />
-          <stop offset="12%" stopColor="#E2E8F0" stopOpacity="0.16" />
-          <stop offset="48%" stopColor="#FFFFFF" stopOpacity="0.04" />
-          <stop offset="84%" stopColor="#C7DBF8" stopOpacity="0.14" />
-          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.45" />
-        </linearGradient>
-
-        {/* Soft Translucent Purple-Blue Fluid (from Reference Image) */}
-        <linearGradient id="fluidGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#6366F1" stopOpacity="0.88" />
-          <stop offset="30%" stopColor="#4F46E5" stopOpacity="0.94" />
-          <stop offset="70%" stopColor="#4338CA" stopOpacity="0.96" />
-          <stop offset="100%" stopColor="#3730A3" stopOpacity="0.90" />
-        </linearGradient>
-
-        {/* Fluid Specular Highlight */}
-        <linearGradient id="fluidGloss" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#C7D2FE" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#C7D2FE" stopOpacity="0.05" />
-        </linearGradient>
-
-        {/* Molded White Polypropylene Plunger Rod */}
-        <linearGradient id="plungerWhite" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#FFFFFF" />
-          <stop offset="35%" stopColor="#F8FAFC" />
-          <stop offset="70%" stopColor="#F1F5F9" />
-          <stop offset="100%" stopColor="#CBD5E1" />
-        </linearGradient>
-
-        {/* Molded Plastic Shadow */}
-        <linearGradient id="plungerShadow" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#E2E8F0" />
-          <stop offset="100%" stopColor="#94A3B8" />
-        </linearGradient>
-
-        {/* Triple-lip Dark Rubber Stopper Gradient */}
-        <linearGradient id="rubberStopperGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#27272A" />
-          <stop offset="25%" stopColor="#3F3F46" />
-          <stop offset="60%" stopColor="#18181B" />
-          <stop offset="100%" stopColor="#09090B" />
-        </linearGradient>
-
-        {/* Translucent Ice-Blue Polypropylene Hub */}
-        <linearGradient id="iceBlueHub" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#BAE6FD" stopOpacity="0.92" />
-          <stop offset="35%" stopColor="#38BDF8" stopOpacity="0.96" />
-          <stop offset="75%" stopColor="#0284C7" stopOpacity="0.96" />
-          <stop offset="100%" stopColor="#0369A1" stopOpacity="0.92" />
-        </linearGradient>
-
-        {/* Glow for Fluid Stream */}
-        <filter id="fluidGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        <filter id="sg-shadow" x="-50%" y="-20%" width="200%" height="150%">
+          <feDropShadow dx="20" dy="25" stdDeviation="15" floodColor="#05001a" floodOpacity="0.35"/>
         </filter>
+
+        <linearGradient id="sg-white-plastic" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#b3b3b3"/>
+          <stop offset="15%"  stopColor="#ffffff"/>
+          <stop offset="45%"  stopColor="#ececec"/>
+          <stop offset="75%"  stopColor="#ffffff"/>
+          <stop offset="100%" stopColor="#999999"/>
+        </linearGradient>
+
+        <linearGradient id="sg-white-plastic-vert" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stopColor="#b3b3b3"/>
+          <stop offset="25%"  stopColor="#ffffff"/>
+          <stop offset="75%"  stopColor="#ffffff"/>
+          <stop offset="100%" stopColor="#999999"/>
+        </linearGradient>
+
+        <linearGradient id="sg-plunger-fin-left" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#999999"/>
+          <stop offset="80%"  stopColor="#f2f2f2"/>
+          <stop offset="100%" stopColor="#e6e6e6"/>
+        </linearGradient>
+
+        <linearGradient id="sg-plunger-fin-right" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#e6e6e6"/>
+          <stop offset="20%"  stopColor="#ffffff"/>
+          <stop offset="100%" stopColor="#b3b3b3"/>
+        </linearGradient>
+
+        <linearGradient id="sg-glass-back" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#000000" stopOpacity="0.15"/>
+          <stop offset="10%"  stopColor="#ffffff"  stopOpacity="0.4"/>
+          <stop offset="90%"  stopColor="#ffffff"  stopOpacity="0.3"/>
+          <stop offset="100%" stopColor="#000000"  stopOpacity="0.2"/>
+        </linearGradient>
+
+        <linearGradient id="sg-glass-front" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#ffffff" stopOpacity="0.9"/>
+          <stop offset="4%"   stopColor="#ffffff" stopOpacity="1"/>
+          <stop offset="7%"   stopColor="#ffffff" stopOpacity="0.1"/>
+          <stop offset="80%"  stopColor="#ffffff" stopOpacity="0"/>
+          <stop offset="88%"  stopColor="#000000" stopOpacity="0.15"/>
+          <stop offset="94%"  stopColor="#ffffff" stopOpacity="1"/>
+          <stop offset="97%"  stopColor="#ffffff" stopOpacity="0.8"/>
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.4"/>
+        </linearGradient>
+
+        <linearGradient id="sg-rubber-base" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#111111"/>
+          <stop offset="20%"  stopColor="#4a4a4a"/>
+          <stop offset="50%"  stopColor="#1f1f1f"/>
+          <stop offset="85%"  stopColor="#3d3d3d"/>
+          <stop offset="100%" stopColor="#050505"/>
+        </linearGradient>
+
+        <linearGradient id="sg-rubber-ring" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#000000"/>
+          <stop offset="15%"  stopColor="#555555"/>
+          <stop offset="45%"  stopColor="#111111"/>
+          <stop offset="80%"  stopColor="#444444"/>
+          <stop offset="100%" stopColor="#000000"/>
+        </linearGradient>
+
+        <linearGradient id="sg-fluid-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#4432a8" stopOpacity="0.9"/>
+          <stop offset="15%"  stopColor="#6e57eb" stopOpacity="0.95"/>
+          <stop offset="45%"  stopColor="#412fa3" stopOpacity="0.9"/>
+          <stop offset="85%"  stopColor="#2d1c73" stopOpacity="0.95"/>
+          <stop offset="100%" stopColor="#1b104a" stopOpacity="0.9"/>
+        </linearGradient>
+
+        <linearGradient id="sg-blue-hub" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#1973b8" stopOpacity="0.85"/>
+          <stop offset="25%"  stopColor="#5ab6f2" stopOpacity="0.95"/>
+          <stop offset="55%"  stopColor="#176cac" stopOpacity="0.85"/>
+          <stop offset="85%"  stopColor="#0c4775" stopOpacity="0.95"/>
+          <stop offset="100%" stopColor="#062f52" stopOpacity="0.85"/>
+        </linearGradient>
       </defs>
 
-      {/* ========================================================
-          2. MAIN SYRINGE ASSEMBLY (Rotated -22° like Reference Image)
-          ======================================================== */}
-      <g id="syringe-tilted-group" transform="rotate(-22 220 380)">
+      {/* Master Group with 22° rotation */}
+      <g transform="rotate(-22 195 382)" filter="url(#sg-shadow)">
 
-        {/* ---------------- A. PLUNGER ASSEMBLY ---------------- */}
-        <g id="plunger-group">
-          {/* Top Thumb Press Flange Disc */}
-          <ellipse
-            cx="220"
-            cy={plungerDiscY}
-            rx="46"
-            ry="9"
-            fill="url(#plungerWhite)"
-            stroke="rgba(255,255,255,0.95)"
-            strokeWidth="1.5"
-          />
-          <ellipse
-            cx="220"
-            cy={plungerDiscY - 2}
-            rx="42"
-            ry="7"
-            fill="#FFFFFF"
-            opacity="0.8"
-          />
-          {/* Flange edge thickness */}
-          <rect
-            x="174"
-            y={plungerDiscY - 2}
-            width="92"
-            height="5"
-            rx="2.5"
-            fill="#F8FAFC"
-            stroke="#CBD5E1"
-            strokeWidth="0.8"
-          />
+        {/* ================= PLUNGER HANDLE (scrolls down with piston) ================= */}
+        <g transform={`translate(0, ${handleOffsetY})`}>
+          <ellipse cx="195" cy="-2"  rx="42" ry="14" fill="url(#sg-white-plastic)"/>
+          <rect x="153" y="-2" width="84" height="10" fill="url(#sg-white-plastic)"/>
+          <ellipse cx="195" cy="8"  rx="42" ry="14"  fill="#cfcfcf"/>
 
-          {/* Flared Plunger Shaft Neck */}
+          {/* Cruciform plunger rod — grows to always reach stopper */}
+          <rect x="193" y="15" width="4" height={185 + progress * maxTravel} fill="#a0a0a0"/>
+          {/* Left Fin */}
           <path
-            d={`M 206,${plungerDiscY + 4} L 234,${plungerDiscY + 4} L 226,${stemY + 12} L 214,${stemY + 12} Z`}
-            fill="url(#plungerWhite)"
+            d={`M173 10 L195 10 L195 ${stopperY} L176 ${stopperY} Z`}
+            fill="url(#sg-plunger-fin-left)"
           />
-
-          {/* Cross-Ribbed Shaft (+) */}
-          {/* Central main vertical column */}
-          <rect
-            x="214"
-            y={stemY}
-            width="12"
-            height={stopperY - stemY + 4}
-            rx="2"
-            fill="url(#plungerWhite)"
+          {/* Right Fin */}
+          <path
+            d={`M195 10 L217 10 L214 ${stopperY} L195 ${stopperY} Z`}
+            fill="url(#sg-plunger-fin-right)"
           />
-          {/* Horizontal cross wings for structural rib */}
-          <rect
-            x="195"
-            y={stemY + 6}
-            width="50"
-            height={Math.max(6, stopperY - stemY - 10)}
-            rx="2"
-            fill="url(#plungerWhite)"
-            opacity="0.38"
-          />
-          {/* Inner shadow rib lines */}
-          <line
-            x1="214"
-            y1={stemY + 8}
-            x2="214"
-            y2={stopperY}
-            stroke="#94A3B8"
-            strokeWidth="1"
-            opacity="0.5"
-          />
-          <line
-            x1="226"
-            y1={stemY + 8}
-            x2="226"
-            y2={stopperY}
-            stroke="#94A3B8"
-            strokeWidth="1"
-            opacity="0.5"
-          />
-
-          {/* Triple-Lip Dark Rubber Stopper */}
-          {/* Ring 1 (top) */}
-          <rect
-            x="180"
-            y={stopperY}
-            width="80"
-            height="7"
-            rx="3"
-            fill="url(#rubberStopperGrad)"
-          />
-          {/* Groove 1 */}
-          <rect x="183" y={stopperY + 6.5} width="74" height="2" fill="#09090B" />
-          {/* Ring 2 (middle) */}
-          <rect
-            x="179"
-            y={stopperY + 8}
-            width="82"
-            height="7.5"
-            rx="3"
-            fill="url(#rubberStopperGrad)"
-          />
-          {/* Groove 2 */}
-          <rect x="183" y={stopperY + 15} width="74" height="2" fill="#09090B" />
-          {/* Ring 3 (bottom) */}
-          <rect
-            x="180"
-            y={stopperY + 16.5}
-            width="80"
-            height="7"
-            rx="3"
-            fill="url(#rubberStopperGrad)"
-          />
-          {/* Conical rubber nose */}
-          <polygon
-            points={`196,${stopperY + 23} 244,${stopperY + 23} 220,${stopperY + 30}`}
-            fill="#18181B"
-          />
+          {/* Front Fin highlight edge */}
+          <rect x="193" y="10" width="4" height={stopperY - 10} fill="#ffffff" opacity="0.9"/>
         </g>
 
-        {/* ---------------- B. LIQUID COLUMN ---------------- */}
-        {liquidHeight > 6 && (
-          <g id="fluid-column">
-            {/* Main fluid body */}
-            <rect
-              x="181"
-              y={liquidTop}
-              width="78"
-              height={liquidHeight}
-              rx="3"
-              fill="url(#fluidGrad)"
-              style={{ transition: 'y 0.12s ease-out, height 0.12s ease-out' }}
-            />
-            {/* Inner refraction luminescence */}
-            <rect
-              x="185"
-              y={liquidTop}
-              width="9"
-              height={liquidHeight}
-              fill="url(#fluidGloss)"
-              rx="2"
-            />
-            {/* Top meniscus curve under stopper */}
-            <ellipse
-              cx="220"
-              cy={liquidTop}
-              rx="39"
-              ry="5"
-              fill="#A5B4FC"
-              opacity="0.85"
-            />
-          </g>
+        {/* ================= BARREL FLANGE ================= */}
+        <rect x="135" y="145" width="120" height="14" rx="7" fill="url(#sg-glass-back)"/>
+        <rect x="135" y="145" width="120" height="14" rx="7" fill="url(#sg-glass-front)"/>
+        <path d="M135 152 L255 152" stroke="#ffffff" strokeWidth="2" opacity="0.6"/>
+
+        {/* ================= BARREL BACK (Depth) ================= */}
+        <rect x="160" y="152" width="70" height="328" fill="url(#sg-glass-back)"/>
+        <path d="M160 480 Q 195 490 230 480 L207 508 L183 508 Z" fill="url(#sg-glass-back)"/>
+
+        {/* ================= PURPLE/BLUE FLUID (shrinks as piston presses) ================= */}
+        {fluidHeight > 0 && (
+          <>
+            <rect x="162" y={fluidTop} width="66" height={fluidHeight} fill="url(#sg-fluid-grad)"/>
+            {fluidTop < fluidBottom && (
+              <path d="M162 480 Q 195 490 228 480 L205 507 L185 507 Z" fill="url(#sg-fluid-grad)"/>
+            )}
+          </>
         )}
 
-        {/* ---------------- C. GLASS BARREL ---------------- */}
-        <g id="glass-barrel">
-          {/* Main transparent glass cylinder */}
-          <rect
-            x="177"
-            y="155"
-            width="86"
-            height="275"
-            rx="6"
-            fill="url(#glassBarrelGrad)"
-            stroke="rgba(255,255,255,0.85)"
-            strokeWidth="2"
-          />
+        {/* ================= RUBBER PISTON (dynamic stopperY) ================= */}
+        <rect x="162" y={stopperY}      width="66" height="26" fill="url(#sg-rubber-base)"/>
+        <rect x="161" y={stopperY}      width="68" height="6"  rx="2" fill="url(#sg-rubber-ring)"/>
+        <rect x="161" y={stopperY + 10} width="68" height="6"  rx="2" fill="url(#sg-rubber-ring)"/>
+        <rect x="161" y={stopperY + 20} width="68" height="6"  rx="2" fill="url(#sg-rubber-ring)"/>
 
-          {/* Wide Oval Finger Flange (White molded plastic at top) */}
-          <ellipse
-            cx="220"
-            cy="153"
-            rx="62"
-            ry="13"
-            fill="#F8FAFC"
-            stroke="rgba(255,255,255,0.95)"
-            strokeWidth="1.8"
-          />
-          <ellipse
-            cx="220"
-            cy="151"
-            rx="58"
-            ry="10"
-            fill="#FFFFFF"
-            opacity="0.6"
-          />
-          <ellipse
-            cx="220"
-            cy="153"
-            rx="43"
-            ry="8"
-            fill="none"
-            stroke="#CBD5E1"
-            strokeWidth="1"
-            opacity="0.5"
-          />
-
-          {/* Cylindrical Specular Highlight Strips */}
-          {/* Sharp Primary Left Reflection */}
-          <line
-            x1="185"
-            y1="160"
-            x2="185"
-            y2="422"
-            stroke="rgba(255,255,255,0.92)"
-            strokeWidth="3.5"
-            strokeLinecap="round"
-          />
-          <line
-            x1="190"
-            y1="165"
-            x2="190"
-            y2="418"
-            stroke="rgba(255,255,255,0.35)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          {/* Soft Rim Right Reflection */}
-          <line
-            x1="256"
-            y1="162"
-            x2="256"
-            y2="420"
-            stroke="rgba(255,255,255,0.45)"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-          />
+        {/* ================= MEASUREMENT MARKINGS ================= */}
+        <g fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="14" fill="#0d0d0d">
+          <g transform="translate(160, 180)">
+            <text x="18" y="5" transform="rotate(90, 18, 5)">5</text>
+            <rect x="30" y="0"  width="22" height="1.5"/>
+            <rect x="42" y="11" width="10" height="1"/>
+            <rect x="42" y="22" width="10" height="1"/>
+            <rect x="42" y="33" width="10" height="1"/>
+            <rect x="42" y="44" width="10" height="1"/>
+          </g>
+          <g transform="translate(160, 235)">
+            <text x="18" y="5" transform="rotate(90, 18, 5)">4</text>
+            <rect x="30" y="0"  width="22" height="1.5"/>
+            <rect x="42" y="11" width="10" height="1"/>
+            <rect x="42" y="22" width="10" height="1"/>
+            <rect x="42" y="33" width="10" height="1"/>
+            <rect x="42" y="44" width="10" height="1"/>
+          </g>
+          <g transform="translate(160, 290)">
+            <text x="18" y="5" transform="rotate(90, 18, 5)">3</text>
+            <rect x="30" y="0"  width="22" height="1.5"/>
+            <rect x="42" y="11" width="10" height="1"/>
+            <rect x="42" y="22" width="10" height="1"/>
+            <rect x="42" y="33" width="10" height="1"/>
+            <rect x="42" y="44" width="10" height="1"/>
+          </g>
+          <g transform="translate(160, 345)">
+            <text x="18" y="5" transform="rotate(90, 18, 5)">2</text>
+            <rect x="30" y="0"  width="22" height="1.5"/>
+            <rect x="42" y="11" width="10" height="1"/>
+            <rect x="42" y="22" width="10" height="1"/>
+            <rect x="42" y="33" width="10" height="1"/>
+            <rect x="42" y="44" width="10" height="1"/>
+          </g>
+          <g transform="translate(160, 400)">
+            <rect x="30" y="0" width="22" height="1.5"/>
+          </g>
         </g>
 
-        {/* ---------------- D. GRADUATION MEASUREMENT MARKS ---------------- */}
-        <g id="graduation-marks" stroke="#0F172A" strokeWidth="2" strokeLinecap="round">
-          {/* 5 ml */}
-          <line x1="188" y1="195" x2="218" y2="195" strokeWidth="2.4" />
-          <line x1="188" y1="216" x2="204" y2="216" strokeWidth="1.2" opacity="0.6" />
-          {/* 4 ml */}
-          <line x1="188" y1="237" x2="218" y2="237" strokeWidth="2.4" />
-          <line x1="188" y1="258" x2="204" y2="258" strokeWidth="1.2" opacity="0.6" />
-          {/* 3 ml */}
-          <line x1="188" y1="279" x2="218" y2="279" strokeWidth="2.4" />
-          <line x1="188" y1="300" x2="204" y2="300" strokeWidth="1.2" opacity="0.6" />
-          {/* 2 ml */}
-          <line x1="188" y1="321" x2="218" y2="321" strokeWidth="2.4" />
-          <line x1="188" y1="342" x2="204" y2="342" strokeWidth="1.2" opacity="0.6" />
-          {/* 1 ml */}
-          <line x1="188" y1="363" x2="218" y2="363" strokeWidth="2.4" />
-        </g>
+        {/* ================= BARREL FRONT (Reflections) ================= */}
+        <rect x="160" y="152" width="70" height="328" fill="url(#sg-glass-front)"/>
+        <path d="M160 480 Q 195 490 230 480 L207 508 L183 508 Z" fill="url(#sg-glass-front)"/>
+        <rect x="183" y="508" width="24" height="22" fill="url(#sg-glass-front)"/>
 
-        {/* Graduation Numeric Labels */}
-        <g fill="#0F172A" fontSize="13" fontFamily="'Inter', sans-serif" fontWeight="700" textAnchor="start">
-          <text x="224" y="200">5</text>
-          <text x="224" y="242">4</text>
-          <text x="224" y="284">3</text>
-          <text x="224" y="326">2</text>
-          <text x="224" y="368">1 ml</text>
-        </g>
+        {/* ================= TRANSLUCENT BLUE NEEDLE HUB ================= */}
+        <rect x="175" y="506" width="40" height="12" rx="3" fill="url(#sg-blue-hub)"/>
+        <path d="M179 518 L211 518 L203 570 L187 570 Z" fill="url(#sg-blue-hub)"/>
+        <path
+          d="M187 518 L191 570 M195 518 L195 570 M203 518 L199 570"
+          stroke="#ffffff"
+          strokeWidth="1.5"
+          opacity="0.4"
+        />
 
-        {/* ---------------- E. 3-WAY STOPCOCK & CONNECTOR SLEEVE ---------------- */}
-        <g id="stopcock-assembly">
-          {/* Glass conical nozzle */}
-          <polygon
-            points="188,430 252,430 236,452 204,452"
-            fill="url(#glassBarrelGrad)"
-            stroke="rgba(255,255,255,0.75)"
-            strokeWidth="1.5"
-          />
-
-          {/* Translucent Ice-Blue Luer Lock Hub */}
-          <rect
-            x="206"
-            y="452"
-            width="28"
-            height="28"
-            rx="3"
-            fill="url(#iceBlueHub)"
-            stroke="rgba(255,255,255,0.7)"
-            strokeWidth="1.5"
-          />
-          {/* Hub grip ribs */}
-          <line x1="212" y1="456" x2="212" y2="476" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.8" />
-          <line x1="220" y1="456" x2="220" y2="476" stroke="#FFFFFF" strokeWidth="1.8" opacity="0.9" />
-          <line x1="228" y1="456" x2="228" y2="476" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.8" />
-
-          {/* White Medical 3-Way Stopcock Valve */}
-          {/* Main vertical valve body */}
-          <rect
-            x="209"
-            y="480"
-            width="22"
-            height="32"
-            rx="3"
-            fill="#F8FAFC"
-            stroke="#CBD5E1"
-            strokeWidth="1.5"
-          />
-          {/* Horizontal side port branch pointing right */}
-          <rect
-            x="231"
-            y="488"
-            width="28"
-            height="16"
-            rx="2"
-            fill="#F8FAFC"
-            stroke="#CBD5E1"
-            strokeWidth="1.5"
-          />
-          {/* Winged white valve turn handle / plug */}
-          <rect
-            x="259"
-            y="484"
-            width="10"
-            height="24"
-            rx="3"
-            fill="#FFFFFF"
-            stroke="#94A3B8"
-            strokeWidth="1.2"
-          />
-          <polygon
-            points="269,482 278,487 278,505 269,510"
-            fill="#F1F5F9"
-            stroke="#94A3B8"
-            strokeWidth="1.2"
-          />
-
-          {/* Tapered Translucent Connector Sleeve */}
-          <polygon
-            points="210,512 230,512 226,558 214,558"
-            fill="rgba(248,250,252,0.85)"
-            stroke="#CBD5E1"
-            strokeWidth="1.5"
-          />
-          {/* Fluid running through core of connector */}
-          <line
-            x1="220"
-            y1="480"
-            x2="220"
-            y2="558"
-            stroke="#4F46E5"
-            strokeWidth="6"
-            strokeLinecap="round"
-          />
-
-          {/* Metallic tube collar clamp */}
-          <rect
-            x="212"
-            y="558"
-            width="16"
-            height="8"
-            rx="2"
-            fill="#94A3B8"
-            stroke="#64748B"
-            strokeWidth="0.8"
-          />
-        </g>
-
-        {/* ---------------- F. FRONT SNAKE TUBE START ---------------- */}
-        <g id="snake-tube-start">
-          {/* Outer silicone tube wall */}
-          <path
-            d="M 220,566 C 220,610 170,626 124,635 C 72,645 36,674 24,720"
-            stroke="rgba(255,255,255,0.35)"
-            strokeWidth="14"
-            strokeLinecap="round"
-            fill="none"
-          />
-          {/* Purple-blue fluid core */}
-          <path
-            d="M 220,566 C 220,610 170,626 124,635 C 72,645 36,674 24,720"
-            stroke="#4F46E5"
-            strokeWidth="6"
-            strokeLinecap="round"
-            fill="none"
-            filter="url(#fluidGlow)"
-            opacity="0.95"
-          />
-          {/* Flow wave highlight */}
-          <path
-            d="M 220,566 C 220,610 170,626 124,635 C 72,645 36,674 24,720"
-            stroke="#A5B4FC"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            fill="none"
-            strokeDasharray="20 14"
-            strokeDashoffset={(progress * 300) % 68}
-          />
-          {/* Specular tube shine */}
-          <path
-            d="M 218,566 C 218,608 168,623 122,632 C 70,642 34,671 22,717"
-            stroke="rgba(255,255,255,0.75)"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            fill="none"
-          />
-        </g>
+        {/* ================= WHITE 3-WAY STOPCOCK VALVE ================= */}
+        <rect x="185" y="565" width="20" height="35" fill="url(#sg-white-plastic)"/>
+        <rect x="180" y="595" width="30" height="34" rx="2" fill="url(#sg-white-plastic)"/>
+        <circle cx="195" cy="612" r="15" fill="#fcfcfc" stroke="#d4d4d4" strokeWidth="1.5"/>
+        <circle cx="195" cy="612" r="9"  fill="url(#sg-white-plastic)"/>
+        <rect x="210" y="602" width="42" height="20" fill="url(#sg-white-plastic-vert)"/>
+        <rect x="246" y="594" width="8"  height="36" rx="2" fill="url(#sg-white-plastic)"/>
+        <rect x="250" y="598" width="2"  height="28"        fill="#e6e6e6"/>
+        <rect x="187" y="629" width="16" height="20" fill="url(#sg-white-plastic)"/>
+        <rect x="179" y="649" width="32" height="10" rx="1.5" fill="url(#sg-white-plastic)"/>
+        <rect x="183" y="659" width="24" height="14"          fill="url(#sg-white-plastic)"/>
+        <rect x="181" y="673" width="28" height="8"  rx="1"   fill="url(#sg-white-plastic)"/>
+        <rect x="185" y="681" width="20" height="25"          fill="url(#sg-white-plastic)"/>
 
       </g>
     </svg>
