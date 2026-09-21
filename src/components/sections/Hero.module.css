@@ -16,7 +16,7 @@
     min-height: 100vh;
     min-height: 100svh;
     padding-top: 68px;
-    padding-bottom: 24px;
+    padding-bottom: 30px;
     align-items: flex-start;
     overflow: hidden;
   }
@@ -38,21 +38,31 @@
 
 #hero-visual-slot, .visualSlot {
   position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 52%;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44%;
+  max-width: 520px;
+  height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: visible;
   pointer-events: none;
-  z-index: 1;
+  z-index: 5;
+  animation: syringeFloat 5s ease-in-out infinite alternate;
+}
+
+@keyframes syringeFloat {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-52%) rotate(-0.5deg); }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   #hero-visual-slot, .visualSlot {
-    width: 48%;
-    right: 0;
-    overflow: visible;
-    opacity: 0.95;
+    width: 42%;
+    right: 1%;
+    max-width: 440px;
   }
 }
 
@@ -87,11 +97,10 @@
 .mobileSyringeSlot {
   display: none;
   width: 100%;
-  max-width: 180px;
-  height: 175px;
-  margin: 0 auto 8px auto;
+  max-width: 250px;
+  height: 230px;
+  margin: 0 auto 10px auto;
   pointer-events: none;
-  filter: drop-shadow(0 8px 24px rgba(0, 103, 255, 0.35));
   animation: floatSubtle 4s ease-in-out infinite alternate;
 }
 

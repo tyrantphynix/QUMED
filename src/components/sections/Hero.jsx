@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from '../../utils/gsap.config';
 import styles from './Hero.module.css';
-import HeroVisualFallback from '../3d/HeroVisualFallback';
-import SyringeSVG from '../3d/SyringeSVG';
-
-const HeroScene = lazy(() => import('../3d/HeroScene'));
+import MedicalSyringe2D from '../syringe/MedicalSyringe2D';
 
 const CATALOGUE_URL = 'https://qumed.in/wp-content/uploads/2024/05/QUMED_CATALOUGE.pdf';
 
@@ -56,18 +53,16 @@ export default function Hero({ scrollProgress = 0 }) {
           <line x1="200" y1="700" x2="700" y2="100" stroke="rgba(199,219,248,0.04)" strokeWidth="1"/>
         </svg>
 
-        {/* Three.js 3D Syringe slot (desktop & tablet) */}
+        {/* Desktop & Tablet High-Fidelity 2D Syringe */}
         <div id="hero-visual-slot" className={styles.visualSlot} aria-hidden="true">
-          <Suspense fallback={<HeroVisualFallback />}>
-            <HeroScene scrollProgress={activeProgress} fallback={<HeroVisualFallback />} />
-          </Suspense>
+          <MedicalSyringe2D scrollProgress={activeProgress} />
         </div>
       </div>
 
       <div className={`container ${styles.content}`}>
         {/* Mobile Syringe Display (visible < 768px above headline) */}
         <div className={styles.mobileSyringeSlot} aria-hidden="true">
-          <SyringeSVG scrollProgress={activeProgress} />
+          <MedicalSyringe2D scrollProgress={activeProgress} />
         </div>
 
         {/* Badge */}
