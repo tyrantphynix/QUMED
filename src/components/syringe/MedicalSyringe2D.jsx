@@ -1,31 +1,25 @@
 import React from 'react';
 
 /**
- * MedicalSyringe2D — Gemini-generated high-fidelity SVG syringe
- * integrated with scroll-driven plunger compression & fluid expulsion.
- *
- * Props:
- *   scrollProgress {number} 0–1  — drives plunger travel
- *   className      {string}
- *   style          {object}
+ * MedicalSyringe2D — High-fidelity 2D medical syringe asset
+ * Features:
+ * - Crystal clear glass barrel with graduation markings
+ * - Natural water / saline solution fluid gradient with realistic transparency
+ * - Unified rigid plunger assembly (disc, cruciform rod, fins, rubber stopper)
+ *   that smoothly presses down into the barrel on scroll
+ * - Dynamic fluid expulsion matching the piston depth
  */
 export default function MedicalSyringe2D({ scrollProgress = 0, className = '', style = {} }) {
   const progress = Math.max(0, Math.min(1, scrollProgress));
 
-  // Piston rests at y=200 (the anchor Gemini placed).
-  // At full scroll it travels 254px downward — enough to expel all fluid.
-  const restY       = 200;
-  const maxTravel   = 254;
-  const stopperY    = restY + progress * maxTravel;   // 200 → 454
+  // Max travel of plunger assembly (from rest y=200 down to barrel base y=442)
+  const maxTravel = 242;
+  const plungerOffset = progress * maxTravel;
 
-  // Fluid sits directly below the piston bottom face (piston height = 26px)
-  const fluidTop    = stopperY + 26;
-  // Fluid bottom is fixed at the taper start (y ≈ 480)
+  // Fluid starts at the bottom of the rubber stopper (base y=200 + height 26 = 226)
+  const fluidTop = 226 + plungerOffset;
   const fluidBottom = 480;
   const fluidHeight = Math.max(0, fluidBottom - fluidTop);
-
-  // Handle slides down with the piston
-  const handleOffsetY = progress * maxTravel;
 
   return (
     <svg
@@ -82,6 +76,7 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
           <stop offset="100%" stopColor="#000000"  stopOpacity="0.2"/>
         </linearGradient>
 
+        {/* Specular Highlights for Photorealistic Glass */}
         <linearGradient id="sg-glass-front" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%"   stopColor="#ffffff" stopOpacity="0.9"/>
           <stop offset="4%"   stopColor="#ffffff" stopOpacity="1"/>
@@ -109,12 +104,20 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
           <stop offset="100%" stopColor="#000000"/>
         </linearGradient>
 
+        {/* Realistic Saline / Water Fluid Gradient */}
         <linearGradient id="sg-fluid-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%"   stopColor="#4432a8" stopOpacity="0.9"/>
-          <stop offset="15%"  stopColor="#6e57eb" stopOpacity="0.95"/>
-          <stop offset="45%"  stopColor="#412fa3" stopOpacity="0.9"/>
-          <stop offset="85%"  stopColor="#2d1c73" stopOpacity="0.95"/>
-          <stop offset="100%" stopColor="#1b104a" stopOpacity="0.9"/>
+          <stop offset="0%"   stopColor="#bce7fd" stopOpacity="0.5"/>
+          <stop offset="18%"  stopColor="#e0f4fe" stopOpacity="0.65"/>
+          <stop offset="48%"  stopColor="#7dd3fc" stopOpacity="0.32"/>
+          <stop offset="78%"  stopColor="#bae6fd" stopOpacity="0.58"/>
+          <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.45"/>
+        </linearGradient>
+
+        {/* Water Meniscus Highlight */}
+        <linearGradient id="sg-meniscus" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#ffffff" stopOpacity="0.8"/>
+          <stop offset="50%"  stopColor="#e0f2fe" stopOpacity="0.3"/>
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.7"/>
         </linearGradient>
 
         <linearGradient id="sg-blue-hub" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -129,29 +132,7 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
       {/* Master Group with 22° rotation */}
       <g transform="rotate(-22 195 382)" filter="url(#sg-shadow)">
 
-        {/* ================= PLUNGER HANDLE (scrolls down with piston) ================= */}
-        <g transform={`translate(0, ${handleOffsetY})`}>
-          <ellipse cx="195" cy="-2"  rx="42" ry="14" fill="url(#sg-white-plastic)"/>
-          <rect x="153" y="-2" width="84" height="10" fill="url(#sg-white-plastic)"/>
-          <ellipse cx="195" cy="8"  rx="42" ry="14"  fill="#cfcfcf"/>
-
-          {/* Cruciform plunger rod — grows to always reach stopper */}
-          <rect x="193" y="15" width="4" height={185 + progress * maxTravel} fill="#a0a0a0"/>
-          {/* Left Fin */}
-          <path
-            d={`M173 10 L195 10 L195 ${stopperY} L176 ${stopperY} Z`}
-            fill="url(#sg-plunger-fin-left)"
-          />
-          {/* Right Fin */}
-          <path
-            d={`M195 10 L217 10 L214 ${stopperY} L195 ${stopperY} Z`}
-            fill="url(#sg-plunger-fin-right)"
-          />
-          {/* Front Fin highlight edge */}
-          <rect x="193" y="10" width="4" height={stopperY - 10} fill="#ffffff" opacity="0.9"/>
-        </g>
-
-        {/* ================= BARREL FLANGE ================= */}
+        {/* ================= BARREL FLANGE (static) ================= */}
         <rect x="135" y="145" width="120" height="14" rx="7" fill="url(#sg-glass-back)"/>
         <rect x="135" y="145" width="120" height="14" rx="7" fill="url(#sg-glass-front)"/>
         <path d="M135 152 L255 152" stroke="#ffffff" strokeWidth="2" opacity="0.6"/>
@@ -160,21 +141,41 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
         <rect x="160" y="152" width="70" height="328" fill="url(#sg-glass-back)"/>
         <path d="M160 480 Q 195 490 230 480 L207 508 L183 508 Z" fill="url(#sg-glass-back)"/>
 
-        {/* ================= PURPLE/BLUE FLUID (shrinks as piston presses) ================= */}
+        {/* ================= WATER / SALINE FLUID (shrinks as piston presses) ================= */}
         {fluidHeight > 0 && (
           <>
             <rect x="162" y={fluidTop} width="66" height={fluidHeight} fill="url(#sg-fluid-grad)"/>
+            {/* Water Meniscus line under piston */}
+            <rect x="162" y={fluidTop} width="66" height="2" fill="url(#sg-meniscus)"/>
+            {/* Tapered base fluid */}
             {fluidTop < fluidBottom && (
               <path d="M162 480 Q 195 490 228 480 L205 507 L185 507 Z" fill="url(#sg-fluid-grad)"/>
             )}
           </>
         )}
 
-        {/* ================= RUBBER PISTON (dynamic stopperY) ================= */}
-        <rect x="162" y={stopperY}      width="66" height="26" fill="url(#sg-rubber-base)"/>
-        <rect x="161" y={stopperY}      width="68" height="6"  rx="2" fill="url(#sg-rubber-ring)"/>
-        <rect x="161" y={stopperY + 10} width="68" height="6"  rx="2" fill="url(#sg-rubber-ring)"/>
-        <rect x="161" y={stopperY + 20} width="68" height="6"  rx="2" fill="url(#sg-rubber-ring)"/>
+        {/* ================= COMPLETE PLUNGER ASSEMBLY (slides down as one rigid piece) ================= */}
+        <g transform={`translate(0, ${plungerOffset})`}>
+          {/* Plunger Handle / Push Disc */}
+          <ellipse cx="195" cy="-2"  rx="42" ry="14" fill="url(#sg-white-plastic)"/>
+          <rect x="153" y="-2" width="84" height="10" fill="url(#sg-white-plastic)"/>
+          <ellipse cx="195" cy="8"  rx="42" ry="14"  fill="#cfcfcf"/>
+
+          {/* Cruciform plunger rod */}
+          <rect x="193" y="15" width="4" height="185" fill="#a0a0a0"/>
+          {/* Left Fin */}
+          <path d="M173 10 L195 10 L195 200 L176 200 Z" fill="url(#sg-plunger-fin-left)"/>
+          {/* Right Fin */}
+          <path d="M195 10 L217 10 L214 200 L195 200 Z" fill="url(#sg-plunger-fin-right)"/>
+          {/* Front Fin highlight edge */}
+          <rect x="193" y="10" width="4" height="190" fill="#ffffff" opacity="0.9"/>
+
+          {/* Rubber Piston Stopper attached to bottom of rod */}
+          <rect x="162" y="200" width="66" height="26" fill="url(#sg-rubber-base)"/>
+          <rect x="161" y="200" width="68" height="6"  rx="2" fill="url(#sg-rubber-ring)"/>
+          <rect x="161" y="210" width="68" height="6"  rx="2" fill="url(#sg-rubber-ring)"/>
+          <rect x="161" y="220" width="68" height="6"  rx="2" fill="url(#sg-rubber-ring)"/>
+        </g>
 
         {/* ================= MEASUREMENT MARKINGS ================= */}
         <g fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="14" fill="#0d0d0d">
