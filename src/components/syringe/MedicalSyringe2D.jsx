@@ -5,7 +5,7 @@ import React from 'react';
  * Features:
  * - Crystal clear glass barrel with graduation markings
  * - Natural water / saline solution fluid gradient with realistic transparency
- * - Barrel flange and horizontal collar line layered IN FRONT of plunger rod
+ * - Solid photorealistic molded white medical barrel flange layered IN FRONT of plunger rod & barrel reflections
  * - Unified rigid plunger assembly (disc, cruciform rod, fins, rubber stopper)
  *   that smoothly presses down into the barrel on scroll
  * - Dynamic fluid expulsion matching the piston depth
@@ -68,6 +68,32 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
           <stop offset="0%"   stopColor="#e6e6e6"/>
           <stop offset="20%"  stopColor="#ffffff"/>
           <stop offset="100%" stopColor="#b3b3b3"/>
+        </linearGradient>
+
+        {/* Solid Medical Flange Plastic Gradients (100% Opaque) */}
+        <linearGradient id="sg-flange-solid" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stopColor="#ffffff" />
+          <stop offset="20%"  stopColor="#f8fafc" />
+          <stop offset="50%"  stopColor="#ffffff" />
+          <stop offset="85%"  stopColor="#e2e8f0" />
+          <stop offset="100%" stopColor="#94a3b8" />
+        </linearGradient>
+
+        <linearGradient id="sg-flange-horiz" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#94a3b8" stopOpacity="0.35" />
+          <stop offset="7%"   stopColor="#ffffff" stopOpacity="0.8" />
+          <stop offset="16%"  stopColor="#e2e8f0" stopOpacity="0.25" />
+          <stop offset="50%"  stopColor="#ffffff" stopOpacity="0.85" />
+          <stop offset="84%"  stopColor="#e2e8f0" stopOpacity="0.25" />
+          <stop offset="93%"  stopColor="#ffffff" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#94a3b8" stopOpacity="0.35" />
+        </linearGradient>
+
+        <linearGradient id="sg-flange-rim-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor="#ffffff" stopOpacity="0.3" />
+          <stop offset="25%"  stopColor="#ffffff" stopOpacity="1" />
+          <stop offset="75%"  stopColor="#ffffff" stopOpacity="1" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.3" />
         </linearGradient>
 
         <linearGradient id="sg-glass-back" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -133,8 +159,8 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
       {/* Master Group with 22° rotation */}
       <g transform="rotate(-22 195 382)" filter="url(#sg-shadow)">
 
-        {/* ================= 1. BARREL BACK (Depth) ================= */}
-        <rect x="160" y="152" width="70" height="328" fill="url(#sg-glass-back)"/>
+        {/* ================= 1. BARREL BACK (Starts at bottom edge of flange y=159) ================= */}
+        <rect x="160" y="159" width="70" height="321" fill="url(#sg-glass-back)"/>
         <path d="M160 480 Q 195 490 230 480 L207 508 L183 508 Z" fill="url(#sg-glass-back)"/>
 
         {/* ================= 2. COMPLETE PLUNGER ASSEMBLY (slides down inside barrel) ================= */}
@@ -173,12 +199,7 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
           </>
         )}
 
-        {/* ================= 4. BARREL FLANGE (front lip & horizontal line IN FRONT of plunger rod) ================= */}
-        <rect x="135" y="145" width="120" height="14" rx="7" fill="url(#sg-glass-back)"/>
-        <rect x="135" y="145" width="120" height="14" rx="7" fill="url(#sg-glass-front)"/>
-        <path d="M135 152 L255 152" stroke="#ffffff" strokeWidth="2.5" opacity="0.85"/>
-
-        {/* ================= 5. MEASUREMENT MARKINGS ================= */}
+        {/* ================= 4. MEASUREMENT MARKINGS ================= */}
         <g fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="14" fill="#0d0d0d">
           <g transform="translate(160, 180)">
             <text x="18" y="5" transform="rotate(90, 18, 5)">5</text>
@@ -217,10 +238,33 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
           </g>
         </g>
 
-        {/* ================= 6. BARREL FRONT (Reflections) ================= */}
-        <rect x="160" y="152" width="70" height="328" fill="url(#sg-glass-front)"/>
+        {/* ================= 5. BARREL FRONT (Reflections on glass cylinder, starts cleanly at y=159) ================= */}
+        <rect x="160" y="159" width="70" height="321" fill="url(#sg-glass-front)"/>
         <path d="M160 480 Q 195 490 230 480 L207 508 L183 508 Z" fill="url(#sg-glass-front)"/>
         <rect x="183" y="508" width="24" height="22" fill="url(#sg-glass-front)"/>
+
+        {/* ================= 6. SOLID REALISTIC BARREL FLANGE (cleanly in front of plunger & barrel reflections) ================= */}
+        {/* Ambient shadow dropped onto barrel just below flange */}
+        <rect x="160" y="159" width="70" height="6" fill="#0f172a" opacity="0.18" />
+
+        {/* Solid Opaque Flange Body (completely covers plunger rod and top of barrel reflections) */}
+        <rect x="135" y="144" width="120" height="15" rx="7.5" fill="url(#sg-flange-solid)" />
+        <rect x="135" y="144" width="120" height="15" rx="7.5" fill="url(#sg-flange-horiz)" />
+
+        {/* Top Crisp Bevel Specular Highlight */}
+        <path d="M142 145.5 L248 145.5" stroke="url(#sg-flange-rim-glow)" strokeWidth="1.8" strokeLinecap="round" />
+
+        {/* Center Primary Highlight Ridge */}
+        <path d="M138 150.5 L252 150.5" stroke="#ffffff" strokeWidth="2" opacity="0.9" strokeLinecap="round" />
+
+        {/* Bottom Under-Lip Shadow for 3D depth */}
+        <path d="M142 158.5 L248 158.5" stroke="#64748b" strokeWidth="1" opacity="0.5" strokeLinecap="round" />
+
+        {/* Left and Right Finger Grip Wing Accents */}
+        <line x1="147" y1="147" x2="147" y2="156" stroke="#cbd5e1" strokeWidth="1.2" strokeLinecap="round" />
+        <line x1="147" y1="147" x2="147" y2="156" stroke="#ffffff" strokeWidth="0.6" strokeLinecap="round" />
+        <line x1="243" y1="147" x2="243" y2="156" stroke="#cbd5e1" strokeWidth="1.2" strokeLinecap="round" />
+        <line x1="243" y1="147" x2="243" y2="156" stroke="#ffffff" strokeWidth="0.6" strokeLinecap="round" />
 
         {/* ================= 7. TRANSLUCENT BLUE NEEDLE HUB ================= */}
         <rect x="175" y="506" width="40" height="12" rx="3" fill="url(#sg-blue-hub)"/>
