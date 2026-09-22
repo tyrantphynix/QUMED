@@ -5,6 +5,7 @@ import React from 'react';
  * Features:
  * - Crystal clear glass barrel with graduation markings
  * - Natural water / saline solution fluid gradient with realistic transparency
+ * - Barrel flange and horizontal collar line layered IN FRONT of plunger rod
  * - Unified rigid plunger assembly (disc, cruciform rod, fins, rubber stopper)
  *   that smoothly presses down into the barrel on scroll
  * - Dynamic fluid expulsion matching the piston depth
@@ -132,29 +133,11 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
       {/* Master Group with 22° rotation */}
       <g transform="rotate(-22 195 382)" filter="url(#sg-shadow)">
 
-        {/* ================= BARREL FLANGE (static) ================= */}
-        <rect x="135" y="145" width="120" height="14" rx="7" fill="url(#sg-glass-back)"/>
-        <rect x="135" y="145" width="120" height="14" rx="7" fill="url(#sg-glass-front)"/>
-        <path d="M135 152 L255 152" stroke="#ffffff" strokeWidth="2" opacity="0.6"/>
-
-        {/* ================= BARREL BACK (Depth) ================= */}
+        {/* ================= 1. BARREL BACK (Depth) ================= */}
         <rect x="160" y="152" width="70" height="328" fill="url(#sg-glass-back)"/>
         <path d="M160 480 Q 195 490 230 480 L207 508 L183 508 Z" fill="url(#sg-glass-back)"/>
 
-        {/* ================= WATER / SALINE FLUID (shrinks as piston presses) ================= */}
-        {fluidHeight > 0 && (
-          <>
-            <rect x="162" y={fluidTop} width="66" height={fluidHeight} fill="url(#sg-fluid-grad)"/>
-            {/* Water Meniscus line under piston */}
-            <rect x="162" y={fluidTop} width="66" height="2" fill="url(#sg-meniscus)"/>
-            {/* Tapered base fluid */}
-            {fluidTop < fluidBottom && (
-              <path d="M162 480 Q 195 490 228 480 L205 507 L185 507 Z" fill="url(#sg-fluid-grad)"/>
-            )}
-          </>
-        )}
-
-        {/* ================= COMPLETE PLUNGER ASSEMBLY (slides down as one rigid piece) ================= */}
+        {/* ================= 2. COMPLETE PLUNGER ASSEMBLY (slides down inside barrel) ================= */}
         <g transform={`translate(0, ${plungerOffset})`}>
           {/* Plunger Handle / Push Disc */}
           <ellipse cx="195" cy="-2"  rx="42" ry="14" fill="url(#sg-white-plastic)"/>
@@ -177,7 +160,25 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
           <rect x="161" y="220" width="68" height="6"  rx="2" fill="url(#sg-rubber-ring)"/>
         </g>
 
-        {/* ================= MEASUREMENT MARKINGS ================= */}
+        {/* ================= 3. WATER / SALINE FLUID (shrinks as piston presses) ================= */}
+        {fluidHeight > 0 && (
+          <>
+            <rect x="162" y={fluidTop} width="66" height={fluidHeight} fill="url(#sg-fluid-grad)"/>
+            {/* Water Meniscus line under piston */}
+            <rect x="162" y={fluidTop} width="66" height="2" fill="url(#sg-meniscus)"/>
+            {/* Tapered base fluid */}
+            {fluidTop < fluidBottom && (
+              <path d="M162 480 Q 195 490 228 480 L205 507 L185 507 Z" fill="url(#sg-fluid-grad)"/>
+            )}
+          </>
+        )}
+
+        {/* ================= 4. BARREL FLANGE (front lip & horizontal line IN FRONT of plunger rod) ================= */}
+        <rect x="135" y="145" width="120" height="14" rx="7" fill="url(#sg-glass-back)"/>
+        <rect x="135" y="145" width="120" height="14" rx="7" fill="url(#sg-glass-front)"/>
+        <path d="M135 152 L255 152" stroke="#ffffff" strokeWidth="2.5" opacity="0.85"/>
+
+        {/* ================= 5. MEASUREMENT MARKINGS ================= */}
         <g fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="14" fill="#0d0d0d">
           <g transform="translate(160, 180)">
             <text x="18" y="5" transform="rotate(90, 18, 5)">5</text>
@@ -216,12 +217,12 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
           </g>
         </g>
 
-        {/* ================= BARREL FRONT (Reflections) ================= */}
+        {/* ================= 6. BARREL FRONT (Reflections) ================= */}
         <rect x="160" y="152" width="70" height="328" fill="url(#sg-glass-front)"/>
         <path d="M160 480 Q 195 490 230 480 L207 508 L183 508 Z" fill="url(#sg-glass-front)"/>
         <rect x="183" y="508" width="24" height="22" fill="url(#sg-glass-front)"/>
 
-        {/* ================= TRANSLUCENT BLUE NEEDLE HUB ================= */}
+        {/* ================= 7. TRANSLUCENT BLUE NEEDLE HUB ================= */}
         <rect x="175" y="506" width="40" height="12" rx="3" fill="url(#sg-blue-hub)"/>
         <path d="M179 518 L211 518 L203 570 L187 570 Z" fill="url(#sg-blue-hub)"/>
         <path
@@ -231,7 +232,7 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
           opacity="0.4"
         />
 
-        {/* ================= WHITE 3-WAY STOPCOCK VALVE ================= */}
+        {/* ================= 8. WHITE 3-WAY STOPCOCK VALVE ================= */}
         <rect x="185" y="565" width="20" height="35" fill="url(#sg-white-plastic)"/>
         <rect x="180" y="595" width="30" height="34" rx="2" fill="url(#sg-white-plastic)"/>
         <circle cx="195" cy="612" r="15" fill="#fcfcfc" stroke="#d4d4d4" strokeWidth="1.5"/>
