@@ -185,29 +185,46 @@ export default function TubeOverlay({ scrollProgress }) {
       if (!pathEl) return;
       const totalLength = pathEl.getTotalLength();
       if (totalLength === 0) return;
-      
-      // The user wants the liquid tip to always be visible at exactly 50% of their present screen!
-      const targetY = window.scrollY + (window.innerHeight * 0.5);
-      
-      // Use binary search to find the exact percentage of the path that corresponds to targetY
+
+      const scrollY = window.scrollY;
+
+      // ── Phase 1: First 120px of scroll ──────────────────────────────────────
+      // Immediately ramp the fluid from 0 → SEED_PROGRESS so the liquid appears
+      // at the tube entrance the instant the user starts scrolling, matching the
+      // syringe piston which starts pressing at the same time.
+      const SEED_SCROLL   = 120;  // px of scroll to complete the seed phase
+      const SEED_PROGRESS = 0.04; // 4% of tube filled as the 'just started' state
+
+      if (scrollY < SEED_SCROLL) {
+        setFluidProgress((scrollY / SEED_SCROLL) * SEED_PROGRESS);
+        return;
+      }
+
+      // ── Phase 2: Beyond seed — binary search locked to viewport center ───────
+      const containerTop = containerRef.current
+        ? containerRef.current.getBoundingClientRect().top + scrollY
+        : 0;
+      const targetY = scrollY + (window.innerHeight * 0.5);
+
       let low = 0;
       let high = totalLength;
       let bestLen = 0;
-      
+
       for (let i = 0; i < 15; i++) {
         const mid = (low + high) / 2;
-        const pt = pathEl.getPointAtLength(mid);
-        // If the point is above the middle of our screen, the fluid should keep advancing
-        if (pt.y < targetY) {
+        const pt  = pathEl.getPointAtLength(mid);
+        const ptPageY = pt.y + containerTop;
+        if (ptPageY < targetY) {
           low = mid;
           bestLen = mid;
         } else {
           high = mid;
         }
       }
-      
-      const progress = bestLen / totalLength;
-      setFluidProgress(Math.max(0, Math.min(1, progress)));
+
+      // Never let it snap back below seed progress when handing off from phase 1
+      const progress = Math.max(SEED_PROGRESS, bestLen / totalLength);
+      setFluidProgress(Math.min(1, progress));
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
