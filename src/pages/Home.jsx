@@ -8,12 +8,14 @@ import CertificationsSection from '../components/sections/CertificationsSection'
 import ManufacturingSection from '../components/sections/ManufacturingSection';
 import CoreValues from '../components/sections/CoreValues';
 import ContactStrip from '../components/sections/ContactStrip';
+import TubeOverlay from '../components/tube/TubeOverlay';
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <main style={{ position: 'relative' }}>
+        <TubeOverlay />
         <Hero />
         <TrustStrip />
         <AboutSnapshot />

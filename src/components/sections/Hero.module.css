@@ -38,19 +38,20 @@
 
 #hero-visual-slot, .visualSlot {
   position: absolute;
-  right: 4%;
-  top: 54%;
+  right: -2%;
+  top: 58%;
   transform: translateY(-50%);
-  width: 44%;
-  max-width: 520px;
-  height: 85%;
+  width: 55%;
+  max-width: 650px;
+  height: 95%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible;
   pointer-events: none;
   z-index: 5;
-  animation: syringeFloat 5s ease-in-out infinite alternate;
+  /* Syringe kept steady so IV tube can attach seamlessly */
+  /* animation: syringeFloat 5s ease-in-out infinite alternate; */
 }
 
 @keyframes syringeFloat {
@@ -60,10 +61,10 @@
 
 @media (min-width: 769px) and (max-width: 1024px) {
   #hero-visual-slot, .visualSlot {
-    width: 42%;
-    right: 1%;
-    top: 54%;
-    max-width: 440px;
+    width: 52%;
+    right: -6%;
+    top: 56%;
+    max-width: 550px;
   }
 }
 

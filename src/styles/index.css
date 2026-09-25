@@ -149,3 +149,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 /* ─── Visibility (GSAP initial states) ─── */
 .reveal { opacity: 0; transform: translateY(30px); }
+
+
+/* Force all containers to render above the tube overlay (tube is z-index: 7) */
+.container {
+  position: relative;
+  z-index: 10;
+}

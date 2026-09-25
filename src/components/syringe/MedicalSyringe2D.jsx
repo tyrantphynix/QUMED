@@ -30,7 +30,7 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
       style={{
         width: '100%',
         height: '100%',
-        maxWidth: '480px',
+        maxWidth: '650px',
         display: 'block',
         overflow: 'visible',
         ...style
@@ -166,18 +166,18 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
         {/* ================= 2. COMPLETE PLUNGER ASSEMBLY (slides down inside barrel) ================= */}
         <g transform={`translate(0, ${plungerOffset})`}>
           {/* Plunger Handle / Push Disc */}
-          <ellipse cx="195" cy="-2"  rx="42" ry="14" fill="url(#sg-white-plastic)"/>
-          <rect x="153" y="-2" width="84" height="10" fill="url(#sg-white-plastic)"/>
-          <ellipse cx="195" cy="8"  rx="42" ry="14"  fill="#cfcfcf"/>
+          <ellipse cx="195" cy="23"  rx="42" ry="14" fill="url(#sg-white-plastic)"/>
+          <rect x="153" y="23" width="84" height="10" fill="url(#sg-white-plastic)"/>
+          <ellipse cx="195" cy="33"  rx="42" ry="14"  fill="#cfcfcf"/>
 
           {/* Cruciform plunger rod */}
-          <rect x="193" y="15" width="4" height="185" fill="#a0a0a0"/>
+          <rect x="193" y="40" width="4" height="160" fill="#a0a0a0"/>
           {/* Left Fin */}
-          <path d="M173 10 L195 10 L195 200 L176 200 Z" fill="url(#sg-plunger-fin-left)"/>
+          <path d="M178 35 L195 35 L195 200 L181 200 Z" fill="url(#sg-plunger-fin-left)"/>
           {/* Right Fin */}
-          <path d="M195 10 L217 10 L214 200 L195 200 Z" fill="url(#sg-plunger-fin-right)"/>
+          <path d="M195 35 L212 35 L209 200 L195 200 Z" fill="url(#sg-plunger-fin-right)"/>
           {/* Front Fin highlight edge */}
-          <rect x="193" y="10" width="4" height="190" fill="#ffffff" opacity="0.9"/>
+          <rect x="193" y="35" width="4" height="165" fill="#ffffff" opacity="0.9"/>
 
           {/* Rubber Piston Stopper attached to bottom of rod */}
           <rect x="162" y="200" width="66" height="26" fill="url(#sg-rubber-base)"/>
@@ -289,6 +289,9 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
         <rect x="183" y="659" width="24" height="14"          fill="url(#sg-white-plastic)"/>
         <rect x="181" y="673" width="28" height="8"  rx="1"   fill="url(#sg-white-plastic)"/>
         <rect x="185" y="681" width="20" height="25"          fill="url(#sg-white-plastic)"/>
+
+        {/* Tube attachment anchor point - placed high up on connector collar so tube sleeves over it like a sock */}
+        <circle id="syringe-tube-anchor" cx="195" cy="706" r="1" opacity="0" pointerEvents="none" />
 
       </g>
     </svg>

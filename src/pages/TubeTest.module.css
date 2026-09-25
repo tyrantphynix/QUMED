@@ -1,0 +1,82 @@
+.container {
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+.themeDark {
+  background: var(--clr-brand-deep, #1A3468);
+  color: white;
+}
+
+.themeLight {
+  background: var(--clr-off-white, #F4F7FD);
+  color: #0C1829;
+}
+
+.header {
+  padding: 2rem;
+  border-bottom: 1px solid rgba(128,128,128,0.2);
+}
+
+.controls {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.controlGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.controlGroup button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(128,128,128,0.5);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.controlGroup button.active {
+  background: rgba(128,128,128,0.3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.panel {
+  border: 1px solid rgba(128,128,128,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel h2 {
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.25rem;
+  background: rgba(128,128,128,0.1);
+}
+
+.desc {
+  padding: 0 1rem 1rem;
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  background: rgba(128,128,128,0.1);
+}
+
+.renderBox {
+  flex: 1;
+  min-height: 500px;
+  position: relative;
+  background: transparent;
+}

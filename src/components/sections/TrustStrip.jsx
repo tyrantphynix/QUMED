@@ -1,5 +1,4 @@
 import { useGsapReveal } from '../../hooks/useGsapReveal';
-import TubeSegmentSVG from '../layout/TubeSegmentSVG';
 import styles from './TrustStrip.module.css';
 
 const CERTS = [
@@ -14,13 +13,7 @@ const CERTS = [
 export default function TrustStrip() {
   const ref = useGsapReveal({ stagger: 0.08, y: 16, start: 'top 95%' });
   return (
-    <section className={styles.strip} ref={ref} aria-label="Trust signals">
-      <TubeSegmentSVG 
-        position="right" 
-        viewBox="0 0 100 200"
-        pathData="M 60 -20 C 60 80, 30 120, 30 220" 
-        style={{ opacity: 0.2, right: '-60px' }} 
-      />
+    <section id="trust-strip-section" className={styles.strip} ref={ref} aria-label="Trust signals">
       <div className={`container ${styles.inner}`}>
         {CERTS.map(({ label, sub }) => (
           <div key={label} className={`reveal ${styles.item}`}>
