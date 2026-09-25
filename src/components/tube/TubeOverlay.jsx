@@ -187,24 +187,33 @@ export default function TubeOverlay({ scrollProgress }) {
       if (totalLength === 0) return;
 
       const scrollY = window.scrollY;
-
-      // ── Phase 1: First 120px of scroll ──────────────────────────────────────
-      // Immediately ramp the fluid from 0 → SEED_PROGRESS so the liquid appears
-      // at the tube entrance the instant the user starts scrolling, matching the
-      // syringe piston which starts pressing at the same time.
-      const SEED_SCROLL   = 120;  // px of scroll to complete the seed phase
-      const SEED_PROGRESS = 0.04; // 4% of tube filled as the 'just started' state
-
-      if (scrollY < SEED_SCROLL) {
-        setFluidProgress((scrollY / SEED_SCROLL) * SEED_PROGRESS);
-        return;
-      }
-
-      // ── Phase 2: Beyond seed — binary search locked to viewport center ───────
       const containerTop = containerRef.current
         ? containerRef.current.getBoundingClientRect().top + scrollY
         : 0;
-      const targetY = scrollY + (window.innerHeight * 0.5);
+
+      // Physical Y of the tube's starting point (syringe nozzle) in page coordinates
+      const startPt = pathEl.getPointAtLength(0);
+      const tubeStartY = startPt.y + containerTop;
+
+      // ── Slow Phase ────────────────────────────────────────────────────────────
+      // The slow phase covers the first SLOW_SCROLL px of user scroll.
+      // During this time, targetY gently interpolates from the tube entrance
+      // down to the point where standard viewport-center tracking kicks in.
+      // This makes the fluid flow slowly DOWN the right side of the screen,
+      // matching the syringe pressing — NO dead zone, NO sudden restart.
+      const SLOW_SCROLL = 600; // px of scroll for slow catch-up phase
+      const slowPhaseEndTarget = SLOW_SCROLL + (window.innerHeight * 0.5);
+
+      let targetY;
+      if (scrollY < SLOW_SCROLL) {
+        // Ramp: at scroll=0 → targetY=tubeStartY (fluid at tube entrance)
+        //        at scroll=SLOW_SCROLL → targetY=slowPhaseEndTarget (seamless handoff)
+        const ratio = scrollY / SLOW_SCROLL;
+        targetY = tubeStartY + ratio * (slowPhaseEndTarget - tubeStartY);
+      } else {
+        // ── Normal Phase: lock to 50% of viewport (original behavior) ─────────
+        targetY = scrollY + (window.innerHeight * 0.5);
+      }
 
       let low = 0;
       let high = totalLength;
@@ -222,9 +231,8 @@ export default function TubeOverlay({ scrollProgress }) {
         }
       }
 
-      // Never let it snap back below seed progress when handing off from phase 1
-      const progress = Math.max(SEED_PROGRESS, bestLen / totalLength);
-      setFluidProgress(Math.min(1, progress));
+      const progress = bestLen / totalLength;
+      setFluidProgress(Math.max(0, Math.min(1, progress)));
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
