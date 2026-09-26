@@ -29,8 +29,9 @@ export default function TubeOverlay({ scrollProgress }) {
     let startX = width * 0.62, startY = 660;
     if (syringeEl) {
       const r = syringeEl.getBoundingClientRect();
+      // Manually offset to perfectly align the tube inside the syringe nozzle collar
       startX = r.left - cr.left + r.width  * 0.5;
-      startY = r.top  - cr.top  + r.height;
+      startY = r.top  - cr.top  + r.height * 0.5;
     }
 
     const cardsEl = document.querySelector('[data-trust-cards]');
@@ -94,7 +95,7 @@ export default function TubeOverlay({ scrollProgress }) {
 
   const pathD = useMemo(() => {
     if (!coords) return '';
-    const { width, startX, startY, sweepX, turnX, productsTop, productsBottom, certsBottom } = coords;
+    const { width, startX, startY, sweepX, turnX, productsTop, productsBottom, certsBottom, valuesTop } = coords;
     
     // ── Physics-based path matching ONLY the red line exactly ─────────────
     const dx = 0.375, dy = 0.927;
@@ -164,8 +165,22 @@ export default function TubeOverlay({ scrollProgress }) {
       `${leftMarginX.toFixed(1)} ${(certsSweepY + 100).toFixed(1)}, ` +
       `${leftMarginX.toFixed(1)} ${(certsSweepY + 300).toFixed(1)}`,
       
-      // 9. Final straight drop down the left margin
-      `L ${leftMarginX.toFixed(1)} ${(certsSweepY + 1000).toFixed(1)}`
+      // 9. Drop down the left margin (stops just below Manufacturing card)
+      `L ${leftMarginX.toFixed(1)} ${(valuesTop ? valuesTop - 120 : certsSweepY + 800).toFixed(1)}`,
+
+      // 10. Deep Swoop Below Core Values Heading
+      // Curve 1: Left wall down to deep center dip
+      `C ${leftMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 100 : certsSweepY + 900).toFixed(1)}, ` +
+      `${(width * 0.25).toFixed(1)} ${(valuesTop ? valuesTop + 280 : certsSweepY + 950).toFixed(1)}, ` +
+      `${(width * 0.45).toFixed(1)} ${(valuesTop ? valuesTop + 280 : certsSweepY + 950).toFixed(1)}`,
+
+      // Curve 2: Center dip up to a crest, then down into the right wall
+      `C ${(width * 0.7).toFixed(1)} ${(valuesTop ? valuesTop + 280 : certsSweepY + 950).toFixed(1)}, ` +
+      `${rightMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 50 : certsSweepY + 900).toFixed(1)}, ` +
+      `${rightMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 220 : certsSweepY + 1000).toFixed(1)}`,
+
+      // 11. Final straight drop down the right margin
+      `L ${rightMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 1500 : certsSweepY + 2000).toFixed(1)}`
       
     ].join(' ');
   }, [coords]);
@@ -301,13 +316,12 @@ export default function TubeOverlay({ scrollProgress }) {
 
           {/* 4. Animated Liquid Fill
               10px wide — fills the lumen properly, not a thin wire.
-              Scroll-driven via strokeDashoffset. */}
+              Scroll-driven via strokeDasharray to skip the first 30px (inside the syringe collar). */}
           <use href="#tube-path" fill="none"
             stroke="rgba(100, 170, 255, 0.45)"
             strokeWidth="10"
             strokeLinecap="butt"
-            strokeDasharray={`${pathLength} ${pathLength}`}
-            strokeDashoffset={strokeDashoffset}
+            strokeDasharray={`0 30 ${Math.max(0, pathLength * activeProgress - 30)} ${pathLength}`}
           />
 
           {/* 5. Specular Glare Base
@@ -318,6 +332,7 @@ export default function TubeOverlay({ scrollProgress }) {
             stroke="rgba(255, 255, 255, 0.8)"
             strokeWidth="3.5"
             strokeLinecap="butt"
+            strokeDasharray={`0 30 ${pathLength} 0`}
             transform="translate(-2, -3)"
           />
 
@@ -328,6 +343,7 @@ export default function TubeOverlay({ scrollProgress }) {
             stroke="#ffffff"
             strokeWidth="1.2"
             strokeLinecap="butt"
+            strokeDasharray={`0 30 ${pathLength} 0`}
             transform="translate(-3.5, -4.5)"
           />
 

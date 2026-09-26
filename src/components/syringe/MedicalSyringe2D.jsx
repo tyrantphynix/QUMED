@@ -290,9 +290,13 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
         <rect x="181" y="673" width="28" height="8"  rx="1"   fill="url(#sg-white-plastic)"/>
         <rect x="185" y="681" width="20" height="25"          fill="url(#sg-white-plastic)"/>
 
-        {/* Tube attachment anchor point - placed high up on connector collar so tube sleeves over it like a sock */}
-        <circle id="syringe-tube-anchor" cx="195" cy="706" r="1" opacity="0" pointerEvents="none" />
+      </g>
 
+      {/* Tube attachment anchor point - PLACED OUTSIDE THE SHADOW GROUP! 
+          The shadow filter alters getBoundingClientRect, causing misalignment.
+          Moved cy up to 680 so the tube overlaps inside the white collar. */}
+      <g transform="rotate(-22 195 382)">
+        <circle id="syringe-tube-anchor" cx="195" cy="680" r="1" opacity="0" pointerEvents="none" />
       </g>
     </svg>
   );
