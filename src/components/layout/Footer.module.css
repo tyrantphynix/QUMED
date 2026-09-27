@@ -1,7 +1,7 @@
 .footer {
   background: var(--clr-brand-deep);
   color: rgba(255,255,255,0.75);
-  padding-top: 80px;
+  padding-top: 64px;
   position: relative;
   z-index: 10;
 }
@@ -80,13 +80,13 @@
 
 /* Bottom bar */
 .bottomWrapper {
-  margin-top: 80px;
+  margin-top: 64px;
 }
 
 .bottom {
   border-top: 1px solid rgba(255,255,255,0.06);
-  padding-top: 40px !important;
-  padding-bottom: 40px !important;
+  padding-top: 32px !important;
+  padding-bottom: 32px !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

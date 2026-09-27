@@ -173,23 +173,22 @@ export default function TubeOverlay({ scrollProgress }) {
       `${leftMarginX.toFixed(1)} ${(certsSweepY + 100).toFixed(1)}, ` +
       `${leftMarginX.toFixed(1)} ${(certsSweepY + 300).toFixed(1)}`,
       
-      // 9. Drop down the left margin (stops next to the heading)
-      `L ${leftMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 100 : certsSweepY + 800).toFixed(1)}`,
+      // 9. Drop down the left margin (stop earlier for a smoother turn)
+      `L ${leftMarginX.toFixed(1)} ${(valuesTop ? valuesTop - 100 : certsSweepY + 700).toFixed(1)}`,
 
-      // 10. Swoop UNDER the heading and through the card corner
-      // We dip below the heading into the gap (valuesTop + 280).
-      `C ${leftMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 280 : certsSweepY + 900).toFixed(1)}, ` +
-      `${(width * 0.3).toFixed(1)} ${(valuesTop ? valuesTop + 280 : certsSweepY + 1000).toFixed(1)}, ` +
-      `${(width * 0.5).toFixed(1)} ${(valuesTop ? valuesTop + 280 : certsSweepY + 1000).toFixed(1)}`,
+      // 10. Diagonal Slice BEHIND the heading and Skirting the card
+      // Using a much longer vertical lever arm (from -100 to +100) ensures a perfectly smooth peel-off
+      `C ${leftMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 100 : certsSweepY + 900).toFixed(1)}, ` +
+      `${(width * 0.25).toFixed(1)} ${(valuesTop ? valuesTop + 110 : certsSweepY + 1000).toFixed(1)}, ` +
+      `${(width * 0.5).toFixed(1)} ${(valuesTop ? valuesTop + 140 : certsSweepY + 1000).toFixed(1)}`,
 
-      // From the dip (valuesTop + 280), curve towards the top-right corner of the Community Responsibility card.
-      // Keeping Y >= 280 ensures it never crosses back up into the heading text.
-      `C ${(width * 0.7).toFixed(1)} ${(valuesTop ? valuesTop + 280 : certsSweepY + 1000).toFixed(1)}, ` +
-      `${(cardsRight ? cardsRight + 15 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 300 : certsSweepY + 1100).toFixed(1)}, ` +
-      `${(cardsRight ? cardsRight + 15 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 450 : certsSweepY + 1200).toFixed(1)}`,
+      // From the text, continue diagonally rightwards to skirt the rightmost card (no overlap)
+      `C ${(width * 0.7).toFixed(1)} ${(valuesTop ? valuesTop + 170 : certsSweepY + 1000).toFixed(1)}, ` +
+      `${(cardsRight ? cardsRight + 30 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 230 : certsSweepY + 1100).toFixed(1)}, ` +
+      `${(cardsRight ? cardsRight + 30 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 400 : certsSweepY + 1200).toFixed(1)}`,
 
-      // 11. Straight drop down, hugging the right edge of the card
-      `L ${(cardsRight ? cardsRight + 15 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 1500 : certsSweepY + 2000).toFixed(1)}`
+      // 11. Straight drop down, skirting the right edge of the card
+      `L ${(cardsRight ? cardsRight + 30 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 1500 : certsSweepY + 2000).toFixed(1)}`
       
     ].join(' ');
   }, [coords]);
