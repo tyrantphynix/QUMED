@@ -69,8 +69,16 @@ export default function TubeOverlay({ scrollProgress }) {
       certsBottom = r.bottom - cr.top;
     }
     
+    const valuesEl = document.querySelector('[aria-labelledby="values-heading"]');
+    let valuesTop = certsBottom + 700;
+    if (valuesEl) {
+      const r = valuesEl.getBoundingClientRect();
+      valuesTop = r.top - cr.top;
+    }
+
+    
     const cardsTop = cardsCenterY - 55;
-    setCoords({ width, height, startX, startY, sweepX, cardsRight, cardsCenterY, cardsTop, cardsLeft, turnX, endY, productsTop, productsBottom, certsBottom });
+    setCoords({ width, height, startX, startY, sweepX, cardsRight, cardsCenterY, cardsTop, cardsLeft, turnX, endY, productsTop, productsBottom, certsBottom, valuesTop });
   };
 
   useEffect(() => {
