@@ -31,7 +31,7 @@ export default function CoreValues() {
           align="center"
           theme="light"
         />
-        <div className={styles.grid}>
+        <div id="cards-container" className={styles.grid}>
           {VALUES.map(({ icon, title, body }) => (
             <div key={title} className={`reveal ${styles.card}`}>
               <div className={styles.iconWrap}>{icon}</div>
