@@ -95,7 +95,7 @@ export default function TubeOverlay({ scrollProgress }) {
 
   const pathD = useMemo(() => {
     if (!coords) return '';
-    const { width, startX, startY, sweepX, turnX, productsTop, productsBottom, certsBottom, valuesTop } = coords;
+    const { width, startX, startY, sweepX, turnX, productsTop, productsBottom, certsBottom, valuesTop, cardsRight } = coords;
     
     // ── Physics-based path matching ONLY the red line exactly ─────────────
     const dx = 0.375, dy = 0.927;
@@ -165,24 +165,23 @@ export default function TubeOverlay({ scrollProgress }) {
       `${leftMarginX.toFixed(1)} ${(certsSweepY + 100).toFixed(1)}, ` +
       `${leftMarginX.toFixed(1)} ${(certsSweepY + 300).toFixed(1)}`,
       
-      // 9. Drop down the LEFT wall, stopping just below the Manufacturing section
+      // 9. Drop down the left margin (stops just below Manufacturing card)
       `L ${leftMarginX.toFixed(1)} ${(valuesTop ? valuesTop - 120 : certsSweepY + 800).toFixed(1)}`,
 
-      // 10. The Diagonal Swoop (Left -> Right, slicing through the heading)
-      // Curve 1: Left wall -> Center of heading
-      // Smoothly peels off the left wall and aims straight for the center text
-      `C ${leftMarginX.toFixed(1)} ${(valuesTop ? valuesTop - 20 : certsSweepY + 900).toFixed(1)}, ` +
-      `${(width * 0.3).toFixed(1)} ${(valuesTop ? valuesTop + 120 : certsSweepY + 1000).toFixed(1)}, ` +
-      `${(width * 0.5).toFixed(1)} ${(valuesTop ? valuesTop + 120 : certsSweepY + 1000).toFixed(1)}`,
+      // 10. Diagonal Slice through heading and card corner
+      // The heading is around valuesTop + 120. We slice from leftMarginX down to there.
+      `C ${leftMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 50 : certsSweepY + 900).toFixed(1)}, ` +
+      `${(width * 0.3).toFixed(1)} ${(valuesTop ? valuesTop + 150 : certsSweepY + 1000).toFixed(1)}, ` +
+      `${(width * 0.5).toFixed(1)} ${(valuesTop ? valuesTop + 150 : certsSweepY + 1000).toFixed(1)}`,
 
-      // Curve 2: Center of heading -> Right wall (cutting corner of the 3rd card)
-      // Continues the smooth diagonal path and eases into a vertical drop on the right wall
-      `C ${(width * 0.7).toFixed(1)} ${(valuesTop ? valuesTop + 120 : certsSweepY + 1000).toFixed(1)}, ` +
-      `${rightMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 250 : certsSweepY + 1100).toFixed(1)}, ` +
-      `${rightMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 350 : certsSweepY + 1200).toFixed(1)}`,
+      // From the center heading, continue diagonally downwards to clip the corner of the rightmost card.
+      // The rightmost card is near cardsRight, and its top corner is around valuesTop + 220.
+      `C ${(width * 0.7).toFixed(1)} ${(valuesTop ? valuesTop + 150 : certsSweepY + 1000).toFixed(1)}, ` +
+      `${(cardsRight ? cardsRight + 15 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 240 : certsSweepY + 1100).toFixed(1)}, ` +
+      `${(cardsRight ? cardsRight + 15 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 350 : certsSweepY + 1200).toFixed(1)}`,
 
-      // 11. Drop down the right margin (past the cards)
-      `L ${rightMarginX.toFixed(1)} ${(valuesTop ? valuesTop + 1800 : certsSweepY + 2300).toFixed(1)}`
+      // 11. Straight drop down, but hugging the right edge of the card
+      `L ${(cardsRight ? cardsRight + 15 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 1500 : certsSweepY + 2000).toFixed(1)}`
       
     ].join(' ');
   }, [coords]);

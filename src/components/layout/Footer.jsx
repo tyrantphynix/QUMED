@@ -47,9 +47,16 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className={`container ${styles.bottom}`}>
-        <p className={styles.copy}>© {year} QU-MED Disposable. All rights reserved.</p>
-        <p className={styles.legal}>MSME · UDYAM-HR-05-0016518 · ISO 13485:2016 · CE Marked</p>
+      <div className={styles.bottomWrapper}>
+        <div className={`container ${styles.bottom}`}>
+          <p className={styles.copy}>© {year} QU-MED Disposable. All rights reserved.</p>
+          <div className={styles.legal}>
+            <span>MSME</span>
+            <span>UDYAM-HR-05-0016518</span>
+            <span>ISO 13485:2016</span>
+            <span>CE Marked</span>
+          </div>
+        </div>
       </div>
     </footer>
   );
