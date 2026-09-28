@@ -128,11 +128,9 @@ export default function TubeOverlay({ scrollProgress }) {
     const rightMarginX = sweepX;
     const leftMarginX = turnX;
     
-    // Top Swoop (Right to Left above Products)
-    const sweepTopY = productsTop ? productsTop - 150 : startY + 900;
-    const sweepCenterY = productsTop ? productsTop - 30 : startY + 1000;
-    const sweepLeftCurveY = productsTop ? productsTop - 80 : startY + 950;
-    const dropLeftY = productsTop ? productsTop + 150 : startY + 1150;
+    // Top Swoop (Right to Left crossing diagonally behind Products)
+    const sweepTopY = productsTop ? productsTop - 20 : startY + 900;
+    const dropLeftY = productsTop ? productsTop + 350 : startY + 1150;
     
     // Middle Swoop (Left to Right below Products, into Certs)
     const swoopBottomY = productsBottom ? productsBottom + 50 : dropLeftY + 1000;
@@ -151,14 +149,9 @@ export default function TubeOverlay({ scrollProgress }) {
       // 2. Straight down the right edge
       `L ${rightMarginX.toFixed(1)} ${sweepTopY.toFixed(1)}`,
       
-      // 3. Curve from Right vertical to Center horizontal (dipping slightly)
-      `C ${rightMarginX.toFixed(1)} ${(sweepTopY + 100).toFixed(1)}, ` +
-      `${(rightMarginX - 100).toFixed(1)} ${sweepCenterY.toFixed(1)}, ` +
-      `${(width / 2).toFixed(1)} ${sweepCenterY.toFixed(1)}`,
-      
-      // 4. Continue from Center to Left, rising slightly to clear the blue wave, then turning DOWN
-      `C ${(leftMarginX + 150).toFixed(1)} ${sweepCenterY.toFixed(1)}, ` +
-      `${leftMarginX.toFixed(1)} ${sweepLeftCurveY.toFixed(1)}, ` +
+      // 3 & 4. Smooth S-Curve diagonally crossing from Right to Left
+      `C ${rightMarginX.toFixed(1)} ${(sweepTopY + 250).toFixed(1)}, ` +
+      `${leftMarginX.toFixed(1)} ${(dropLeftY - 250).toFixed(1)}, ` +
       `${leftMarginX.toFixed(1)} ${dropLeftY.toFixed(1)}`,
       
       // 5. Straight drop down the left margin past the product cards
