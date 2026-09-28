@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import styles from './TubeOverlay.module.css';
+import StopcockSvg from './StopcockSvg';
 
 /**
  * TubeOverlay — Gemini's corrected SVG structure (2nd iteration):
@@ -17,6 +18,10 @@ export default function TubeOverlay({ scrollProgress }) {
   const [coords, setCoords]               = useState(null);
   const [pathLength, setPathLength]       = useState(1600);
   const [fluidProgress, setFluidProgress] = useState(0);
+  const pathMeasureRef2 = useRef(null);
+  const [pathLength2, setPathLength2] = useState(100);
+  const [fluidProgress2, setFluidProgress2] = useState(0);
+  const [fluidProgressInternal, setFluidProgressInternal] = useState(0);
 
   const updateLayout = () => {
     const container = containerRef.current;
@@ -76,9 +81,16 @@ export default function TubeOverlay({ scrollProgress }) {
       valuesTop = r.top - cr.top;
     }
 
+    const contactEl = document.querySelector('[aria-labelledby="contact-heading"]');
+    let contactBottom = valuesTop + 1500;
+    if (contactEl) {
+      const r = contactEl.getBoundingClientRect();
+      contactBottom = r.bottom - cr.top;
+    }
+
     
     const cardsTop = cardsCenterY - 55;
-    setCoords({ width, height, startX, startY, sweepX, cardsRight, cardsCenterY, cardsTop, cardsLeft, turnX, endY, productsTop, productsBottom, certsBottom, valuesTop });
+    setCoords({ width, height, startX, startY, sweepX, cardsRight, cardsCenterY, cardsTop, cardsLeft, turnX, endY, productsTop, productsBottom, certsBottom, valuesTop, contactBottom });
   };
 
   useEffect(() => {
@@ -103,7 +115,7 @@ export default function TubeOverlay({ scrollProgress }) {
 
   const pathD = useMemo(() => {
     if (!coords) return '';
-    const { width, startX, startY, sweepX, turnX, productsTop, productsBottom, certsBottom, valuesTop, cardsRight } = coords;
+    const { width, startX, startY, sweepX, turnX, productsTop, productsBottom, certsBottom, valuesTop, cardsRight, contactBottom } = coords;
     
     // ── Physics-based path matching ONLY the red line exactly ─────────────
     const dx = 0.375, dy = 0.927;
@@ -187,10 +199,19 @@ export default function TubeOverlay({ scrollProgress }) {
       `${(cardsRight ? cardsRight + 30 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 230 : certsSweepY + 1100).toFixed(1)}, ` +
       `${(cardsRight ? cardsRight + 30 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 400 : certsSweepY + 1200).toFixed(1)}`,
 
-      // 11. Straight drop down, skirting the right edge of the card
-      `L ${(cardsRight ? cardsRight + 30 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 1500 : certsSweepY + 2000).toFixed(1)}`
+      // 11. Straight drop down to the stopcock
+      `L ${(cardsRight ? cardsRight + 30 : width * 0.8).toFixed(1)} ${(contactBottom ? contactBottom - 139 : certsSweepY + 2000).toFixed(1)}`
       
     ].join(' ');
+  }, [coords]);
+
+  const pathD2 = useMemo(() => {
+    if (!coords) return '';
+    const { width, cardsRight, contactBottom } = coords;
+    const stopcockX = (cardsRight ? cardsRight + 30 : width * 0.8);
+    const stopcockY = contactBottom ? contactBottom - 95 : 2000;
+    return `M ${(stopcockX + 58).toFixed(1)} ${stopcockY.toFixed(1)} ` +
+           `L ${(width + 50).toFixed(1)} ${stopcockY.toFixed(1)}`;
   }, [coords]);
 
   useEffect(() => {
@@ -200,7 +221,13 @@ export default function TubeOverlay({ scrollProgress }) {
         if (len > 0) setPathLength(len);
       } catch (_) {}
     }
-  }, [pathD]);
+    if (pathMeasureRef2.current) {
+      try {
+        const len = pathMeasureRef2.current.getTotalLength();
+        if (len > 0) setPathLength2(len);
+      } catch (_) {}
+    }
+  }, [pathD, pathD2]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -256,6 +283,28 @@ export default function TubeOverlay({ scrollProgress }) {
 
       const progress = bestLen / totalLength;
       setFluidProgress(Math.max(0, Math.min(1, progress)));
+
+      const pathEl2 = pathMeasureRef2.current;
+      if (pathEl2 && totalLength > 0) {
+        const totalLength2 = pathEl2.getTotalLength();
+        if (progress >= 0.99) {
+           const tube1EndY = pathEl.getPointAtLength(totalLength).y + containerTop;
+           const excess = targetY - tube1EndY;
+           
+           const internalPathLength = 88;
+           if (excess <= internalPathLength) {
+             setFluidProgressInternal(Math.max(0, excess / internalPathLength));
+             setFluidProgress2(0);
+           } else {
+             setFluidProgressInternal(1);
+             const progress2 = (excess - internalPathLength) * 2 / totalLength2;
+             setFluidProgress2(Math.max(0, Math.min(1, progress2)));
+           }
+        } else {
+           setFluidProgressInternal(0);
+           setFluidProgress2(0);
+        }
+      }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -264,6 +313,8 @@ export default function TubeOverlay({ scrollProgress }) {
 
   const activeProgress   = scrollProgress !== undefined ? scrollProgress : fluidProgress;
   const strokeDashoffset = pathLength * (1 - activeProgress);
+  const activeProgress2 = scrollProgress !== undefined ? scrollProgress : fluidProgress2;
+  const strokeDashoffset2 = pathLength2 * (1 - activeProgress2);
 
   if (!coords || !pathD) {
     return <div ref={containerRef} className={styles.overlayContainer} aria-hidden="true" />;
@@ -280,6 +331,7 @@ export default function TubeOverlay({ scrollProgress }) {
         <defs>
           {/* The single shared path — all layers reference this via <use> */}
           <path id="tube-path" d={pathD} />
+          <path id="tube-path-2" d={pathD2} />
 
           {/* Realistic depth shadow — stronger than before per Gemini */}
           <filter id="tube-shadow" x="-20%" y="-20%" width="150%" height="150%">
@@ -290,6 +342,7 @@ export default function TubeOverlay({ scrollProgress }) {
 
         {/* Hidden measure path (must be a real path element for getTotalLength) */}
         <path ref={pathMeasureRef} d={pathD} fill="none" opacity="0" pointerEvents="none" />
+        <path ref={pathMeasureRef2} d={pathD2} fill="none" opacity="0" pointerEvents="none" />
 
         <g filter="url(#tube-shadow)">
 
@@ -355,7 +408,18 @@ export default function TubeOverlay({ scrollProgress }) {
             transform="translate(-3.5, -4.5)"
           />
 
+
+          {/* ── Path 2 ── */}
+          <use href="#tube-path-2" fill="none" stroke="rgba(80, 100, 140, 0.25)" strokeWidth="22" strokeLinecap="butt" />
+          <use href="#tube-path-2" fill="none" stroke="rgba(255, 255, 255, 0.6)" strokeWidth="18" strokeLinecap="butt" />
+          <use href="#tube-path-2" fill="none" stroke="rgba(240, 245, 255, 0.2)" strokeWidth="12" strokeLinecap="butt" />
+          <use href="#tube-path-2" fill="none" stroke="rgba(100, 170, 255, 0.45)" strokeWidth="10" strokeLinecap="butt" strokeDasharray={`${Math.max(0, pathLength2 * activeProgress2)} ${pathLength2}`} />
+          <use href="#tube-path-2" fill="none" stroke="rgba(255, 255, 255, 0.8)" strokeWidth="3.5" strokeLinecap="butt" transform="translate(-2, -3)" />
+          <use href="#tube-path-2" fill="none" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="butt" transform="translate(-3.5, -4.5)" />
         </g>
+        
+        <StopcockSvg x={(coords.cardsRight ? coords.cardsRight + 30 : coords.width * 0.8) - 70} y={(coords.contactBottom ? coords.contactBottom - 95 : 2000) - 70} internalProgress={fluidProgressInternal} />
+
 
         
       </svg>
