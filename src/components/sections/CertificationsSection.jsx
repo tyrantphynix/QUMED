@@ -19,7 +19,7 @@ export default function CertificationsSection() {
         />
         <div className={styles.grid}>
           {certifications.map(cert => (
-            <div key={cert.id} className="reveal">
+            <div key={cert.id} className="reveal" style={{ height: '100%' }}>
               <CertCard cert={cert} />
             </div>
           ))}

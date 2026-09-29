@@ -10,7 +10,7 @@ const CATALOGUE_URL = 'https://qumed.in/wp-content/uploads/2024/05/QUMED_CATALOU
 
 export default function ProductCategories() {
   const { active, setActive, filtered, categories } = useProductFilter();
-  const gridRef = useGsapReveal({ stagger: 0.07, y: 24, start: 'top 80%' });
+  const gridRef = useGsapReveal({ stagger: 0.07, y: 24, start: 'top 80%' }, [active]);
 
   // Smart slice: 6 for 'all', 3 for specific category to avoid duplicates
   const displayed = active === 'all' ? filtered.slice(0, 6) : filtered.slice(0, 3);
@@ -62,8 +62,14 @@ export default function ProductCategories() {
         {/* Grid */}
         <div ref={gridRef} className={styles.grid} key={active}>
           {displayed.map(p => (
-            <div key={p.id} className="reveal">
+            <div key={p.id} className="reveal" style={{ height: "100%" }}>
               <ProductCard product={p} />
+            </div>
+          ))}
+          {/* Pad with invisible items to lock the layout height and prevent the tube from jumping */}
+          {Array.from({ length: 6 - displayed.length }).map((_, i) => (
+            <div key={`dummy-${i}`} style={{ visibility: "hidden", pointerEvents: "none" }}>
+              <ProductCard product={products[0]} />
             </div>
           ))}
         </div>

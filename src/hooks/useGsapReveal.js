@@ -10,7 +10,7 @@ import { gsap } from '../utils/gsap.config';
  * @param {number} options.y        - starting Y offset (default 30)
  * @param {string} options.start    - ScrollTrigger start position (default 'top 85%')
  */
-export function useGsapReveal({ stagger = 0, y = 30, start = 'top 85%' } = {}) {
+export function useGsapReveal({ stagger = 0, y = 30, start = 'top 85%' } = {}, deps = []) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export function useGsapReveal({ stagger = 0, y = 30, start = 'top 85%' } = {}) {
     }, ref);
 
     return () => ctx.revert();
-  }, [stagger, y, start]);
+  }, [stagger, y, start, ...deps]);
 
   return ref;
 }

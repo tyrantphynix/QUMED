@@ -71,7 +71,7 @@ export default function ProductCard({ product }) {
   return (
     <article className={styles.card}>
       {/* Image slot */}
-      <div className={styles.imageSlot} style={{ borderLeftColor: meta.color }}>
+      <div className={styles.imageSlot} >
         {imageUrl ? (
           <img src={imageUrl} alt={brandName} className={styles.image} loading="lazy" />
         ) : (

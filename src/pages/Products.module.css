@@ -53,7 +53,7 @@
 .catDesc { font-size: var(--fs-sm); color: var(--clr-muted); margin-bottom: var(--sp-lg); line-height: 1.5; }
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--sp-md);
   margin-bottom: var(--sp-xl);
 }

@@ -20,7 +20,7 @@ const CATEGORY_DESCRIPTIONS = {
 
 export default function Products() {
   const { active, setActive, filtered, categories } = useProductFilter();
-  const gridRef = useGsapReveal({ stagger: 0.06, y: 20, start: 'top 85%' });
+  const gridRef = useGsapReveal({ stagger: 0.06, y: 20, start: 'top 85%' }, [active]);
 
   // Helper for variant counts
   const getCountLabel = (catId) => {

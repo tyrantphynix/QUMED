@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState, useMemo } from 'react';
 import styles from './TubeOverlay.module.css';
 import StopcockSvg from './StopcockSvg';
 
@@ -207,7 +207,7 @@ export default function TubeOverlay({ scrollProgress }) {
            `L ${(width + 50).toFixed(1)} ${stopcockY.toFixed(1)}`;
   }, [coords]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (pathMeasureRef.current) {
       try {
         const len = pathMeasureRef.current.getTotalLength();
@@ -220,6 +220,10 @@ export default function TubeOverlay({ scrollProgress }) {
         if (len > 0) setPathLength2(len);
       } catch (_) {}
     }
+    
+    // Force a scroll event so the fluid progress instantly recalculates 
+    // against the new path length when tabs are clicked and the page resizes.
+    window.dispatchEvent(new Event("scroll"));
   }, [pathD, pathD2]);
 
   useEffect(() => {
