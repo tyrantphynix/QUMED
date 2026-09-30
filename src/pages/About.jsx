@@ -59,14 +59,28 @@ export default function About() {
             <SectionHeading eyebrow="Manufacturing" heading="Our plants in Haryana" theme="light" />
             <div className={styles.plantsGrid}>
               {[
-                { city: 'Gurugram', addr: 'Plot No. 38, Udyog Vihar, Phase VI, Sector 37, Gurugram, Haryana 122001', note: 'Primary facility — ISO 13485:2016 certified' },
-                { city: 'Bawal', addr: 'Bawal, Haryana', note: 'Secondary manufacturing facility' },
+                { 
+                  city: "Gurugram", 
+                  addr: "Plot No. 38, Udyog Vihar, Phase VI, Sector 37, Gurugram, Haryana 122001", 
+                  note: "Primary facility — ISO 13485:2016 certified",
+                  image: "https://qumed.in/wp-content/uploads/2024/06/Firefly-Inpaint-20230717162755-300x200.png"
+                },
+                { 
+                  city: "Bawal", 
+                  addr: "Bawal, Haryana", 
+                  note: "Secondary manufacturing facility",
+                  image: "https://qumed.in/wp-content/uploads/2024/06/5-300x138.jpg"
+                },
               ].map(p => (
                 <div key={p.city} className={`reveal ${styles.plantCard}`}>
-                  <span className={styles.plantIcon}>🏭</span>
-                  <h3 className={styles.plantCity}>{p.city}</h3>
-                  <p className={styles.plantAddr}>{p.addr}</p>
-                  <p className={styles.plantNote}>{p.note}</p>
+                  <div className={styles.plantImageWrapper}>
+                    <img src={p.image} alt={`${p.city} Plant`} className={styles.plantImage} loading="lazy" />
+                  </div>
+                  <div className={styles.plantContent}>
+                    <h3 className={styles.plantCity}>{p.city}</h3>
+                    <p className={styles.plantAddr}>{p.addr}</p>
+                    <p className={styles.plantNote}>{p.note}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -79,11 +93,11 @@ export default function About() {
             <SectionHeading eyebrow="Core Values" heading="What we stand for" align="center" theme="dark" />
             <div className={styles.valuesGrid}>
               <div className={styles.valueCard}><h3>Unmatched Quality</h3><p>Cutting-edge technology and the strictest standards in every product we ship.</p></div>
-              <div className={styles.valueCard}><h3>Patient Safety</h3><p>Sterile, single-use medical devices designed to protect patients and practitioners alike.</p></div>
               <div className={styles.valueCard}>
                 <h3>Community Responsibility</h3>
                 <p>During the COVID-19 pandemic, we distributed essential medical items free of charge to those who needed them — because healthcare is a responsibility, not just a business.</p>
               </div>
+              <div className={styles.valueCard}><h3>Patient Safety</h3><p>Sterile, single-use medical devices designed to protect patients and practitioners alike.</p></div>
             </div>
           </div>
         </section>
