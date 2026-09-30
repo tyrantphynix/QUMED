@@ -1,5 +1,6 @@
 import Badge from './Badge';
 import styles from './ProductCard.module.css';
+import Tilt from 'react-parallax-tilt';
 
 const CATEGORY_META = {
   infusion:        { color: '#0067FF', label: 'Infusion' },
@@ -73,7 +74,16 @@ export default function ProductCard({ product }) {
       {/* Image slot */}
       <div className={styles.imageSlot} >
         {imageUrl ? (
-          <img src={imageUrl} alt={brandName} className={styles.image} loading="lazy" />
+          <Tilt 
+            tiltMaxAngleX={10} 
+            tiltMaxAngleY={10} 
+            perspective={800} 
+            scale={1.05} 
+            transitionSpeed={1500} 
+            className={styles.tiltContainer}
+          >
+            <img src={imageUrl} alt={brandName} className={styles.image} loading="lazy" />
+          </Tilt>
         ) : (
           <CategoryIcon category={category} />
         )}

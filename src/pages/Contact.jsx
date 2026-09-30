@@ -12,7 +12,9 @@ export default function Contact() {
     <>
       <Navbar />
       <main>
-        <ContactStrip />
+        
+
+        <ContactStrip isFullPage />
       </main>
       <Footer />
     </>

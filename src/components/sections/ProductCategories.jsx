@@ -13,7 +13,18 @@ export default function ProductCategories() {
   const gridRef = useGsapReveal({ stagger: 0.07, y: 24, start: 'top 80%' }, [active]);
 
   // Smart slice: 6 for 'all', 3 for specific category to avoid duplicates
-  const displayed = active === 'all' ? filtered.slice(0, 6) : filtered.slice(0, 3);
+    const FEATURED_ALL_IDS = [
+    'qu-flon',
+    'qu-ciser-3ball',
+    'qu-fume-kit',
+    'qu-uro-with',
+    'yankaur-a',
+    'qu-tubi-std'
+  ];
+
+  const displayed = active === 'all' 
+    ? FEATURED_ALL_IDS.map(id => products.find(p => p.id === id)).filter(Boolean)
+    : filtered.slice(0, 3);
 
   // Helper for variant counts
   const getCountLabel = (catId) => {

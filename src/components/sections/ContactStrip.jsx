@@ -48,10 +48,10 @@ function ContactForm() {
   );
 }
 
-export default function ContactStrip() {
+export default function ContactStrip({ isFullPage = false }) {
   const ref = useGsapReveal({ stagger: 0.1, y: 24 });
   return (
-    <section className={`section section--navy ${styles.section}`} ref={ref} aria-labelledby="contact-heading">
+    <section className={`section section--navy ${styles.section} ${isFullPage ? styles.sectionFull : ''}`} ref={ref} aria-labelledby="contact-heading">
       <div className={`container ${styles.grid}`}>
         {/* Left: form */}
         <div className="reveal">
@@ -79,7 +79,7 @@ export default function ContactStrip() {
               </div>
             </div>
             <div className={styles.infoItem}>
-              <span className={styles.infoIcon}>✉</span>
+              <span className={styles.infoIcon}>📧</span>
               <div>
                 <p className={styles.infoLabel}>Email</p>
                 <a href="mailto:info.qumed@yahoo.in" className={styles.infoLink}>info.qumed@yahoo.in</a>
@@ -87,29 +87,35 @@ export default function ContactStrip() {
             </div>
           </div>
 
-          {/* Map block */}
-          <div className={styles.mapBlock}>
-            {USE_MAP_EMBED ? (
+          {/* Map block (Home page only) */}
+          {!isFullPage && (
+            <div className={styles.mapBlock}>
               <iframe
                 title="QU-MED Disposable location"
                 src="https://maps.google.com/maps?q=Qu-med+Disposable,+Sector+37,+Gurugram&output=embed"
-                width="100%" height="220"
-                style={{ border: 0, borderRadius: 'var(--radius-md)' }}
+                className={styles.mapIframe}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-            ) : (
-              <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className={styles.mapLink}>
-                <div className={styles.mapStatic}>
-                  <span className={styles.mapPin}>📍</span>
-                  <span className={styles.mapText}>View on Google Maps →</span>
-                  <span className={styles.mapAddr}>Gurugram, Haryana</span>
-                </div>
-              </a>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Map block (Contact page only - full width) */}
+      {isFullPage && (
+        <div className="container reveal">
+          <div className={styles.mapBlockFull}>
+            <iframe
+              title="QU-MED Disposable location"
+              src="https://maps.google.com/maps?q=Qu-med+Disposable,+Sector+37,+Gurugram&output=embed"
+              className={styles.mapIframeFull}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

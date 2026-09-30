@@ -10,12 +10,12 @@ import styles from './Products.module.css';
 const CATALOGUE_URL = 'https://qumed.in/wp-content/uploads/2024/05/QUMED_CATALOUGE.pdf';
 
 const CATEGORY_DESCRIPTIONS = {
-  all:             'Our complete range of medical disposables across all specialities.',
-  infusion:        'Sterile, single-use infusion devices for precise intravenous fluid and medication delivery.',
-  anesthesia:      'A comprehensive range of respiratory and anesthetic accessories for patient safety and comfort during procedures.',
-  urology:         'Sterile urology collection devices for accurate urinary monitoring and management.',
-  'surgery-suction': 'Surgical suction sets designed for clear operative fields during procedures.',
-  'critical-care': 'Ventilator circuits and critical care accessories for ICU and intensive monitoring environments.',
+  all:             "Our complete range of medical disposables across all specialities.",
+  infusion:        "Infusion medical equipment refers to a category of medical devices used to deliver fluids, such as medications or nutrients, into a patient's body in a controlled and precise manner. There are various types of infusion equipment, each designed for a specific purpose and delivery method.",
+  anesthesia:      "Interdum exercitation penatibus, praesentium facilisi accusamus fermentum, sagittis.",
+  urology:         "Urology is the field of medicine that focuses on the urinary tract (kidneys, ureters, bladder, and urethra) and the male reproductive system (prostate, testes, and epididymis). Urologists use a variety of medical equipment to diagnose and treat urologic conditions.",
+  "surgery-suction": "A surgical suction set is a medical device used to remove fluids, blood, and other debris from a surgical site during an operation. It helps maintain a clear operating field and allows the surgeon to have a better view of the surgical area.",
+  "critical-care": "Critical care medical equipment is used to diagnose, treat, and monitor patients who are critically ill and require intensive care. This type of equipment is found in intensive care units (ICUs) and other critical care settings.",
 };
 
 export default function Products() {
