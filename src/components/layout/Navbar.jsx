@@ -31,6 +31,7 @@ export default function Navbar() {
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
         <Link to="/" className={styles.logo} aria-label="QU-MED Disposable — Home">
+          <img src="/logo-q.png" alt="" className={styles.logoImage} />
           <span className={styles.logoText}>QU-MED</span>
           <span className={styles.logoDivider} aria-hidden="true">|</span>
           <span className={styles.logoSub}>Disposable</span>

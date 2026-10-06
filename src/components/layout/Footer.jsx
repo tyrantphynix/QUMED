@@ -9,7 +9,10 @@ export default function Footer() {
       <div className={`container ${styles.grid}`}>
         {/* Brand */}
         <div className={styles.brand}>
-          <p className={styles.name}>QU-MED <span>Disposable</span></p>
+          <div className={styles.name}>
+            <img src="/logo-q.png" alt="" className={styles.logoImage} />
+            <span>QU-MED <span>Disposable</span></span>
+          </div>
           <p className={styles.tagline}>Precision. Purity. Purpose.</p>
           <p className={styles.addr}>
             Plot No. 38, Udyog Vihar, Phase VI,<br />
