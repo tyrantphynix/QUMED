@@ -73,6 +73,7 @@ export default function ProductCard({ product }) {
     <article className={styles.card}>
       {/* Image slot */}
       <div className={styles.imageSlot} >
+        <img src="/gem-logo.png" alt="GeM Approved" className={styles.gemLogo} loading="lazy" />
         {imageUrl ? (
           <Tilt 
             tiltMaxAngleX={10} 

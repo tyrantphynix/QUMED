@@ -20,7 +20,7 @@ export default function Certificates() {
           <div className="container">
             <p className={styles.eyebrow}>Compliance</p>
             <h1 className={styles.heading}>Certifications & Regulatory Compliance</h1>
-            <p className={styles.sub}>Every certificate below has been issued by a recognised regulatory body and is on record for QU-MED Disposable, Gurugram, Haryana.</p>
+            <p className={styles.sub}>Every certificate below has been issued by a recognised regulatory body and is on record for Qu-med Disposable, Gurugram, Haryana.</p>
           </div>
         </section>
 

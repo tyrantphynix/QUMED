@@ -13,7 +13,7 @@ export default function Footer() {
             <img src="/logo-q.png" alt="" className={styles.logoImage} />
             <span>QU-MED <span>Disposable</span></span>
           </div>
-          <p className={styles.tagline}>Precision. Purity. Purpose.</p>
+          <p className={styles.tagline}>An earnest effort.</p>
           <p className={styles.addr}>
             Plot No. 38, Udyog Vihar, Phase VI,<br />
             Sector 37, Gurugram, Haryana 122001
@@ -34,7 +34,7 @@ export default function Footer() {
         <div>
           <p className={styles.colTitle}>Contact</p>
           <ul className={styles.contactList}>
-            <li><a href="tel:01244014139" className={styles.footLink}>0124-4014139</a></li>
+            <li><a href="tel:+919999113349" className={styles.footLink}>+91-9999113349</a></li>
             <li><a href="mailto:info.qumed@yahoo.in" className={styles.footLink}>info.qumed@yahoo.in</a></li>
             <li>
               <a
@@ -55,7 +55,8 @@ export default function Footer() {
           <p className={styles.copy}>© {year} QU-MED Disposable. All rights reserved.</p>
           <div className={styles.legal}>
             <span>MSME</span>
-            <span>UDYAM-HR-05-0016518</span>
+            <span>CDSCO Approved</span>
+            <span>GEM Approved</span>
             <span>ISO 13485:2016</span>
             <span>CE Marked</span>
           </div>

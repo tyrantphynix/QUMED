@@ -16,7 +16,7 @@ export default function About() {
         {/* Hero */}
         <section className={styles.hero}>
           <div className="container">
-            <p className={styles.eyebrow}>About QU-MED Disposable</p>
+            <p className={styles.eyebrow}>About Qu-med Disposable</p>
             <h1 className={styles.heading}>Building a healthier tomorrow,<br />one device at a time.</h1>
           </div>
         </section>
@@ -26,14 +26,14 @@ export default function About() {
           <div className={`container ${styles.twoCol}`}>
             <div className="reveal">
               <SectionHeading eyebrow="Who We Are" heading="Quality medical manufacturing since 2012" theme="light" />
-              <p className={styles.body}>At QU-MED Disposable, we're committed to providing high-quality medical devices to healthcare providers and patients. Our team has years of experience in the medical device industry, and we're dedicated to utilising that experience to create products that meet the needs of our customers.</p>
+              <p className={styles.body}>At Qu-med Disposable, we're committed to providing high-quality medical devices to healthcare providers and patients. Our team has years of experience in the medical device industry, and we're dedicated to utilising that experience to create products that meet the needs of our customers.</p>
               <p className={styles.body}>We manufacture a wide range of products across Infusion, Urology, Anesthesia, Surgery Suction Set, and Critical Care — all designed to meet the highest standards of quality and safety.</p>
             </div>
             <div className={`reveal ${styles.statBox}`}>
               <div className={styles.stat}><span className={styles.statNum}>Est.</span><span className={styles.statLabel}>2012</span></div>
               <div className={styles.stat}><span className={styles.statNum}>5</span><span className={styles.statLabel}>Product Categories</span></div>
               <div className={styles.stat}><span className={styles.statNum}>26+</span><span className={styles.statLabel}>SKUs Manufactured</span></div>
-              <div className={styles.stat}><span className={styles.statNum}>2</span><span className={styles.statLabel}>Manufacturing Plants</span></div>
+              <div className={styles.stat}><span className={styles.statNum}>1</span><span className={styles.statLabel}>Manufacturing Plant</span></div>
             </div>
           </div>
         </section>
@@ -44,10 +44,10 @@ export default function About() {
             <SectionHeading eyebrow="Our Story" heading="Started small. Built for purpose." align="center" theme="light" />
             <div className={`reveal ${styles.founderCard}`}>
               <p className={styles.founderText}>
-                <strong>KP Singhania and Vijay Kumar Soni</strong> started QU-MED Disposable with a small space and a handful of products. Driven by a vision to create high-quality medical devices that improve the lives of patients worldwide, they built a company now known for its commitment to quality, innovation, and customer service.
+                <strong>Vijay Kumar Soni and KP Singhania</strong> started Qu-med Disposable with a small space and a handful of products. Driven by a vision to create high-quality medical devices that improve the lives of patients worldwide, they built a company now known for its commitment to quality, innovation, and customer service.
               </p>
               <p className={styles.founderText}>
-                Today, QU-MED Disposable is a trusted name in the medical device industry, and our products are used by healthcare providers and patients across the globe.
+                Today, Qu-med Disposable is a trusted name in the medical device industry, and our products are used by healthcare providers and patients across the globe.
               </p>
             </div>
           </div>
@@ -56,7 +56,7 @@ export default function About() {
         {/* Plants */}
         <section className="section section--white" ref={ref3}>
           <div className="container">
-            <SectionHeading eyebrow="Manufacturing" heading="Our plants in Haryana" theme="light" />
+            <SectionHeading eyebrow="Manufacturing" heading="Our plant in Haryana" theme="light" />
             <div className={styles.plantsGrid}>
               {[
                 { 
@@ -65,12 +65,7 @@ export default function About() {
                   note: "Primary facility — ISO 13485:2016 certified",
                   image: "https://qumed.in/wp-content/uploads/2024/06/Firefly-Inpaint-20230717162755-300x200.png"
                 },
-                { 
-                  city: "Bawal", 
-                  addr: "Bawal, Haryana", 
-                  note: "Secondary manufacturing facility",
-                  image: "https://qumed.in/wp-content/uploads/2024/06/5-300x138.jpg"
-                },
+                
               ].map(p => (
                 <div key={p.city} className={`reveal ${styles.plantCard}`}>
                   <div className={styles.plantImageWrapper}>

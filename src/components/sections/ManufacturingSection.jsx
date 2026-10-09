@@ -8,7 +8,7 @@ const THUMBNAIL = `https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
 
 const PILLARS = [
   { icon: '🏭', title: 'Cleanroom Manufacturing', body: 'Our facilities maintain controlled sterile environments essential for medical device production, ensuring every product is free from contamination.' },
-  { icon: '🔄', title: 'In-House End-to-End Production', body: 'From raw materials to sterile final packaging — all manufacturing is performed in-house across our Gurugram and Bawal plants.' },
+  { icon: '🔄', title: 'In-House End-to-End Production', body: 'From raw materials to sterile final packaging — all manufacturing is performed in-house at our Gurugram plant.' },
   { icon: '✅', title: 'ISO 13485:2016 Quality Assurance', body: 'Every stage of production is governed by our certified Medical Device Quality Management System, ensuring consistent safety and efficacy.' },
 ];
 
@@ -74,14 +74,10 @@ export default function ManufacturingSection() {
             theme="light"
           />
           <p className={styles.body}>
-            At QU-MED Disposable, our manufacturing plant in Gurugram, Haryana, is a hub of
+            At Qu-med Disposable, our manufacturing plant in Gurugram, Haryana, is a hub of
             innovation. Renowned for the diversity of our product range, our highly skilled team
             utilises cutting-edge technology to produce a comprehensive line of medical disposables.
-          </p>
-          <p className={styles.body}>
-            Our second facility in Bawal extends our production capacity, enabling us to serve
-            the growing needs of healthcare professionals with consistency and speed.
-          </p>
+          </p>The client askd
           <div className={styles.pillars}>
             {PILLARS.map(({ icon, title, body }) => (
               <div key={title} className={`reveal ${styles.pillar}`}>

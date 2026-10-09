@@ -11,7 +11,7 @@ const VALUES = [
   {
     icon: '🔬',
     title: 'Patient Safety First',
-    body: 'Every QU-MED product is designed as a sterile, single-use device — minimising risk of infection and ensuring accuracy in clinical procedures.',
+    body: 'Every Qu-med product is designed as a sterile, single-use device — minimising risk of infection and ensuring accuracy in clinical procedures.',
   },
   {
     icon: '❤',

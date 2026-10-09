@@ -161,3 +161,14 @@
 .tiltContainer img {
   transform: translateZ(40px); /* Makes the image pop out in 3D */
 }
+
+.gemLogo {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 28px;
+  height: auto;
+  opacity: 0.95;
+  filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05));
+  z-index: 2;
+}

@@ -35,7 +35,7 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
         overflow: 'visible',
         ...style
       }}
-      aria-label="QU-MED Disposable Medical Syringe"
+      aria-label="Qu-med Disposable Medical Syringe"
       role="img"
     >
       <defs>

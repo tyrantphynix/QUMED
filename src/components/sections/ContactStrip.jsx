@@ -75,7 +75,7 @@ export default function ContactStrip({ isFullPage = false }) {
               <span className={styles.infoIcon}>📞</span>
               <div>
                 <p className={styles.infoLabel}>Phone</p>
-                <a href="tel:01244014139" className={styles.infoLink}>0124-4014139</a>
+                <a href="tel:+919999113349" className={styles.infoLink}>+91-9999113349</a>
               </div>
             </div>
             <div className={styles.infoItem}>
@@ -91,7 +91,7 @@ export default function ContactStrip({ isFullPage = false }) {
           {!isFullPage && (
             <div className={styles.mapBlock}>
               <iframe
-                title="QU-MED Disposable location"
+                title="Qu-med Disposable location"
                 src="https://maps.google.com/maps?q=Qu-med+Disposable,+Sector+37,+Gurugram&output=embed"
                 className={styles.mapIframe}
                 loading="lazy"
@@ -107,7 +107,7 @@ export default function ContactStrip({ isFullPage = false }) {
         <div className="container reveal">
           <div className={styles.mapBlockFull}>
             <iframe
-              title="QU-MED Disposable location"
+              title="Qu-med Disposable location"
               src="https://maps.google.com/maps?q=Qu-med+Disposable,+Sector+37,+Gurugram&output=embed"
               className={styles.mapIframeFull}
               loading="lazy"

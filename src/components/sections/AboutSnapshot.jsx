@@ -14,7 +14,7 @@ export default function AboutSnapshot() {
           <blockquote className={styles.quote}>
             "Medical equipment isn't just technology — it's the foundation for a healthier tomorrow."
           </blockquote>
-          <cite className={styles.cite}>— QU-MED Disposable</cite>
+          <cite className={styles.cite}>— Qu-med Disposable</cite>
         </div>
 
         {/* Content col */}
@@ -25,14 +25,14 @@ export default function AboutSnapshot() {
             theme="light"
           />
           <p className={styles.para}>
-            At QU-MED Disposable, we manufacture a wide range of medical devices across
+            At Qu-med Disposable, we manufacture a wide range of medical devices across
             Infusion, Urology, Anesthesia, Surgery Suction, and Critical Care — all designed
             to meet the highest standards of quality and patient safety.
           </p>
           <p className={styles.para}>
-            Founded by KP Singhania and Vijay Kumar Soni, we began with a small space and
-            a handful of products. Today, our state-of-the-art plants in Gurugram and Bawal,
-            Haryana, produce a comprehensive line of sterile medical disposables used by
+            Founded by Vijay Kumar Soni and KP Singhania, we began with a small space and
+            a handful of products. Today, our state-of-the-art plant in Gurugram,
+            Haryana, producess a comprehensive line of sterile medical disposables used by
             healthcare providers worldwide.
           </p>
           <Link to="/about" className={styles.link}>

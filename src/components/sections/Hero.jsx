@@ -42,7 +42,7 @@ export default function Hero({ scrollProgress = 0 }) {
   }, []);
 
   return (
-    <section ref={heroRef} className={styles.hero} aria-label="QU-MED Disposable — Hero">
+    <section ref={heroRef} className={styles.hero} aria-label="Qu-med Disposable — Hero">
       {/* Background geometric lines */}
       <div className={styles.bg} aria-hidden="true">
         <svg className={styles.bgSvg} viewBox="0 0 1200 700" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -79,7 +79,7 @@ export default function Hero({ scrollProgress = 0 }) {
 
         {/* Subtext */}
         <p ref={subRef} className={styles.sub} style={{ opacity: 0 }}>
-          From IV sets to ventilator circuits — QU-MED Disposable delivers sterile,
+          From IV sets to ventilator circuits — Qu-med Disposable delivers sterile,
           quality-assured medical disposables crafted in Gurugram, India.
         </p>
 
