@@ -57,27 +57,29 @@ export default function About() {
         <section className="section section--white" ref={ref3}>
           <div className="container">
             <SectionHeading eyebrow="Manufacturing" heading="Our plant in Haryana" theme="light" />
-            <div className={styles.plantsGrid}>
-              {[
-                { 
-                  city: "Gurugram", 
-                  addr: "Plot No. 38, Udyog Vihar, Phase VI, Sector 37, Gurugram, Haryana 122001", 
-                  note: "Primary facility — ISO 13485:2016 certified",
-                  image: "https://qumed.in/wp-content/uploads/2024/06/Firefly-Inpaint-20230717162755-300x200.png"
-                },
+            <div className={`reveal ${styles.singlePlantCard}`}>
+              <div className={styles.singlePlantImageWrapper}>
+                <img src="https://qumed.in/wp-content/uploads/2024/06/Firefly-Inpaint-20230717162755.png" alt="Gurugram Plant" className={styles.singlePlantImage} loading="lazy" />
+              </div>
+              <div className={styles.singlePlantContent}>
+                <h3 className={styles.singlePlantCity}>Gurugram</h3>
+                <p className={styles.singlePlantAddr}>Plot No. 38, Udyog Vihar, Phase VI, Sector 37,<br/>Gurugram, Haryana 122001</p>
                 
-              ].map(p => (
-                <div key={p.city} className={`reveal ${styles.plantCard}`}>
-                  <div className={styles.plantImageWrapper}>
-                    <img src={p.image} alt={`${p.city} Plant`} className={styles.plantImage} loading="lazy" />
+                <div className={styles.singlePlantHighlights}>
+                  <div className={styles.highlightItem}>
+                    <span className={styles.highlightIcon}>🏭</span>
+                    <span>Primary Manufacturing Facility</span>
                   </div>
-                  <div className={styles.plantContent}>
-                    <h3 className={styles.plantCity}>{p.city}</h3>
-                    <p className={styles.plantAddr}>{p.addr}</p>
-                    <p className={styles.plantNote}>{p.note}</p>
+                  <div className={styles.highlightItem}>
+                    <span className={styles.highlightIcon}>✅</span>
+                    <span>ISO 13485:2016 Certified</span>
+                  </div>
+                  <div className={styles.highlightItem}>
+                    <span className={styles.highlightIcon}>📦</span>
+                    <span>End-to-End In-House Production</span>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
