@@ -18,8 +18,8 @@ export default function ProductCategories() {
     'qu-ciser-3ball',
     'qu-fume-kit',
     'qu-uro-with',
-    'yankaur-a',
-    'qu-tubi-std'
+    'yankaur-suction-set',
+    'qu-tubi'
   ];
 
   const displayed = active === 'all' 
@@ -29,8 +29,6 @@ export default function ProductCategories() {
   // Helper for variant counts
   const getCountLabel = (catId) => {
     const count = catId === 'all' ? products.length : products.filter(p => p.category === catId).length;
-    if (catId === 'all') return `(${count})`;
-    if (['surgery-suction', 'critical-care', 'urology'].includes(catId)) return `(${count} variants)`;
     return `(${count})`;
   };
 

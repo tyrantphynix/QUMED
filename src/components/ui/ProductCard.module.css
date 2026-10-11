@@ -9,7 +9,7 @@
   height: 100%;
   transition: transform var(--transition-mid), border-color var(--transition-mid), box-shadow var(--transition-mid);
   cursor: default;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03); /* Permanent subtle shadow for mobile */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 .card:hover {
   transform: translateY(-4px);
@@ -21,16 +21,13 @@
 .imageSlot {
   height: 230px;
   background-color: #FFFFFF;
-  
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: border-left-width var(--transition-fast);
+  overflow: hidden;
 }
-.card:hover .imageSlot {
-  
-}
+
 .catSvg {
   width: 48px;
   height: 48px;
@@ -41,6 +38,81 @@
   height: 100%;
   object-fit: contain;
   padding: 16px;
+  transition: opacity 0.25s ease;
+}
+
+/* Carousel controls on Card */
+.cardArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #CBD5E1;
+  border-radius: 50%;
+  color: #1E293B;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+.card:hover .cardArrow {
+  opacity: 1;
+}
+
+.cardArrow:hover {
+  background: #0067FF;
+  color: #FFFFFF;
+  border-color: #0067FF;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.cardArrowPrev {
+  left: 8px;
+}
+
+.cardArrowNext {
+  right: 8px;
+}
+
+.dotsTrack {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #94A3B8;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dotActive {
+  background: #0067FF;
+  width: 14px;
+  border-radius: 4px;
 }
 
 /* Body */
@@ -57,7 +129,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 4px;
-  min-height: 24px; /* Force consistent height for CE badge presence */
+  min-height: 24px;
 }
 .ceBadge {
   font-family: 'Inter', sans-serif;
@@ -86,7 +158,7 @@
   font-size: var(--fs-sm);
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.4;
-  min-height: calc(1.4em * 2); /* Force exact height for 2 lines */
+  min-height: calc(1.4em * 2);
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -103,16 +175,16 @@
   min-height: 24px;
 }
 
-/* Footer Trust Line */
+/* Footer Trust Line & Technical Specs Trigger */
 .footer {
-  padding: 12px 20px;
+  padding: 10px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background: var(--clr-brand);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  min-height: 48px; /* Force consistent footer height regardless of refCode presence */
+  gap: 8px;
+  min-height: 48px;
 }
 .trustGroup {
   display: flex;
@@ -131,23 +203,48 @@
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
 }
-.refCode {
-  font-family: 'JetBrains Mono', monospace;
+
+/* Specification Button */
+.specBtn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.specBtn:hover {
+  background: #FFFFFF;
   color: var(--clr-brand-deep);
-  font-size: 0.7rem;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  padding: 2px 6px;
-  overflow-wrap: anywhere;
+  border-color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
 }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .imageSlot { height: 140px; }
+  .imageSlot { height: 160px; }
+  .cardArrow { opacity: 0.8; }
 }
 @media (max-width: 600px) {
-  .imageSlot { height: 130px; }
+  .imageSlot { height: 140px; }
+  .cardArrow { opacity: 0.8; }
+  .footer {
+    padding: 8px 12px;
+  }
+  .specBtn {
+    font-size: 0.68rem;
+    padding: 4px 8px;
+  }
 }
 
 .tiltContainer {
@@ -159,14 +256,14 @@
   transform-style: preserve-3d;
 }
 .tiltContainer img {
-  transform: translateZ(40px); /* Makes the image pop out in 3D */
+  transform: translateZ(20px);
 }
 
 .gemLogo {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
-  width: 28px;
+  bottom: 8px;
+  right: 8px;
+  width: 26px;
   height: auto;
   opacity: 0.95;
   filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05));

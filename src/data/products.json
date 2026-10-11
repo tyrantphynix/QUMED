@@ -11,7 +11,56 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1420-scaled.jpg",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Gauge",
+        "Color Code",
+        "Catheter Length"
+      ],
+      "rows": [
+        [
+          "14 G",
+          "Orange",
+          "45 mm"
+        ],
+        [
+          "16 G",
+          "Grey",
+          "45 mm"
+        ],
+        [
+          "17 G",
+          "White",
+          "45 mm"
+        ],
+        [
+          "18 G",
+          "Green",
+          "45 mm"
+        ],
+        [
+          "20 G",
+          "Pink",
+          "32 mm"
+        ],
+        [
+          "22 G",
+          "Blue",
+          "22 mm"
+        ],
+        [
+          "24 G",
+          "Yellow",
+          "19 mm"
+        ],
+        [
+          "26 G",
+          "Violet",
+          "19 mm"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-drip",
@@ -25,7 +74,43 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1355-scaled.jpg",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Configuration / Type",
+        "Key Features"
+      ],
+      "rows": [
+        [
+          "IV Set (Economic)",
+          "Sharp spike, roller clamp, latex-free bulb"
+        ],
+        [
+          "IV Set with Air-Vent (Economic)",
+          "Antibacterial hydrophobic air vent"
+        ],
+        [
+          "IV Set (Standard)",
+          "Smooth roller clamp, kink-resistant clear PVC tubing"
+        ],
+        [
+          "IV Set (Premium)",
+          "Precision drip chamber, medical-grade tubing"
+        ],
+        [
+          "IV Set with Air-Vent (Premium)",
+          "Antibacterial snap cap & micro-pore air filter"
+        ],
+        [
+          "IV Set with Y-Site",
+          "Self-sealing latex-free injection Y-site"
+        ],
+        [
+          "IV Set with Air-Vent & Y-Site",
+          "Vented spike + self-sealing Y-site port"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-vols",
@@ -37,7 +122,43 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1264-scaled.jpg",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Configuration",
+        "Burette Capacity"
+      ],
+      "rows": [
+        [
+          "With Luer Lock & Luer Slip",
+          "110 ml"
+        ],
+        [
+          "With Luer Lock & Luer Slip",
+          "150 ml"
+        ],
+        [
+          "With Air-Vented Spike",
+          "110 ml"
+        ],
+        [
+          "With Air-Vented Spike",
+          "150 ml"
+        ],
+        [
+          "With Y-Site Injection Port",
+          "110 ml"
+        ],
+        [
+          "With Y-Site Injection Port",
+          "150 ml"
+        ],
+        [
+          "MV Set with Non Air-Vented Spike",
+          "110 ml / 150 ml"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-3way",
@@ -51,7 +172,36 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/3700-1-scaled.jpg",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Configuration",
+        "Port Orientation",
+        "Lipid Resistance"
+      ],
+      "rows": [
+        [
+          "Standard 3-Way Stopcock",
+          "360\u00b0 Rotation",
+          "Standard"
+        ],
+        [
+          "Standard 3-Way Stopcock (Lipid)",
+          "360\u00b0 Rotation",
+          "Lipid Resistant"
+        ],
+        [
+          "45\u00b0 Angle 3-Way Stopcock",
+          "45\u00b0 Offset",
+          "Standard"
+        ],
+        [
+          "45\u00b0 Angle 3-Way Stopcock (Lipid)",
+          "45\u00b0 Offset",
+          "Lipid Resistant"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-3way-ext",
@@ -65,7 +215,23 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/PIC_1551-scaled.jpg",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Type",
+        "Available Tube Lengths"
+      ],
+      "rows": [
+        [
+          "Standard Extension Line",
+          "50 cm, 100 cm, 150 cm, 200 cm, 250 cm"
+        ],
+        [
+          "Lipid Resistant Extension Line",
+          "50 cm, 100 cm, 150 cm, 200 cm, 250 cm"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-veins",
@@ -79,7 +245,26 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/extension-line-scaled.jpg",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Variant",
+        "Pressure Specification",
+        "Available Tube Lengths"
+      ],
+      "rows": [
+        [
+          "QU-VEINS (Low Pressure)",
+          "60 psi (Int: 3.0mm, Ext: 4.1mm)",
+          "10 cm, 25 cm, 50 cm, 100 cm, 150 cm, 200 cm"
+        ],
+        [
+          "QU-VEINS ALPHA (High Pressure)",
+          "High Pressure capacity",
+          "50 cm, 100 cm, 150 cm, 200 cm, 250 cm"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-microdrip",
@@ -93,7 +278,23 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1351-scaled.jpg",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Configuration",
+        "Drip Specification"
+      ],
+      "rows": [
+        [
+          "Standard Microdrip Set",
+          "60 drops / ml"
+        ],
+        [
+          "Microdrip Set with Air-Vent",
+          "60 drops / ml (with antibacterial air vent)"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-flow",
@@ -107,7 +308,27 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/flow-reg1.png",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Configuration / Type",
+        "Application"
+      ],
+      "rows": [
+        [
+          "IV Set with Flow Regulator",
+          "Precision gravity IV flow rate regulation"
+        ],
+        [
+          "IV Set with Flow Regulator & Air-Vent",
+          "Vented precision IV flow rate regulation"
+        ],
+        [
+          "Extension Tube with IV Flow Regulator",
+          "In-line extension flow rate control"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-mount",
@@ -121,7 +342,26 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/06/Untitled-1-02-3.png",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Model",
+        "Tubing Structure",
+        "Connector Specification"
+      ],
+      "rows": [
+        [
+          "Catheter Mount Standard",
+          "Smooth/standard flexible tubing",
+          "15 mm / 22 mm Double Swivel Connector"
+        ],
+        [
+          "Catheter Mount Expandable",
+          "Expandable corrugated memory tubing",
+          "15 mm / 22 mm Double Swivel Connector"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-ciser-3ball",
@@ -136,7 +376,31 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1283.jpg-scaled.jpg",
     "ceMarked": true,
     "isSterile": false,
-    "isSingleUse": false
+    "isSingleUse": false,
+    "specTable": {
+      "headers": [
+        "Specification Parameter",
+        "Value / Details"
+      ],
+      "rows": [
+        [
+          "Chamber Design",
+          "3 transparent calibrated chambers with 3 color-coded balls"
+        ],
+        [
+          "Flow Calibration",
+          "600 cc/sec (Red), 900 cc/sec (Yellow), 1200 cc/sec (Green)"
+        ],
+        [
+          "Included Accessories",
+          "High-efficiency air filter, corrugated tube with holder groove"
+        ],
+        [
+          "Compliance & Use",
+          "Non-toxic, break-resistant medical grade plastic \u00b7 Single Patient"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-ciser-1ball",
@@ -151,7 +415,31 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1539-scaled.jpg",
     "ceMarked": true,
     "isSterile": false,
-    "isSingleUse": false
+    "isSingleUse": false,
+    "specTable": {
+      "headers": [
+        "Specification Parameter",
+        "Value / Details"
+      ],
+      "rows": [
+        [
+          "Chamber Design",
+          "Single calibrated transparent chamber with high-visibility target ball"
+        ],
+        [
+          "Mechanism",
+          "Sustained Maximal Inspiration (SMI) respiratory exerciser"
+        ],
+        [
+          "Included Accessories",
+          "Antimicrobial air filter, flexible tube with ergonomic mouthpiece"
+        ],
+        [
+          "Compliance & Use",
+          "Non-toxic medical grade \u00b7 Single Patient Use"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-fume-kit",
@@ -163,7 +451,27 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1567-scaled.jpg",
     "ceMarked": true,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Kit Variant",
+        "Included Components"
+      ],
+      "rows": [
+        [
+          "Nebuliser Mask Kit (Adult)",
+          "Adult Mask + Medication Nebulizer Chamber + Star-Lumen Tubing"
+        ],
+        [
+          "Nebuliser Mask Kit (Paediatric)",
+          "Paediatric Mask + Medication Chamber + Star-Lumen Tubing"
+        ],
+        [
+          "Kit with Adjustable Chamber",
+          "Mask + Adjustable Flow Medication Chamber + Star-Lumen Tubing"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-fume-mpc",
@@ -175,7 +483,27 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1470--scaled.jpg",
     "ceMarked": true,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Configuration",
+        "Included Components"
+      ],
+      "rows": [
+        [
+          "Nebuliser Mask with M.P & T-Piece (Adult)",
+          "Adult Mask + Mouth Piece + T-Connector + Chamber + Tubing"
+        ],
+        [
+          "Nebuliser Mask with M.P & T-Piece (Paed.)",
+          "Paediatric Mask + Mouth Piece + T-Connector + Chamber + Tubing"
+        ],
+        [
+          "Complete Kit with M.P & T-Piece (Adjustable)",
+          "Mask + Mouth Piece + T-Connector + Adjustable Volume Chamber"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-del",
@@ -189,7 +517,56 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/Screenshot-2023-07-27-141408.png",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Size No.",
+        "Color Code",
+        "Length"
+      ],
+      "rows": [
+        [
+          "000",
+          "Violet",
+          "40 mm"
+        ],
+        [
+          "00",
+          "Blue",
+          "50 mm"
+        ],
+        [
+          "0",
+          "White",
+          "60 mm"
+        ],
+        [
+          "1",
+          "Black",
+          "70 mm"
+        ],
+        [
+          "2",
+          "Green",
+          "80 mm"
+        ],
+        [
+          "3",
+          "Orange",
+          "90 mm"
+        ],
+        [
+          "4",
+          "Red",
+          "100 mm"
+        ],
+        [
+          "5",
+          "Yellow",
+          "110 mm"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-clean",
@@ -201,7 +578,26 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1433-scaled.jpg",
     "ceMarked": true,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Variant",
+        "Target Patient",
+        "Functionality"
+      ],
+      "rows": [
+        [
+          "HME Filter (Adult)",
+          "Adult",
+          "Bacterial/viral filtration + Heat & Moisture Exchange"
+        ],
+        [
+          "HME Filter (Paediatric)",
+          "Paediatric",
+          "Low dead-space high-efficiency bacterial/viral filtration"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-win",
@@ -213,7 +609,31 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/3733-scaled.jpg",
     "ceMarked": true,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Variant",
+        "Target Patient",
+        "Prong & Tubing Specification"
+      ],
+      "rows": [
+        [
+          "Nasal Cannula (Adult)",
+          "Adult",
+          "Soft curved twin prongs, 2m star-lumen kink-resistant tube"
+        ],
+        [
+          "Nasal Cannula (Paediatric)",
+          "Paediatric",
+          "Soft curved twin prongs, 2m star-lumen kink-resistant tube"
+        ],
+        [
+          "Nasal Cannula (Neonatal)",
+          "Neonatal",
+          "Micro soft prongs, non-irritant atraumatic fit"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-vent-multi",
@@ -225,7 +645,51 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/3743-scaled.jpg",
     "ceMarked": true,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Diluter Connector Color",
+        "FiO2 Delivered",
+        "Required Oxygen Flow"
+      ],
+      "rows": [
+        [
+          "Blue",
+          "24%",
+          "2 \u2013 4 L/min"
+        ],
+        [
+          "Yellow",
+          "28%",
+          "4 \u2013 6 L/min"
+        ],
+        [
+          "White",
+          "31%",
+          "6 \u2013 8 L/min"
+        ],
+        [
+          "Green",
+          "35%",
+          "8 \u2013 10 L/min"
+        ],
+        [
+          "Pink",
+          "40%",
+          "8 \u2013 12 L/min"
+        ],
+        [
+          "Orange",
+          "50%",
+          "10 \u2013 12 L/min"
+        ],
+        [
+          "Red",
+          "60%",
+          "12 \u2013 15 L/min"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-vent-single",
@@ -237,7 +701,26 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1519-scaled.jpg",
     "ceMarked": true,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Dial Entrainment Ring",
+        "Selectable FiO2 Concentrations",
+        "Target Patient"
+      ],
+      "rows": [
+        [
+          "White Dial",
+          "24%, 26%, 28%, 30%",
+          "Adult & Paediatric"
+        ],
+        [
+          "Green Dial",
+          "35%, 40%, 50%",
+          "Adult & Paediatric"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-con",
@@ -249,7 +732,26 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1490-scaled.jpg",
     "ceMarked": true,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Variant",
+        "Reservoir Bag Capacity",
+        "Valve System"
+      ],
+      "rows": [
+        [
+          "Adult High Concentration Mask",
+          "1000 ml",
+          "Low-resistance check valve + Dual exhalation flutter valves"
+        ],
+        [
+          "Paediatric High Concentration Mask",
+          "750 ml",
+          "Low-resistance check valve + Dual exhalation flutter valves"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-mask",
@@ -261,7 +763,26 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/OXYGEN-MASK2.jpg",
     "ceMarked": true,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Variant",
+        "Patient Target",
+        "Features"
+      ],
+      "rows": [
+        [
+          "Oxygen Mask (Adult)",
+          "Adult",
+          "Soft feathered edges, adjustable nose clip, 2m star lumen tube"
+        ],
+        [
+          "Oxygen Mask (Paediatric)",
+          "Paediatric",
+          "Soft feathered edges, adjustable nose clip, 2m star lumen tube"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-eal-plain",
@@ -275,7 +796,31 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/06/Untitled-1-02-4.png",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Specification Parameter",
+        "Value / Details"
+      ],
+      "rows": [
+        [
+          "Cuff Configuration",
+          "Plain / Uncuffed (Atraumatic paediatric/vocal cord design)"
+        ],
+        [
+          "Available Sizes (ID in mm)",
+          "2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0 mm"
+        ],
+        [
+          "Connectors & Markings",
+          "Universal 15 mm proximal connector, radiopaque line along tube length"
+        ],
+        [
+          "Tip Design",
+          "Smooth atraumatic Murphy Eye with rounded tip"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-eal-cuffed",
@@ -289,7 +834,31 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/et-tube-scaled.jpg",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Specification Parameter",
+        "Value / Details"
+      ],
+      "rows": [
+        [
+          "Cuff Configuration",
+          "High-Volume Low-Pressure (HVLP) inflatable cuff with pilot balloon"
+        ],
+        [
+          "Available Sizes (ID in mm)",
+          "2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0 mm"
+        ],
+        [
+          "Connectors & Markings",
+          "Universal 15 mm proximal connector, radiopaque line along tube length"
+        ],
+        [
+          "Tip Design",
+          "Smooth atraumatic Murphy Eye with rounded tip"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-uro-with",
@@ -301,7 +870,26 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/3712-scaled.jpg",
     "ceMarked": true,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Component",
+        "Capacity",
+        "Key Features"
+      ],
+      "rows": [
+        [
+          "Collection Bag",
+          "2000 ml",
+          "Push-pull bottom outlet, auto-overflow from chamber, strong hanger"
+        ],
+        [
+          "Measured Chamber",
+          "250 ml",
+          "High-precision clear calibrated scale for hourly urine output monitoring"
+        ]
+      ]
+    }
   },
   {
     "id": "qu-uro-without",
@@ -313,100 +901,113 @@
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/06/Untitled-122-02.png",
     "ceMarked": true,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Component",
+        "Capacity",
+        "Key Features"
+      ],
+      "rows": [
+        [
+          "Collection Bag",
+          "2000 ml",
+          "Clinical grade PVC sheet, push-pull bottom outlet, non-return valve"
+        ]
+      ]
+    }
   },
   {
-    "id": "yankaur-a",
+    "id": "yankaur-suction-set",
     "brandName": "YANKAUR SUCTION SET",
     "genericName": "Surgical Suction Device",
     "category": "surgery-suction",
-    "refNo": "Q0030-A",
+    "refNo": null,
     "specs": [
-      "Kink Resistant"
-    ],
-    "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1317-scaled.jpg",
-    "ceMarked": false,
-    "isSterile": true,
-    "isSingleUse": true
-  },
-  {
-    "id": "yankaur-b",
-    "brandName": "YANKAUR SUCTION SET",
-    "genericName": "Surgical Suction Device",
-    "category": "surgery-suction",
-    "refNo": "Q0030-B",
-    "specs": [
+      "Kink Resistant",
       "Universal Connector"
     ],
-    "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1332-scaled.jpg",
-    "ceMarked": false,
-    "isSterile": true,
-    "isSingleUse": true
-  },
-  {
-    "id": "qu-tubi-exp",
-    "brandName": "QU-TUBI",
-    "genericName": "Ventilator Circuit \u2014 Expandable",
-    "category": "critical-care",
-    "refNo": "Q0034",
-    "specs": [
-      "Adult"
+    "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1317-scaled.jpg",
+    "images": [
+      "https://qumed.in/wp-content/uploads/2024/05/1317-scaled.jpg",
+      "https://qumed.in/wp-content/uploads/2024/05/1332-scaled.jpg",
+      "https://qumed.in/wp-content/uploads/2024/05/1337-scaled.jpg",
+      "https://qumed.in/wp-content/uploads/2024/05/1340-scaled.jpg"
     ],
-    "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/cc.jpg",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Handle Tip Style",
+        "Side Hole Configuration",
+        "Tubing & Connector Specification"
+      ],
+      "rows": [
+        [
+          "Standard Open Tip",
+          "4 Side Holes + Open Tip",
+          "Moulded soft PVC universal connector, kink-resistant ribbed tube"
+        ],
+        [
+          "Crown Tip",
+          "4 Side Holes + Crown Tip",
+          "Moulded soft PVC universal connector, kink-resistant ribbed tube"
+        ]
+      ]
+    }
   },
   {
-    "id": "qu-tubi-std",
+    "id": "qu-tubi",
     "brandName": "QU-TUBI",
-    "genericName": "Ventilator Circuit \u2014 Standard Adult",
+    "genericName": "Ventilator Circuit",
     "category": "critical-care",
-    "refNo": "Q0035",
+    "refNo": null,
     "specs": [
-      "Adult"
+      "Adult & Paediatric"
     ],
     "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/cc2.jpg",
-    "ceMarked": false,
-    "isSterile": true,
-    "isSingleUse": true
-  },
-  {
-    "id": "qu-tubi-port",
-    "brandName": "QU-TUBI",
-    "genericName": "Ventilator Circuit with Port on Y-Piece",
-    "category": "critical-care",
-    "refNo": "Q0038",
-    "specs": [
-      "Adult"
+    "images": [
+      "https://qumed.in/wp-content/uploads/2024/05/cc2.jpg",
+      "https://qumed.in/wp-content/uploads/2024/05/cc.jpg",
+      "https://qumed.in/wp-content/uploads/2024/05/cc1.jpg"
     ],
-    "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/cc1.jpg",
     "ceMarked": false,
     "isSterile": true,
-    "isSingleUse": true
-  },
-  {
-    "id": "yankaur-c",
-    "brandName": "YANKAUR SUCTION SET",
-    "genericName": "Surgical Suction Device",
-    "category": "surgery-suction",
-    "refNo": null,
-    "specs": [],
-    "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1337-scaled.jpg",
-    "ceMarked": false,
-    "isSterile": true,
-    "isSingleUse": true
-  },
-  {
-    "id": "yankaur-d",
-    "brandName": "YANKAUR SUCTION SET",
-    "genericName": "Surgical Suction Device",
-    "category": "surgery-suction",
-    "refNo": null,
-    "specs": [],
-    "imageUrl": "https://qumed.in/wp-content/uploads/2024/05/1340-scaled.jpg",
-    "ceMarked": false,
-    "isSterile": true,
-    "isSingleUse": true
+    "isSingleUse": true,
+    "specTable": {
+      "headers": [
+        "Circuit Model / Variant",
+        "Target Patient",
+        "Included Traps & Ports"
+      ],
+      "rows": [
+        [
+          "Ventilator Circuit Standard",
+          "Adult",
+          "Dual-limb corrugated breathing circuit, Y-piece connector"
+        ],
+        [
+          "Ventilator Circuit Expandable",
+          "Adult",
+          "Expandable corrugated flexible memory limbs"
+        ],
+        [
+          "Ventilator Circuit with Port on Y-Piece",
+          "Adult",
+          "Integrated temperature and pressure monitoring port on Y-piece"
+        ],
+        [
+          "Ventilator Circuit with SW Trap",
+          "Adult",
+          "Single in-line water condensation trap"
+        ],
+        [
+          "Ventilator Circuit with DW Trap",
+          "Adult",
+          "Double in-line water condensation traps"
+        ]
+      ]
+    }
   }
 ]

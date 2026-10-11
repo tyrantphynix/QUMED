@@ -1,6 +1,8 @@
+import React, { useState } from 'react';
 import Badge from './Badge';
 import styles from './ProductCard.module.css';
 import Tilt from 'react-parallax-tilt';
+import ProductSpecModal from './ProductSpecModal';
 
 const CATEGORY_META = {
   infusion:        { color: '#0067FF', label: 'Infusion' },
@@ -66,61 +68,136 @@ const CategoryIcon = ({ category }) => {
 };
 
 export default function ProductCard({ product }) {
-  const { brandName, genericName, category, refNo, imageUrl, specs = [], ceMarked, isSterile, isSingleUse } = product;
+  const { brandName, genericName, category, imageUrl, images, specs = [], ceMarked, isSterile, isSingleUse } = product;
   const meta = CATEGORY_META[category] || CATEGORY_META.infusion;
 
+  const imageList = images && images.length > 0 ? images : (imageUrl ? [imageUrl] : []);
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const hasMultipleImages = imageList.length > 1;
+
+  const nextImage = (e) => {
+    e.stopPropagation();
+    setCurrentImgIndex((prev) => (prev + 1) % imageList.length);
+  };
+
+  const prevImage = (e) => {
+    e.stopPropagation();
+    setCurrentImgIndex((prev) => (prev - 1 + imageList.length) % imageList.length);
+  };
+
+  const currentDisplayImage = imageList[currentImgIndex] || imageUrl;
+
   return (
-    <article className={styles.card}>
-      {/* Image slot */}
-      <div className={styles.imageSlot} >
-        <img src="/gem-logo.png" alt="GeM Approved" className={styles.gemLogo} loading="lazy" />
-        {imageUrl ? (
-          <Tilt 
-            tiltMaxAngleX={10} 
-            tiltMaxAngleY={10} 
-            perspective={800} 
-            scale={1.05} 
-            transitionSpeed={1500} 
-            className={styles.tiltContainer}
-          >
-            <img src={imageUrl} alt={brandName} className={styles.image} loading="lazy" />
-          </Tilt>
-        ) : (
-          <CategoryIcon category={category} />
-        )}
-      </div>
+    <>
+      <article className={styles.card}>
+        {/* Image slot */}
+        <div className={styles.imageSlot}>
+          <img src="/gem-logo.png" alt="GeM Approved" className={styles.gemLogo} loading="lazy" />
 
-      <div className={styles.body}>
-        {/* Header row */}
-        <div className={styles.headerRow}>
-          <Badge variant="category">{meta.label}</Badge>
-          {ceMarked && <span className={styles.ceBadge}>CE</span>}
+          {currentDisplayImage ? (
+            <Tilt 
+              tiltMaxAngleX={8} 
+              tiltMaxAngleY={8} 
+              perspective={800} 
+              scale={1.03} 
+              transitionSpeed={1500} 
+              className={styles.tiltContainer}
+            >
+              <img 
+                src={currentDisplayImage} 
+                alt={`${brandName} - Angle ${currentImgIndex + 1}`} 
+                className={styles.image} 
+                loading="lazy" 
+              />
+            </Tilt>
+          ) : (
+            <CategoryIcon category={category} />
+          )}
+
+          {/* Carousel Arrows on card (for multi-image products like Yankaur & QU-TUBI) */}
+          {hasMultipleImages && (
+            <>
+              <button 
+                type="button" 
+                className={`${styles.cardArrow} ${styles.cardArrowPrev}`}
+                onClick={prevImage}
+                aria-label="Previous angle"
+              >
+                &#8249;
+              </button>
+              <button 
+                type="button" 
+                className={`${styles.cardArrow} ${styles.cardArrowNext}`}
+                onClick={nextImage}
+                aria-label="Next angle"
+              >
+                &#8250;
+              </button>
+
+              {/* Dots indicator */}
+              <div className={styles.dotsTrack}>
+                {imageList.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className={`${styles.dot} ${idx === currentImgIndex ? styles.dotActive : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentImgIndex(idx);
+                    }}
+                    aria-label={`Go to image ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
-        {/* Brand & Generic */}
-        <p className={styles.brand}>{brandName}</p>
-        <p className={styles.generic}>{genericName}</p>
-
-        {/* Specs row */}
-        {specs.length > 0 && (
-          <div className={styles.specs}>
-            {specs.slice(0, 2).map(s => <Badge key={s} variant="spec">{s}</Badge>)}
+        <div className={styles.body}>
+          {/* Header row */}
+          <div className={styles.headerRow}>
+            <Badge variant="category">{meta.label}</Badge>
+            {ceMarked && <span className={styles.ceBadge}>CE</span>}
           </div>
-        )}
-      </div>
 
-      {/* Footer trust line */}
-      <div className={styles.footer}>
-        <div className={styles.trustGroup}>
-          <span className={styles.trustDot} aria-hidden="true" />
-          <span className={styles.trustText}>
-            {isSterile ? 'Sterile' : 'Non-Sterile'} &middot; {isSingleUse ? 'Single Use' : 'Reusable'}
-          </span>
+          {/* Brand & Generic */}
+          <p className={styles.brand}>{brandName}</p>
+          <p className={styles.generic}>{genericName}</p>
+
+          {/* Specs row */}
+          {specs.length > 0 && (
+            <div className={styles.specs}>
+              {specs.slice(0, 2).map(s => <Badge key={s} variant="spec">{s}</Badge>)}
+            </div>
+          )}
         </div>
-        {refNo && (
-          <div className={styles.refCode}>{refNo}</div>
-        )}
-      </div>
-    </article>
+
+        {/* Footer with Specifications Trigger */}
+        <div className={styles.footer}>
+          <div className={styles.trustGroup}>
+            <span className={styles.trustDot} aria-hidden="true" />
+            <span className={styles.trustText}>
+              {isSterile ? 'Sterile' : 'Non-Sterile'} &middot; {isSingleUse ? 'Single Use' : 'Reusable'}
+            </span>
+          </div>
+
+          <button 
+            type="button" 
+            className={styles.specBtn}
+            onClick={() => setIsModalOpen(true)}
+            aria-label={`View specifications for ${brandName}`}
+          >
+            Technical Specs ➔
+          </button>
+        </div>
+      </article>
+
+      {/* Modal Dialog */}
+      {isModalOpen && (
+        <ProductSpecModal product={product} onClose={() => setIsModalOpen(false)} />
+      )}
+    </>
   );
 }
