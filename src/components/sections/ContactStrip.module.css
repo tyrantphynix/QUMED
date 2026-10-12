@@ -221,29 +221,50 @@
   .mapBlockFull { height: 300px; margin-top: 40px; }
 }
 
-.sectionFull .infoCol {
-  padding-top: 110px;
+/* Right column heading styling */
+.infoHeadingGroup {
+  display: flex;
+  flex-direction: column;
 }
 
+.infoHeading {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.infoSub {
+  font-size: var(--fs-base);
+  color: rgba(255, 255, 255, 0.60);
+  margin-bottom: var(--sp-lg);
+  line-height: 1.6;
+}
+
+/* Home page vs Full page spacing */
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* On full contact page, align cleanly with left heading and remove card boxes */
 .sectionFull .contactInfo {
   gap: 28px;
+  margin-top: 8px;
 }
 
 .sectionFull .infoItem {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md);
-  padding: 16px 20px;
-  transition: border-color var(--transition-fast), background var(--transition-fast);
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
-.sectionFull .infoItem:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(0, 103, 255, 0.4);
-}
-
-@media (max-width: 768px) {
-  .sectionFull .infoCol {
-    padding-top: 0;
-  }
-}

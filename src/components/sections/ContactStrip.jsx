@@ -152,6 +152,15 @@ export default function ContactStrip({ isFullPage = false }) {
 
         {/* Right: info + map */}
         <div className={"reveal " + styles.infoCol}>
+          <div className={styles.infoHeadingGroup}>
+            {isFullPage && <p className={styles.eyebrow}>Details</p>}
+            <h3 className={styles.infoHeading}>Contact Info</h3>
+            {isFullPage && (
+              <p className={styles.infoSub}>
+                Direct lines to our manufacturing plant and corporate sales office.
+              </p>
+            )}
+          </div>
           <div className={styles.contactInfo}>
             <div className={styles.infoItem}>
               <span className={styles.infoIcon}>📍</span>
