@@ -9,7 +9,7 @@
 
 /* Heading area */
 .eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-xs);
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -18,7 +18,7 @@
   margin-bottom: 10px;
 }
 .heading {
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: clamp(1.75rem, 3vw, 2.4rem);
   font-weight: 700;
   color: #fff;
@@ -43,7 +43,7 @@
   border-radius: var(--radius-sm);
   padding: 12px 16px;
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--fs-sm);
   outline: none;
   transition: border-color var(--transition-fast), background var(--transition-fast);
@@ -51,13 +51,16 @@
 }
 .input::placeholder { color: rgba(255,255,255,0.30); }
 .input:focus { border-color: var(--clr-action); background: rgba(255,255,255,0.10); }
+
+/* Submit Button & States */
 .submit {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   background: var(--clr-action);
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -66,10 +69,122 @@
   border-radius: var(--radius-sm);
   cursor: pointer;
   border: none;
-  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+  transition: background var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
   width: fit-content;
 }
-.submit:hover { background: var(--clr-action-light); box-shadow: var(--shadow-blue); }
+.submit:hover:not(:disabled) {
+  background: var(--clr-action-light);
+  box-shadow: var(--shadow-blue);
+}
+.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success Card */
+.successCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  background: rgba(0, 103, 255, 0.08);
+  border: 1px solid rgba(0, 103, 255, 0.35);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.4s ease;
+}
+
+.successIconBadge {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+
+.successContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.successHeading {
+  font-family: "Sora", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.successBody {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+}
+
+.resetButton {
+  margin-top: 10px;
+  align-self: flex-start;
+  background: transparent;
+  color: var(--clr-tint);
+  border: 1px solid rgba(0, 103, 255, 0.4);
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.resetButton:hover {
+  background: rgba(0, 103, 255, 0.15);
+  color: #fff;
+}
+
+/* Error Banner */
+.errorBanner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: #fca5a5;
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  animation: fadeIn 0.3s ease;
+}
+
+.errorIcon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* Info col */
 .infoCol { display: flex; flex-direction: column; gap: var(--sp-lg); }
@@ -98,7 +213,6 @@
 }
 
 @media (max-width: 768px) {
-  
   .section { padding-top: calc(var(--section-py) + 80px); }
   .sectionFull { padding-top: 100px !important; }
   .grid { grid-template-columns: 1fr; }
