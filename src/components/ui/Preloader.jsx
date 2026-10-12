@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { warmUpSite } from "../../utils/warmup";
 import styles from "./Preloader.module.css";
 
 export default function Preloader() {
@@ -6,23 +7,28 @@ export default function Preloader() {
   const [shouldRender, setShouldRender] = useState(true);
 
   useEffect(() => {
-    // Lock scroll during preloader to prevent browser from restoring past scroll offset
+    // 1. Lock scroll during preloader to prevent browser from restoring past scroll offset
     document.body.style.overflow = "hidden";
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
-    const fadeTimer = setTimeout(() => {
+    // 2. Trigger async warmup in the background (decoding images, preloading video, refreshing ScrollTrigger)
+    const warmupPromise = warmUpSite();
+
+    // 3. Keep preloader visible for at least 1.8s for a polished entrance and smooth layout settling
+    const minTimePromise = new Promise((resolve) => setTimeout(resolve, 1800));
+
+    Promise.all([warmupPromise, minTimePromise]).then(() => {
       setVisible(false);
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    }, 1100);
+    });
 
     const unmountTimer = setTimeout(() => {
       setShouldRender(false);
       document.body.style.overflow = "";
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    }, 1650);
+    }, 2400);
 
     return () => {
-      clearTimeout(fadeTimer);
       clearTimeout(unmountTimer);
       document.body.style.overflow = "";
     };

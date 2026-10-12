@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <script>
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
       }
       window.scrollTo(0, 0);
     </script>
@@ -13,9 +13,62 @@
     <meta name="keywords" content="medical disposables, IV cannula, oxygen mask, ventilator circuit, medical devices manufacturer, Gurugram, Qu-med" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>Qu-med Disposable — Medical Device Manufacturer, Gurugram</title>
+    <style>
+      /* Instant 0ms dark background & splash so hard refresh never flashes white */
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #07172E;
+      }
+      #initial-splash {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #07172E;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+        z-index: 9999999;
+      }
+      #initial-splash .splash-logo {
+        width: 68px;
+        height: 68px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(0, 103, 255, 0.35);
+      }
+      #initial-splash .splash-logo img {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+      }
+      #initial-splash .splash-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #FFFFFF;
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Instant native splash while Vite/React boots -->
+      <div id="initial-splash">
+        <div class="splash-logo">
+          <img src="/favicon.png" alt="Qu-med" />
+        </div>
+        <p class="splash-text">QU-MED</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
