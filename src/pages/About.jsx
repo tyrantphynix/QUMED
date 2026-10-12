@@ -59,7 +59,7 @@ export default function About() {
             <SectionHeading eyebrow="Manufacturing" heading="Our plant in Haryana" theme="light" />
             <div className={`reveal ${styles.singlePlantCard}`}>
               <div className={styles.singlePlantImageWrapper}>
-                <img src="https://qumed.in/wp-content/uploads/2024/06/Firefly-Inpaint-20230717162755.png" alt="Gurugram Plant" className={styles.singlePlantImage} loading="lazy" />
+                <img src="/images/plant-gurugram.jpg" alt="Gurugram Plant" className={styles.singlePlantImage} loading="lazy" />
               </div>
               <div className={styles.singlePlantContent}>
                 <h3 className={styles.singlePlantCity}>Gurugram</h3>
