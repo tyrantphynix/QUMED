@@ -220,3 +220,30 @@
   .input { font-size: 16px; } /* Prevents iOS auto-zoom */
   .mapBlockFull { height: 300px; margin-top: 40px; }
 }
+
+.sectionFull .infoCol {
+  padding-top: 110px;
+}
+
+.sectionFull .contactInfo {
+  gap: 28px;
+}
+
+.sectionFull .infoItem {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.sectionFull .infoItem:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 103, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .sectionFull .infoCol {
+    padding-top: 0;
+  }
+}
