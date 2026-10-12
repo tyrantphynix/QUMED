@@ -35,7 +35,7 @@ export default function Certificates() {
             />
             <div className={styles.grid}>
               {certifications.map(cert => (
-                <div key={cert.id} className="reveal">
+                <div key={cert.id} className="reveal" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
                   <CertCard cert={cert} />
                 </div>
               ))}
