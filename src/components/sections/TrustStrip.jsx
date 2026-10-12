@@ -5,7 +5,7 @@ const CERTS = [
   { label: 'ISO 13485:2016', sub: 'Medical Device QMS' },
   { label: 'CE Marked', sub: 'Class I Medical Devices' },
   { label: 'IEC Registered', sub: 'Govt of India' },
-  { label: 'Registered Trademark', sub: 'Class 10 — Medical' },
+  { label: 'OEM Supplier — GeM', sub: 'Verified Medical OEM' },
   { label: 'MSME Registered', sub: 'Small Enterprise' },
   { label: 'Est. 2012', sub: 'Over a decade of manufacturing' },
 ];
