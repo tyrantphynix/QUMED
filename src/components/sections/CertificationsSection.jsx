@@ -18,7 +18,7 @@ export default function CertificationsSection() {
           theme="dark"
         />
         <div className={styles.grid}>
-          {certifications.map(cert => (
+          {certifications.slice(0, 6).map(cert => (
             <div key={cert.id} className="reveal" style={{ height: '100%' }}>
               <CertCard cert={cert} />
             </div>

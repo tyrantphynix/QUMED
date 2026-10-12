@@ -28,7 +28,7 @@ export default function Certificates() {
           <div className="container">
             <SectionHeading
               eyebrow="Our Certifications"
-              heading="Six regulatory credentials"
+              heading="Regulatory compliance credentials"
               sub="International and national certifications covering quality systems, product safety, trade, and brand protection."
               align="center"
               theme="dark"
