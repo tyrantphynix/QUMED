@@ -60,9 +60,12 @@ export default function Hero({ scrollProgress = 0 }) {
       </div>
 
       <div className={`container ${styles.content}`}>
-        {/* Mobile Syringe Display (visible < 768px above headline) */}
-        <div className={styles.mobileSyringeSlot} aria-hidden="true">
-          <MedicalSyringe2D scrollProgress={activeProgress} />
+        {/* Mobile Horizontal Syringe Card (Option B) */}
+        <div className={styles.mobileSyringeCard} aria-hidden="true">
+          <div className={styles.mobileSyringeInner}>
+            <MedicalSyringe2D scrollProgress={activeProgress} className={styles.mobileSyringeRotated} />
+          </div>
+          <span className={styles.mobileSyringeTag}>QUMED Precision Syringe · 5ml</span>
         </div>
 
         {/* Badge */}

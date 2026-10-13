@@ -27,3 +27,9 @@
   height: 100%;
   pointer-events: none;
 }
+
+@media (max-width: 768px) {
+  .overlayContainer {
+    display: none !important;
+  }
+}
