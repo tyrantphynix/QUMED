@@ -6,6 +6,13 @@ import MedicalSyringe2D from '../syringe/MedicalSyringe2D';
 
 const CATALOGUE_URL = 'https://qumed.in/wp-content/uploads/2024/05/QUMED_CATALOUGE.pdf';
 
+const FEATURED_PRODUCTS = [
+  { name: 'I.V. Cannula', brand: 'QU-FLON', img: '/images/products/1420-scaled.jpg' },
+  { name: 'I.V. Infusion Set', brand: 'QU-DRIP', img: '/images/products/1355-scaled.jpg' },
+  { name: '3-Way Stop Cock', brand: 'QU-3 WAY', img: '/images/products/3700-1-scaled.jpg' },
+  { name: 'Respiratory', brand: 'QU-CISER', img: '/images/products/1283.jpg-scaled.jpg' },
+];
+
 export default function Hero({ scrollProgress = 0 }) {
   const headlineRef = useRef(null);
   const subRef      = useRef(null);
@@ -60,9 +67,19 @@ export default function Hero({ scrollProgress = 0 }) {
       </div>
 
       <div className={`container ${styles.content}`}>
-        {/* Mobile Syringe Display (visible < 768px above headline) */}
-        <div className={styles.mobileSyringeSlot} aria-hidden="true">
-          <MedicalSyringe2D scrollProgress={activeProgress} />
+        {/* Mobile Product Showcase Grid (Option C) */}
+        <div className={styles.mobileProductShowcase} aria-hidden="true">
+          {FEATURED_PRODUCTS.map((prod, idx) => (
+            <div key={idx} className={styles.mobileProdCard}>
+              <div className={styles.mobileProdImgWrapper}>
+                <img src={prod.img} alt={prod.name} className={styles.mobileProdImg} loading="lazy" />
+              </div>
+              <div className={styles.mobileProdInfo}>
+                <span className={styles.mobileProdBrand}>{prod.brand}</span>
+                <span className={styles.mobileProdName}>{prod.name}</span>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Badge */}
