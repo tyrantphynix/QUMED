@@ -57,14 +57,14 @@ export default function Hero({ scrollProgress = 0 }) {
         <div id="hero-visual-slot" className={styles.visualSlot} aria-hidden="true">
           <MedicalSyringe2D scrollProgress={activeProgress} />
         </div>
+
+        {/* Mobile Watermark Syringe Asset */}
+        <div className={styles.mobileWatermark} aria-hidden="true">
+          <MedicalSyringe2D scrollProgress={0} />
+        </div>
       </div>
 
       <div className={`container ${styles.content}`}>
-        {/* Mobile Syringe Display (visible < 768px above headline) */}
-        <div className={styles.mobileSyringeSlot} aria-hidden="true">
-          <MedicalSyringe2D scrollProgress={activeProgress} />
-        </div>
-
         {/* Badge */}
         <div ref={badgeRef} className={styles.badge} style={{ opacity: 0 }}>
           <span className={styles.badgeDot} />

@@ -95,28 +95,30 @@
   }
 }
 
-/* Mobile Syringe Slot */
-.mobileSyringeSlot {
+/* Mobile Watermark (Option A) */
+.mobileWatermark {
   display: none;
-  width: 100%;
-  max-width: 250px;
-  height: 230px;
-  margin: 0 auto 10px auto;
-  pointer-events: none;
-  animation: floatSubtle 4s ease-in-out infinite alternate;
 }
 
 @media (max-width: 768px) {
-  .mobileSyringeSlot {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .mobileWatermark {
+    display: block;
+    position: absolute;
+    right: -75px;
+    bottom: -30px;
+    width: 290px;
+    height: 560px;
+    opacity: 0.16;
+    transform: rotate(-16deg);
+    pointer-events: none;
+    z-index: 3;
+    animation: watermarkDrift 6s ease-in-out infinite alternate;
   }
 }
 
-@keyframes floatSubtle {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-5px); }
+@keyframes watermarkDrift {
+  0% { transform: rotate(-16deg) translateY(0px); }
+  100% { transform: rotate(-16deg) translateY(-8px); }
 }
 
 /* Badge */
