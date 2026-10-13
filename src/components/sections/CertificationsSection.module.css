@@ -23,3 +23,11 @@
 
 @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+
+@media (max-width: 768px) {
+  .section {
+    clip-path: none !important;
+    padding-top: var(--section-py) !important;
+    padding-bottom: var(--section-py) !important;
+  }
+}

@@ -213,7 +213,11 @@
 }
 
 @media (max-width: 768px) {
-  .section { padding-top: calc(var(--section-py) + 80px); }
+  .section {
+    clip-path: none !important;
+    padding-top: var(--section-py) !important;
+    padding-bottom: var(--section-py) !important;
+  }
   .sectionFull { padding-top: 100px !important; }
   .grid { grid-template-columns: 1fr; }
   .row  { grid-template-columns: 1fr; }

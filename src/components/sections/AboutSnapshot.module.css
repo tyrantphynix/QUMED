@@ -46,6 +46,10 @@
 .link:hover { gap: 8px; }
 
 @media (max-width: 768px) {
+  .section {
+    clip-path: none !important;
+    padding-bottom: var(--section-py) !important;
+  }
   .grid { grid-template-columns: 1fr; }
   .quoteCol { border-right: none; border-bottom: 3px solid var(--clr-action); padding-right: 0; padding-bottom: var(--sp-lg); }
 }
