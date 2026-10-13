@@ -9,9 +9,6 @@ import styles from './Certificates.module.css';
 export default function Certificates() {
   const ref = useGsapReveal({ stagger: 0.1, y: 24 });
 
-  // CE marked products list
-  const ceCert = certifications.find(c => c.id === 'ce-marking');
-
   return (
     <>
       <Navbar />
@@ -42,31 +39,6 @@ export default function Certificates() {
             </div>
           </div>
         </section>
-
-        {/* CE Products accordion */}
-        {ceCert && ceCert.products.length > 0 && (
-          <section className="section section--white">
-            <div className="container">
-              <SectionHeading
-                eyebrow="CE Marked Products"
-                heading="Products covered under CE Marking"
-                sub={`Certificate No. ${ceCert.refNo} — Issued by ${ceCert.issuer}`}
-                theme="light"
-              />
-              <details className={styles.accordion}>
-                <summary className={styles.summary}>View all {ceCert.products.length} CE marked products</summary>
-                <ul className={styles.ceList}>
-                  {ceCert.products.map(p => <li key={p} className={styles.ceItem}>{p}</li>)}
-                </ul>
-              </details>
-
-              <div className={styles.enquiryCta}>
-                <p>Need compliance documentation for procurement?</p>
-                <a href="/contact" className={styles.ctaBtn}>Request Documents</a>
-              </div>
-            </div>
-          </section>
-        )}
       </main>
       <Footer />
     </>
