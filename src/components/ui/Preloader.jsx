@@ -5,17 +5,21 @@ import styles from "./Preloader.module.css";
 export default function Preloader() {
   const [visible, setVisible] = useState(true);
   const [shouldRender, setShouldRender] = useState(true);
+  const [lifted, setLifted] = useState(false);
 
   useEffect(() => {
-    // 1. Lock scroll during preloader to prevent browser from restoring past scroll offset
+    // 1. Lock scroll during preloader
     document.body.style.overflow = "hidden";
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
-    // 2. Trigger async warmup in the background (decoding images, preloading video, refreshing ScrollTrigger)
-    const warmupPromise = warmUpSite();
+    // 2. Trigger smooth upward glide shortly after mount so it transitions seamlessly from dead center
+    const liftTimer = setTimeout(() => {
+      setLifted(true);
+    }, 60);
 
-    // 3. Keep preloader visible for at least 1.8s for a polished entrance and smooth layout settling
-    const minTimePromise = new Promise((resolve) => setTimeout(resolve, 1800));
+    // 3. Trigger async warmup in background
+    const warmupPromise = warmUpSite();
+    const minTimePromise = new Promise((resolve) => setTimeout(resolve, 1900));
 
     Promise.all([warmupPromise, minTimePromise]).then(() => {
       setVisible(false);
@@ -26,9 +30,10 @@ export default function Preloader() {
       setShouldRender(false);
       document.body.style.overflow = "";
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    }, 2400);
+    }, 2500);
 
     return () => {
+      clearTimeout(liftTimer);
       clearTimeout(unmountTimer);
       document.body.style.overflow = "";
     };
@@ -41,23 +46,19 @@ export default function Preloader() {
       <div className={styles.ambientGlow} />
 
       <div className={styles.content}>
-        {/* Heartbeat pulse rings & Logo */}
-        <div className={styles.logoWrapper}>
-          <div className={styles.pulseRing} />
-          <div className={styles.pulseRing + " " + styles.pulseRingDelay} />
-          <div className={styles.logoBadge}>
-            <img src="/favicon.png" alt="Qu-med" className={styles.logoImg} />
+        {/* Full Brand Logo: starts at dead center and smoothly glides up */}
+        <div className={`${styles.logoWrapper} ${lifted ? styles.logoLifted : ""}`}>
+          <div className={styles.logoPulseInner}>
+            <img
+              src="/images/White-Logo.png"
+              alt="Qu-med Disposable"
+              className={styles.fullLogoImg}
+            />
           </div>
         </div>
 
-        {/* Brand Name */}
-        <div className={styles.brandTextGroup}>
-          <h1 className={styles.brandName}>QU-MED</h1>
-          <span className={styles.brandSub}>DISPOSABLE</span>
-        </div>
-
-        {/* Animated ECG Heartbeat waveform */}
-        <div className={styles.ecgTrack}>
+        {/* Animated ECG Heartbeat waveform: gracefully fades in */}
+        <div className={`${styles.ecgTrack} ${lifted ? styles.revealed : ""}`}>
           <svg
             className={styles.ecgSvg}
             viewBox="0 0 200 40"
@@ -75,7 +76,14 @@ export default function Preloader() {
           </svg>
         </div>
 
-        <p className={styles.tagline}>ISO 13485:2016 Certified Medical Devices</p>
+        <p className={`${styles.tagline} ${lifted ? styles.revealed : ""}`}>
+          ISO 13485:2016 Certified Medical Devices
+        </p>
+
+        {/* Mobile-only experience note */}
+        <p className={`${styles.mobileNotice} ${lifted ? styles.revealed : ""}`}>
+          Best experienced on desktop
+        </p>
       </div>
     </div>
   );

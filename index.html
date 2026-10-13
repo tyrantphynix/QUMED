@@ -29,44 +29,27 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: column;
-        gap: 16px;
         z-index: 9999999;
       }
-      #initial-splash .splash-logo {
-        width: 68px;
-        height: 68px;
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 10px 30px rgba(0, 103, 255, 0.35);
-      }
-      #initial-splash .splash-logo img {
-        width: 44px;
-        height: 44px;
+      #initial-splash .splash-full-logo {
+        max-width: 280px;
+        width: 78vw;
+        height: auto;
         object-fit: contain;
+        filter: drop-shadow(0 4px 20px rgba(0, 103, 255, 0.4));
       }
-      #initial-splash .splash-text {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        font-size: 1.4rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        color: #FFFFFF;
-        margin: 0;
+      @media (min-width: 769px) {
+        #initial-splash .splash-full-logo {
+          max-width: 320px;
+        }
       }
     </style>
   </head>
   <body>
     <div id="root">
-      <!-- Instant native splash while Vite/React boots -->
+      <!-- Instant native splash: Only the logo in the dead center -->
       <div id="initial-splash">
-        <div class="splash-logo">
-          <img src="/favicon.png" alt="Qu-med" />
-        </div>
-        <p class="splash-text">QU-MED</p>
+        <img src="/images/White-Logo.png" alt="Qu-med Disposable" class="splash-full-logo" />
       </div>
     </div>
     <script type="module" src="/src/main.jsx"></script>

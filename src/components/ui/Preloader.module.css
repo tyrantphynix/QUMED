@@ -51,13 +51,41 @@
   z-index: 2;
 }
 
-/* Logo container with heartbeat pulse */
+/* Logo container: starts at dead center and smoothly glides up */
 .logoWrapper {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: heartBeat 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 4px 20px rgba(0, 103, 255, 0.45));
+  transform: translateY(clamp(42px, 7vw, 50px));
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.logoLifted {
+  transform: translateY(0);
+}
+
+/* Separate inner wrapper for heartbeat pulse so scale never conflicts with translateY */
+.logoPulseInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: heartBeat 1.8s ease-in-out infinite;
+}
+
+.fullLogoImg {
+  max-width: 280px;
+  width: 78vw;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 769px) {
+  .fullLogoImg {
+    max-width: 330px;
+  }
 }
 
 @keyframes heartBeat {
@@ -65,88 +93,17 @@
     transform: scale(1);
   }
   14% {
-    transform: scale(1.08);
+    transform: scale(1.05);
   }
   28% {
     transform: scale(1);
   }
   42% {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
   70% {
     transform: scale(1);
   }
-}
-
-/* Pulse rings expanding outward */
-.pulseRing {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(0, 103, 255, 0.4);
-  animation: ringExpand 1.6s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
-}
-
-.pulseRingDelay {
-  animation-delay: 0.8s;
-}
-
-@keyframes ringExpand {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
-}
-
-.logoBadge {
-  width: 68px;
-  height: 68px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(0, 103, 255, 0.35);
-}
-
-.logoImg {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-}
-
-/* Text Branding */
-.brandTextGroup {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-top: 4px;
-}
-
-.brandName {
-  font-family: 'Sora', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #FFFFFF;
-  margin: 0;
-  text-shadow: 0 2px 10px rgba(0, 103, 255, 0.4);
-}
-
-.brandSub {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  color: #60A5FA;
-  text-transform: uppercase;
 }
 
 /* Animated ECG Heartbeat Line */
@@ -157,6 +114,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
 }
 
 .ecgSvg {
@@ -192,5 +153,42 @@
   letter-spacing: 0.18em;
   color: rgba(255, 255, 255, 0.45);
   text-transform: uppercase;
-  margin-top: 4px;
+  margin-top: 2px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.22s,
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.22s;
+}
+
+/* Mobile-only notice */
+.mobileNotice {
+  display: none;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.28s,
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+}
+
+@media (max-width: 768px) {
+  .mobileNotice {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: rgba(199, 219, 248, 0.85);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(199, 219, 248, 0.18);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-top: 4px;
+  }
+}
+
+/* Revealed state for lower elements */
+.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
