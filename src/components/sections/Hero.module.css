@@ -15,9 +15,11 @@
   .hero {
     min-height: 100vh;
     min-height: 100svh;
-    padding-top: 68px;
-    padding-bottom: 30px;
-    align-items: flex-start;
+    padding-top: 90px; /* fully clears fixed navbar */
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
   }
 }
@@ -50,8 +52,6 @@
   overflow: visible;
   pointer-events: none;
   z-index: 5;
-  /* Syringe kept steady so IV tube can attach seamlessly */
-  /* animation: syringeFloat 5s ease-in-out infinite alternate; */
 }
 
 @keyframes syringeFloat {
@@ -88,10 +88,14 @@
 
 @media (max-width: 768px) {
   .content {
-    gap: 12px;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    gap: 16px;
     padding-top: 10px;
-    padding-bottom: 28px;
+    padding-bottom: 20px;
     width: 100%;
+    max-width: 520px;
   }
 }
 
@@ -104,14 +108,14 @@
   .mobileWatermark {
     display: block;
     position: absolute;
-    right: -75px;
-    bottom: -30px;
-    width: 290px;
-    height: 560px;
-    opacity: 0.16;
+    right: -70px;
+    bottom: -20px;
+    width: 280px;
+    height: 540px;
+    opacity: 0.14;
     transform: rotate(-16deg);
     pointer-events: none;
-    z-index: 3;
+    z-index: 2;
     animation: watermarkDrift 6s ease-in-out infinite alternate;
   }
 }
@@ -142,8 +146,13 @@
 @media (max-width: 768px) {
   .badge {
     font-size: 0.65rem;
-    padding: 5px 12px;
+    padding: 6px 14px;
     letter-spacing: 0.05em;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 95%;
+    white-space: normal;
+    line-height: 1.35;
   }
 }
 
@@ -165,6 +174,14 @@
   color: #fff;
 }
 
+@media (max-width: 768px) {
+  .headline {
+    text-align: center;
+    font-size: clamp(2.1rem, 6.8vw, 2.7rem);
+    line-height: 1.18;
+  }
+}
+
 .accent { 
   color: var(--clr-tint); 
 }
@@ -177,11 +194,29 @@
   max-width: 540px;
 }
 
+@media (max-width: 768px) {
+  .sub {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 100%;
+  }
+}
+
 /* CTAs */
 .ctas {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .ctas {
+    justify-content: center;
+    width: 100%;
+    margin: 4px auto 0 auto;
+  }
 }
 
 .ctaPrimary {
@@ -234,6 +269,13 @@
   align-items: flex-start;
   gap: 8px;
   margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .scrollCue {
+    align-items: center;
+    margin: 8px auto 0 auto;
+  }
 }
 
 .scrollLine {
