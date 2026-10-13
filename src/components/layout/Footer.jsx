@@ -11,7 +11,7 @@ export default function Footer() {
         <div className={styles.brand}>
           <div className={styles.name}>
             <img src="/logo-q.png" alt="" className={styles.logoImage} />
-            <span>QU-MED <span>Disposable</span></span>
+            <span>Qu-med <span>Disposable</span></span>
           </div>
           <p className={styles.tagline}>An earnest effort.</p>
           <p className={styles.addr}>

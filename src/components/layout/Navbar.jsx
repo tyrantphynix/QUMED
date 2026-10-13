@@ -30,11 +30,11 @@ export default function Navbar() {
     <header ref={navRef} className={[styles.nav, scrolled ? styles.scrolled : ''].join(' ')}>
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
-        <Link to="/" className={styles.logo} aria-label="QU-MED Disposable — Home">
+        <Link to="/" className={styles.logo} aria-label="Qu-med Disposable — Home">
           <img src="/logo-q.png" alt="" className={styles.logoImage} />
-          <span className={styles.logoText}>QU-MED</span>
-          <span className={styles.logoDivider} aria-hidden="true">|</span>
-          <span className={styles.logoSub}>Disposable</span>
+          <span className={styles.logoText}>
+            Qu-med <span className={styles.logoSub}>Disposable</span>
+          </span>
         </Link>
 
         {/* Desktop nav */}
