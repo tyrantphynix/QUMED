@@ -15,9 +15,11 @@
   .hero {
     min-height: 100vh;
     min-height: 100svh;
-    padding-top: 68px;
-    padding-bottom: 30px;
-    align-items: flex-start;
+    padding-top: 90px; /* fully clears fixed navbar */
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
   }
 }
@@ -50,8 +52,6 @@
   overflow: visible;
   pointer-events: none;
   z-index: 5;
-  /* Syringe kept steady so IV tube can attach seamlessly */
-  /* animation: syringeFloat 5s ease-in-out infinite alternate; */
 }
 
 @keyframes syringeFloat {
@@ -88,10 +88,14 @@
 
 @media (max-width: 768px) {
   .content {
-    gap: 12px;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    gap: 14px;
     padding-top: 10px;
-    padding-bottom: 28px;
+    padding-bottom: 20px;
     width: 100%;
+    max-width: 520px;
   }
 }
 
@@ -108,8 +112,8 @@
     justify-content: center;
     width: 100%;
     max-width: 320px;
-    height: 140px;
-    margin: 0 auto 12px auto;
+    height: 130px;
+    margin: 0 auto 10px auto;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(199, 219, 248, 0.04) 100%);
     border: 1px solid rgba(199, 219, 248, 0.22);
     border-radius: 16px;
@@ -122,7 +126,7 @@
 
   .mobileSyringeInner {
     width: 100%;
-    height: 100px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,7 +137,7 @@
     width: 340px !important;
     height: 170px !important;
     max-width: none !important;
-    transform: rotate(-90deg) scale(0.48);
+    transform: rotate(-90deg) scale(0.46);
     transform-origin: center center;
     pointer-events: none;
   }
@@ -175,8 +179,13 @@
 @media (max-width: 768px) {
   .badge {
     font-size: 0.65rem;
-    padding: 5px 12px;
+    padding: 6px 14px;
     letter-spacing: 0.05em;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 95%;
+    white-space: normal;
+    line-height: 1.35;
   }
 }
 
@@ -198,6 +207,14 @@
   color: #fff;
 }
 
+@media (max-width: 768px) {
+  .headline {
+    text-align: center;
+    font-size: clamp(2.0rem, 6.5vw, 2.6rem);
+    line-height: 1.18;
+  }
+}
+
 .accent { 
   color: var(--clr-tint); 
 }
@@ -210,11 +227,29 @@
   max-width: 540px;
 }
 
+@media (max-width: 768px) {
+  .sub {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 100%;
+  }
+}
+
 /* CTAs */
 .ctas {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .ctas {
+    justify-content: center;
+    width: 100%;
+    margin: 4px auto 0 auto;
+  }
 }
 
 .ctaPrimary {
@@ -267,6 +302,13 @@
   align-items: flex-start;
   gap: 8px;
   margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .scrollCue {
+    align-items: center;
+    margin: 8px auto 0 auto;
+  }
 }
 
 .scrollLine {
