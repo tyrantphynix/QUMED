@@ -36,8 +36,16 @@
   background: none;
   cursor: pointer;
   transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
-.tab:hover { color: var(--clr-brand); background: var(--clr-tint-soft); }
+@media (hover: hover) {
+  .tab:hover { color: var(--clr-brand); background: var(--clr-tint-soft); }
+}
+.tab:focus-visible {
+  outline: 2px solid var(--clr-action);
+  outline-offset: 2px;
+}
 .tabActive {
   color: var(--clr-action);
   background: var(--clr-tint-soft);
@@ -85,4 +93,16 @@
 .ctaBtn:hover {
   background: var(--clr-action);
   color: #fff;
+}
+
+/* Dummy cards: lock 2-row height on desktop for tube animation; collapsed on mobile */
+.desktopDummyCard {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .desktopDummyCard {
+    display: none !important;
+  }
 }

@@ -49,11 +49,13 @@ export default function ManufacturingSection() {
       <div className={"container " + styles.grid}>
         {/* Text */}
         <div className={styles.textCol}>
-          <SectionHeading
-            eyebrow="Our Manufacturing"
-            heading="State-of-the-art plant in Haryana"
-            theme="light"
-          />
+          <div className={styles.headingWrap}>
+            <SectionHeading
+              eyebrow="Our Manufacturing"
+              heading="State-of-the-art plant in Haryana"
+              theme="light"
+            />
+          </div>
           <p className={styles.body}>
             At Qu-med Disposable, our manufacturing plant in Gurugram, Haryana, is a hub of
             innovation. Renowned for the diversity of our product range, our highly skilled team

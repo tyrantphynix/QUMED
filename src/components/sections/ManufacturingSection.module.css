@@ -5,6 +5,7 @@
   align-items: end;
 }
 .textCol { display: flex; flex-direction: column; gap: 20px; }
+.headingWrap { display: contents; }
 .body { font-size: var(--fs-base); color: var(--clr-muted); line-height: 1.7; }
 .pillars { display: flex; flex-direction: column; gap: 20px; margin-top: 12px; }
 .pillar {
@@ -56,9 +57,30 @@
 }
 
 @media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .textCol {
+    display: contents;
+  }
+  .headingWrap {
+    display: block;
+    order: 1;
+  }
+  .body {
+    order: 2;
+  }
   .visual {
+    order: 3;
     max-width: 280px;
     max-height: 60vh;
+    margin: 8px auto 16px auto;
+    align-self: center;
+  }
+  .pillars {
+    order: 4;
+    margin-top: 0;
   }
 }

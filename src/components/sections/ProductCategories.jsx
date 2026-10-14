@@ -75,9 +75,9 @@ export default function ProductCategories() {
               <ProductCard product={p} />
             </div>
           ))}
-          {/* Pad with invisible items to lock the layout height and prevent the tube from jumping */}
+          {/* Pad with invisible items on desktop to lock layout height for the tube; hidden on mobile */}
           {Array.from({ length: 6 - displayed.length }).map((_, i) => (
-            <div key={`dummy-${i}`} style={{ visibility: "hidden", pointerEvents: "none" }}>
+            <div key={`dummy-${i}`} className={styles.desktopDummyCard}>
               <ProductCard product={products[0]} />
             </div>
           ))}

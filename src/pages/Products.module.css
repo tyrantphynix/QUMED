@@ -46,9 +46,25 @@
   align-items: center;
   gap: 6px;
   transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
-.tab:hover { color: var(--clr-brand); background: var(--clr-tint-soft); }
-.tabActive { color: var(--clr-action); background: var(--clr-tint-soft); border-color: var(--clr-action); font-weight: 600; }
+@media (hover: hover) {
+  .tab:hover {
+    color: var(--clr-brand);
+    background: var(--clr-tint-soft);
+  }
+}
+.tab:focus-visible {
+  outline: 2px solid var(--clr-action);
+  outline-offset: 2px;
+}
+.tabActive {
+  color: var(--clr-action);
+  background: var(--clr-tint-soft);
+  border-color: var(--clr-action);
+  font-weight: 600;
+}
 .count { font-size: var(--fs-xs); color: var(--clr-muted); }
 .catDesc { font-size: var(--fs-sm); color: var(--clr-muted); margin-bottom: var(--sp-lg); line-height: 1.5; }
 .grid {
