@@ -368,24 +368,218 @@
   background: #EEF4FF;
 }
 
-/* Responsive */
+/* Helpers for Desktop Invariance */
+.visualMedia {
+  display: contents;
+}
+
+.visualMeta {
+  display: contents;
+}
+
+.specsTitleLeft {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobileScrollHint {
+  display: none;
+}
+
+.noSpecsText {
+  color: #64748B;
+  font-size: 0.9rem;
+}
+
+/* Responsive (Mobile View Optimizations) */
 @media (max-width: 860px) {
+  .overlay {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .modal {
+    width: 100%;
+    max-height: 94vh;
+    border-radius: 14px;
+  }
+
+  .modalHeader {
+    padding: 10px 14px;
+  }
+
   .modalBody {
-    grid-template-columns: 1fr;
-    max-height: calc(90vh - 66px);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(94vh - 56px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  .visualColumn {
-    border-right: none;
-    border-bottom: 1px solid #E2E8F0;
-    padding: 16px;
-  }
-  .mainImageWrapper {
-    height: 190px;
-  }
+
+  /* Unroll right column so title comes above media card */
   .detailsColumn {
-    padding: 18px 16px;
+    display: contents;
+  }
+
+  /* 1. Title at top */
+  .titleArea {
+    order: 1;
+    padding: 12px 14px 6px 14px;
+    border-bottom: 1px solid #F1F5F9;
   }
   .brandTitle {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+  .genericTitle {
+    font-size: 0.82rem;
+    color: #64748B;
+  }
+
+  /* 2. Compact side-by-side media & actions card */
+  .visualColumn {
+    order: 2;
+    margin: 8px 12px 6px 12px;
+    padding: 10px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .visualMedia {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 95px;
+    flex-shrink: 0;
+  }
+
+  .mainImageWrapper {
+    width: 95px;
+    height: 95px;
+    padding: 6px;
+    border-radius: 8px;
+    box-shadow: none;
+    border: 1px solid #E2E8F0;
+  }
+
+  .gemBadge {
+    width: 20px;
+    bottom: 3px;
+    right: 3px;
+  }
+
+  .thumbStrip {
+    gap: 4px;
+    padding-bottom: 2px;
+  }
+
+  .thumbBtn {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    padding: 2px;
+  }
+
+  .visualMeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .trustPills {
+    margin-top: 0;
+    padding-top: 0;
+    gap: 4px;
+  }
+
+  .trustPill {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    gap: 4px;
+    border-radius: 4px;
+  }
+
+  .greenDot, .blueDot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .actionCta {
+    margin-top: 0;
+    gap: 4px;
+  }
+
+  .inquireBtn {
+    font-size: 0.76rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .catalogueLink {
+    font-size: 0.72rem;
+    padding: 2px;
+  }
+
+  /* 3. Section Title with Swipe hint */
+  .specsSectionTitle {
+    order: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4px 0 0 0;
+    padding: 4px 14px 6px 14px;
+    font-size: 0.88rem;
+    border-bottom: 1px solid #E2E8F0;
+  }
+
+  .mobileScrollHint {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #0067FF;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    padding: 2px 7px;
+    border-radius: 999px;
+  }
+
+  /* 4. Table Wrapper */
+  .tableWrapper {
+    order: 4;
+    margin: 8px 12px 14px 12px;
+    border-radius: 8px;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+
+  .table th {
+    padding: 7px 9px;
+    font-size: 0.68rem;
+    white-space: nowrap;
+  }
+
+  .table td {
+    padding: 7px 9px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .noSpecsText {
+    order: 4;
+    padding: 10px 14px;
   }
 }

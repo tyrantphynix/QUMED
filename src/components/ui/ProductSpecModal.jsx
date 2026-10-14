@@ -56,7 +56,8 @@ export default function ProductSpecModal({ product, onClose }) {
         <div className={styles.modalBody}>
           {/* Left Column: Media & Highlights */}
           <div className={styles.visualColumn}>
-            <div className={styles.mainImageWrapper}>
+            <div className={styles.visualMedia}>
+              <div className={styles.mainImageWrapper}>
               {activeImage ? (
                 <img src={activeImage} alt={brandName} className={styles.mainImage} />
               ) : (
@@ -81,9 +82,11 @@ export default function ProductSpecModal({ product, onClose }) {
                 ))}
               </div>
             )}
+            </div>
 
-            {/* Trust Badges */}
-            <div className={styles.trustPills}>
+            <div className={styles.visualMeta}>
+              {/* Trust Badges */}
+              <div className={styles.trustPills}>
               <span className={styles.trustPill}>
                 <span className={styles.greenDot} />
                 {isSterile ? 'Sterile' : 'Non-Sterile'}
@@ -115,6 +118,7 @@ export default function ProductSpecModal({ product, onClose }) {
                 Download PDF Catalogue
               </a>
             </div>
+            </div>
           </div>
 
           {/* Right Column: Titles & Technical Specs */}
@@ -125,14 +129,17 @@ export default function ProductSpecModal({ product, onClose }) {
             </div>
 
             <div className={styles.specsSectionTitle}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0067FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-                <polyline points="10 9 9 9 8 9" />
-              </svg>
-              Technical Specifications
+              <div className={styles.specsTitleLeft}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0067FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+                <span>Technical Specifications</span>
+              </div>
+              <span className={styles.mobileScrollHint}>Swipe table &rarr;</span>
             </div>
 
             {/* Spec Table */}
@@ -164,7 +171,7 @@ export default function ProductSpecModal({ product, onClose }) {
                 </table>
               </div>
             ) : (
-              <p style={{ color: '#64748B', fontSize: '0.9rem' }}>Detailed specifications available in the product catalogue.</p>
+              <p className={styles.noSpecsText} style={{ color: '#64748B', fontSize: '0.9rem' }}>Detailed specifications available in the product catalogue.</p>
             )}
           </div>
         </div>
