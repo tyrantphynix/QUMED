@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState, useMemo } from 'react';
 import styles from './TubeOverlay.module.css';
 import StopcockSvg from './StopcockSvg';
+import { useLiquidColor } from '../../config/liquidColors';
 
 /**
  * TubeOverlay — Gemini's corrected SVG structure (2nd iteration):
@@ -13,6 +14,7 @@ import StopcockSvg from './StopcockSvg';
  * The transform offset on specular lines is the cylinder illusion key.
  */
 export default function TubeOverlay({ scrollProgress }) {
+  const liquidColor = useLiquidColor();
   const containerRef   = useRef(null);
   const pathMeasureRef = useRef(null);
   const [coords, setCoords]               = useState(null);
@@ -376,7 +378,7 @@ export default function TubeOverlay({ scrollProgress }) {
               10px wide — fills the lumen properly, not a thin wire.
               Scroll-driven via strokeDasharray to skip the first 30px (inside the syringe collar). */}
           <use href="#tube-path" fill="none"
-            stroke="rgba(100, 170, 255, 0.45)"
+            stroke={liquidColor.tubeStroke}
             strokeWidth="10"
             strokeLinecap="butt"
             strokeDasharray={`0 30 ${Math.max(0, pathLength * activeProgress - 30)} ${pathLength}`}
@@ -410,7 +412,7 @@ export default function TubeOverlay({ scrollProgress }) {
           <use href="#tube-path-2" fill="none" stroke="rgba(80, 100, 140, 0.25)" strokeWidth="22" strokeLinecap="butt" />
           <use href="#tube-path-2" fill="none" stroke="rgba(255, 255, 255, 0.6)" strokeWidth="18" strokeLinecap="butt" />
           <use href="#tube-path-2" fill="none" stroke="rgba(240, 245, 255, 0.2)" strokeWidth="12" strokeLinecap="butt" />
-          <use href="#tube-path-2" fill="none" stroke="rgba(100, 170, 255, 0.45)" strokeWidth="10" strokeLinecap="butt" strokeDasharray={`${Math.max(0, pathLength2 * activeProgress2)} ${pathLength2}`} />
+          <use href="#tube-path-2" fill="none" stroke={liquidColor.tubeStroke} strokeWidth="10" strokeLinecap="butt" strokeDasharray={`${Math.max(0, pathLength2 * activeProgress2)} ${pathLength2}`} />
           <use href="#tube-path-2" fill="none" stroke="rgba(255, 255, 255, 0.8)" strokeWidth="3.5" strokeLinecap="butt" transform="translate(-2, -3)" />
           <use href="#tube-path-2" fill="none" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="butt" transform="translate(-3.5, -4.5)" />
         </g>

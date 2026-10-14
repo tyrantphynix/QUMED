@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLiquidColor } from '../../config/liquidColors';
 
 /**
  * MedicalSyringe2D — High-fidelity 2D medical syringe asset
@@ -11,6 +12,7 @@ import React from 'react';
  * - Dynamic fluid expulsion matching the piston depth
  */
 export default function MedicalSyringe2D({ scrollProgress = 0, className = '', style = {} }) {
+  const liquidColor = useLiquidColor();
   const progress = Math.max(0, Math.min(1, scrollProgress));
 
   // Max travel of plunger assembly (from rest y=200 down to barrel base y=442)
@@ -131,20 +133,18 @@ export default function MedicalSyringe2D({ scrollProgress = 0, className = '', s
           <stop offset="100%" stopColor="#000000"/>
         </linearGradient>
 
-        {/* Realistic Saline / Water Fluid Gradient */}
+        {/* Dynamic Fluid Gradient from active option */}
         <linearGradient id="sg-fluid-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%"   stopColor="#bce7fd" stopOpacity="0.5"/>
-          <stop offset="18%"  stopColor="#e0f4fe" stopOpacity="0.65"/>
-          <stop offset="48%"  stopColor="#7dd3fc" stopOpacity="0.32"/>
-          <stop offset="78%"  stopColor="#bae6fd" stopOpacity="0.58"/>
-          <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.45"/>
+          {liquidColor.syringeStops.map((s, idx) => (
+            <stop key={idx} offset={s.offset} stopColor={s.color} stopOpacity={s.opacity} />
+          ))}
         </linearGradient>
 
-        {/* Water Meniscus Highlight */}
+        {/* Dynamic Water Meniscus Highlight */}
         <linearGradient id="sg-meniscus" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%"   stopColor="#ffffff" stopOpacity="0.8"/>
-          <stop offset="50%"  stopColor="#e0f2fe" stopOpacity="0.3"/>
-          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.7"/>
+          {liquidColor.meniscusStops.map((s, idx) => (
+            <stop key={idx} offset={s.offset} stopColor={s.color} stopOpacity={s.opacity} />
+          ))}
         </linearGradient>
 
         <linearGradient id="sg-blue-hub" x1="0%" y1="0%" x2="100%" y2="0%">

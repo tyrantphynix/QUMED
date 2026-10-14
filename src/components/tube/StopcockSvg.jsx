@@ -1,6 +1,8 @@
 import React from 'react';
+import { useLiquidColor } from '../../config/liquidColors';
 
 export default function StopcockSvg({ x, y, internalProgress = 0 }) {
+  const liquidColor = useLiquidColor();
   const internalLength = 88;
   return (
     <svg x={x} y={y} width="140" height="140" viewBox="0 0 140 140" style={{ overflow: 'visible' }}>
@@ -65,7 +67,7 @@ export default function StopcockSvg({ x, y, internalProgress = 0 }) {
         <path id="internal-fluid" 
               d="M 70 26 L 70 70 L 114 70" 
               fill="none" 
-              stroke="rgba(100, 170, 255, 0.45)" 
+              stroke={liquidColor.tubeStroke} 
               strokeWidth="10" 
               strokeLinecap="round" 
               strokeLinejoin="round" 
