@@ -236,7 +236,8 @@
   .cardArrow { opacity: 0.8; }
 }
 @media (max-width: 600px) {
-  .imageSlot { height: 140px; }
+  .imageSlot { height: 180px; }
+  .image { padding: 10px; }
   .cardArrow { opacity: 0.8; }
   .footer {
     padding: 8px 12px;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import styles from './ProductSpecModal.module.css';
@@ -19,6 +19,26 @@ export default function ProductSpecModal({ product, onClose }) {
   const { brandName, genericName, category, imageUrl, images, specTable, ceMarked, isSterile, isSingleUse } = product;
   const imageList = images && images.length > 0 ? images : (imageUrl ? [imageUrl] : []);
   const [selectedImgIndex, setSelectedImgIndex] = useState(0);
+  const [canScrollHorizontal, setCanScrollHorizontal] = useState(false);
+  const tableWrapperRef = useRef(null);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      const el = tableWrapperRef.current;
+      if (el) {
+        setCanScrollHorizontal(el.scrollWidth > el.clientWidth + 2);
+      }
+    };
+
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
+    const timer = setTimeout(checkOverflow, 120);
+
+    return () => {
+      window.removeEventListener('resize', checkOverflow);
+      clearTimeout(timer);
+    };
+  }, [product, specTable]);
 
   // Close on Escape & freeze body scroll
   useEffect(() => {
@@ -139,12 +159,14 @@ export default function ProductSpecModal({ product, onClose }) {
                 </svg>
                 <span>Technical Specifications</span>
               </div>
-              <span className={styles.mobileScrollHint}>Swipe table &rarr;</span>
+              {canScrollHorizontal && (
+                <span className={styles.mobileScrollHint}>Swipe table &rarr;</span>
+              )}
             </div>
 
             {/* Spec Table */}
             {specTable && specTable.headers && specTable.rows ? (
-              <div className={styles.tableWrapper}>
+              <div ref={tableWrapperRef} className={styles.tableWrapper}>
                 <table className={styles.table}>
                   <thead>
                     <tr>
