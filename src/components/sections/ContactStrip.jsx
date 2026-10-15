@@ -19,6 +19,13 @@ function ContactForm() {
 
     const data = new FormData(e.target);
     const payload = Object.fromEntries(data);
+
+    if (!payload.name?.trim() || !payload.email?.trim() || !payload.phone?.trim() || !payload.message?.trim()) {
+      setStatus("error");
+      setErrorMessage("Please fill in all required fields (Name, Email, Phone Number, and Message).");
+      return;
+    }
+
     if (accessKey) payload.access_key = accessKey;
 
     try {
@@ -73,15 +80,30 @@ function ContactForm() {
       <input type="hidden" name="subject" value="New Contact Enquiry — Qu-med Website" />
       <input type="checkbox" name="botcheck" style={{ display: "none" }} />
 
+      <div className={styles.field}>
+        <label htmlFor="name" className={styles.label}>Your Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          autoComplete="name"
+          placeholder="Full name"
+          className={styles.input}
+          disabled={status === "submitting"}
+        />
+      </div>
+
       <div className={styles.row}>
         <div className={styles.field}>
-          <label htmlFor="name" className={styles.label}>Your Name</label>
+          <label htmlFor="phone" className={styles.label}>Phone Number</label>
           <input
-            id="name"
-            name="name"
-            type="text"
+            id="phone"
+            name="phone"
+            type="tel"
             required
-            placeholder="Full name"
+            autoComplete="tel"
+            placeholder="+91 99999 00000"
             className={styles.input}
             disabled={status === "submitting"}
           />
@@ -93,6 +115,7 @@ function ContactForm() {
             name="email"
             type="email"
             required
+            autoComplete="email"
             placeholder="you@example.com"
             className={styles.input}
             disabled={status === "submitting"}

@@ -6,7 +6,6 @@ import About        from './pages/About';
 import Certificates from './pages/Certificates';
 import Contact      from './pages/Contact';
 import Preloader    from './components/ui/Preloader';
-import LiquidColorSwitcher from './components/ui/LiquidColorSwitcher';
 import './styles/index.css';
 import './styles/animations.css';
 
@@ -30,7 +29,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Preloader />
-      <LiquidColorSwitcher />
       <ScrollToTop />
       <Routes>
         <Route path="/"              element={<Home />} />
