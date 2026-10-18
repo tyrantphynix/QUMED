@@ -9,12 +9,21 @@ import Preloader    from './components/ui/Preloader';
 import './styles/index.css';
 import './styles/animations.css';
 
-// Automatically scrolls to top on hard reload & route transitions
+const PAGE_TITLES = {
+  '/': 'Qu-med Disposable — Medical Device Manufacturer, Gurugram',
+  '/products': 'Medical Devices & Disposable Products — Qu-med Disposable',
+  '/about': 'About Us & Manufacturing Plant — Qu-med Disposable',
+  '/certificates': 'ISO 13485:2016 & CE Certifications — Qu-med Disposable',
+  '/contact': 'Contact Us & Bulk Supply Enquiries — Qu-med Disposable',
+};
+
+// Automatically scrolls to top on hard reload & route transitions, updates page titles
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.title = PAGE_TITLES[pathname] || 'Qu-med Disposable — Medical Device Manufacturer';
   }, [pathname]);
 
   return null;
