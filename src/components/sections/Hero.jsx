@@ -68,7 +68,7 @@ export default function Hero({ scrollProgress = 0 }) {
         {/* Badge */}
         <div ref={badgeRef} className={styles.badge} style={{ opacity: 0 }}>
           <span className={styles.badgeDot} />
-          ISO 13485:2016 · CE Marked · IEC Registered · Est. 2012
+          ISO 13485:2016 · CDSCO Approved · GEM OEM · Est. 2012
         </div>
 
         {/* Headline */}

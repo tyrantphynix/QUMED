@@ -30,3 +30,5 @@ qumed-antigravity-handoff.pdf
 update_products.py
 
 .env
+# Deployment archives
+*.zip

@@ -1,4 +1,4 @@
-.section { clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%); padding-top: calc(var(--section-py) + 48px); }
+.section { clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%); padding-top: calc(var(--section-py) + 48px); padding-bottom: calc(var(--section-py) + 36px); }
 .sectionFull { clip-path: none !important; padding-top: 120px !important; }
 .grid {
   display: grid;
@@ -198,7 +198,22 @@
 .infoLink:hover { color: #fff; }
 
 /* Map block */
-.mapBlock { border-radius: var(--radius-md); overflow: hidden; height: 260px; margin-top: 24px; position: relative; }
+.mapBlock {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 260px;
+  margin-top: 24px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Only on tablet screens where horizontal space is tight, leave clearance for the tube */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mapBlock {
+    max-width: calc(100% - 65px);
+  }
+}
 .mapBlockFull { border-radius: var(--radius-md); overflow: hidden; height: 400px; margin-top: 64px; position: relative; }
 
 .mapIframe {
@@ -222,6 +237,7 @@
   .grid { grid-template-columns: 1fr; }
   .row  { grid-template-columns: 1fr; }
   .input { font-size: 16px; } /* Prevents iOS auto-zoom */
+  .mapBlock { max-width: 100% !important; height: 240px; }
   .mapBlockFull { height: 300px; margin-top: 40px; }
 }
 

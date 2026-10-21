@@ -193,7 +193,7 @@ export default function TubeOverlay({ scrollProgress }) {
       `${(cardsRight ? cardsRight + 30 : width * 0.8).toFixed(1)} ${(valuesTop ? valuesTop + 400 : certsSweepY + 1200).toFixed(1)}`,
 
       // 11. Straight drop down to the stopcock
-      `L ${(cardsRight ? cardsRight + 30 : width * 0.8).toFixed(1)} ${(contactBottom ? contactBottom - 139 : certsSweepY + 2000).toFixed(1)}`
+      `L ${(cardsRight ? cardsRight + 30 : width * 0.8).toFixed(1)} ${(contactBottom ? contactBottom - 96 : certsSweepY + 2000).toFixed(1)}`
       
     ].join(' ');
   }, [coords]);
@@ -202,7 +202,7 @@ export default function TubeOverlay({ scrollProgress }) {
     if (!coords) return '';
     const { width, cardsRight, contactBottom } = coords;
     const stopcockX = (cardsRight ? cardsRight + 30 : width * 0.8);
-    const stopcockY = contactBottom ? contactBottom - 95 : 2000;
+    const stopcockY = contactBottom ? contactBottom - 52 : 2000;
     return `M ${(stopcockX + 58).toFixed(1)} ${stopcockY.toFixed(1)} ` +
            `L ${(width + 50).toFixed(1)} ${stopcockY.toFixed(1)}`;
   }, [coords]);
@@ -415,7 +415,7 @@ export default function TubeOverlay({ scrollProgress }) {
           <use href="#tube-path-2" fill="none" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="butt" transform="translate(-3.5, -4.5)" />
         </g>
         
-        <StopcockSvg x={(coords.cardsRight ? coords.cardsRight + 30 : coords.width * 0.8) - 70} y={(coords.contactBottom ? coords.contactBottom - 95 : 2000) - 70} internalProgress={fluidProgressInternal} />
+        <StopcockSvg x={(coords.cardsRight ? coords.cardsRight + 30 : coords.width * 0.8) - 70} y={(coords.contactBottom ? coords.contactBottom - 52 : 2000) - 70} internalProgress={fluidProgressInternal} />
 
 
         
