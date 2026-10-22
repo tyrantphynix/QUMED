@@ -53,14 +53,9 @@ export default function Hero({ scrollProgress = 0 }) {
           <line x1="200" y1="700" x2="700" y2="100" stroke="rgba(199,219,248,0.04)" strokeWidth="1"/>
         </svg>
 
-        {/* Desktop & Tablet High-Fidelity 2D Syringe */}
+        {/* Unified 2D Medical Syringe (Desktop on right, Mobile floating behind text) */}
         <div id="hero-visual-slot" className={styles.visualSlot} aria-hidden="true">
           <MedicalSyringe2D scrollProgress={activeProgress} />
-        </div>
-
-        {/* Mobile Watermark Syringe Asset */}
-        <div className={styles.mobileWatermark} aria-hidden="true">
-          <MedicalSyringe2D scrollProgress={0} />
         </div>
       </div>
 

@@ -43,9 +43,9 @@
   right: -2%;
   top: 58%;
   transform: translateY(-50%);
-  width: 55%;
-  max-width: 650px;
-  height: 95%;
+  width: 58%;
+  max-width: 720px;
+  height: 98%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +70,31 @@
 
 @media (max-width: 768px) {
   #hero-visual-slot, .visualSlot { 
-    display: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 54%;
+    right: auto;
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 440px;
+    height: 880px;
+    max-width: 115vw;
+    opacity: 0.38;
+    pointer-events: none;
+    z-index: 1;
+    filter: drop-shadow(0 0 45px rgba(0, 103, 255, 0.50));
+    animation: syringeFloatMobile 5s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes syringeFloatMobile {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateY(0px);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg) translateY(-10px);
   }
 }
 
@@ -99,32 +123,6 @@
   }
 }
 
-/* Mobile Watermark (Option A) */
-.mobileWatermark {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .mobileWatermark {
-    display: block;
-    position: absolute;
-    right: -70px;
-    bottom: -20px;
-    width: 280px;
-    height: 540px;
-    opacity: 0.14;
-    transform: rotate(-16deg);
-    pointer-events: none;
-    z-index: 2;
-    animation: watermarkDrift 6s ease-in-out infinite alternate;
-  }
-}
-
-@keyframes watermarkDrift {
-  0% { transform: rotate(-16deg) translateY(0px); }
-  100% { transform: rotate(-16deg) translateY(-8px); }
-}
-
 /* Badge */
 .badge {
   display: inline-flex;
@@ -145,14 +143,14 @@
 
 @media (max-width: 768px) {
   .badge {
-    font-size: 0.65rem;
-    padding: 6px 14px;
-    letter-spacing: 0.05em;
+    font-size: clamp(0.54rem, 2.35vw, 0.62rem);
+    padding: 5px 12px;
+    letter-spacing: 0.025em;
     margin: 0 auto;
     text-align: center;
-    max-width: 95%;
-    white-space: normal;
-    line-height: 1.35;
+    max-width: 98%;
+    white-space: nowrap;
+    gap: 6px;
   }
 }
 
@@ -179,6 +177,7 @@
     text-align: center;
     font-size: clamp(2.1rem, 6.8vw, 2.7rem);
     line-height: 1.18;
+    text-shadow: 0 2px 16px rgba(5, 15, 40, 0.75);
   }
 }
 
@@ -201,6 +200,7 @@
     font-size: 0.95rem;
     line-height: 1.55;
     max-width: 100%;
+    text-shadow: 0 1px 12px rgba(5, 15, 40, 0.7);
   }
 }
 
