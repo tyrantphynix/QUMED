@@ -182,22 +182,22 @@
       "rows": [
         [
           "Standard 3-Way Stopcock",
-          "360\u00b0 Rotation",
+          "360° Rotation",
           "Standard"
         ],
         [
           "Standard 3-Way Stopcock (Lipid)",
-          "360\u00b0 Rotation",
+          "360° Rotation",
           "Lipid Resistant"
         ],
         [
-          "45\u00b0 Angle 3-Way Stopcock",
-          "45\u00b0 Offset",
+          "45° Angle 3-Way Stopcock",
+          "45° Offset",
           "Standard"
         ],
         [
-          "45\u00b0 Angle 3-Way Stopcock (Lipid)",
-          "45\u00b0 Offset",
+          "45° Angle 3-Way Stopcock (Lipid)",
+          "45° Offset",
           "Lipid Resistant"
         ]
       ]
@@ -366,7 +366,7 @@
   {
     "id": "qu-ciser-3ball",
     "brandName": "QU-CISER",
-    "genericName": "Respiratory Exerciser \u2014 Three Ball Spirometer",
+    "genericName": "Respiratory Exerciser — Three Ball Spirometer",
     "category": "anesthesia",
     "refNo": null,
     "specs": [
@@ -397,7 +397,7 @@
         ],
         [
           "Compliance & Use",
-          "Non-toxic, break-resistant medical grade plastic \u00b7 Single Patient"
+          "Non-toxic, break-resistant medical grade plastic · Single Patient"
         ]
       ]
     }
@@ -405,7 +405,7 @@
   {
     "id": "qu-ciser-1ball",
     "brandName": "QU-CISER",
-    "genericName": "Respiratory Exerciser \u2014 Single Ball Spirometer",
+    "genericName": "Respiratory Exerciser — Single Ball Spirometer",
     "category": "anesthesia",
     "refNo": null,
     "specs": [
@@ -436,7 +436,7 @@
         ],
         [
           "Compliance & Use",
-          "Non-toxic medical grade \u00b7 Single Patient Use"
+          "Non-toxic medical grade · Single Patient Use"
         ]
       ]
     }
@@ -656,37 +656,37 @@
         [
           "Blue",
           "24%",
-          "2 \u2013 4 L/min"
+          "2 – 4 L/min"
         ],
         [
           "Yellow",
           "28%",
-          "4 \u2013 6 L/min"
+          "4 – 6 L/min"
         ],
         [
           "White",
           "31%",
-          "6 \u2013 8 L/min"
+          "6 – 8 L/min"
         ],
         [
           "Green",
           "35%",
-          "8 \u2013 10 L/min"
+          "8 – 10 L/min"
         ],
         [
           "Pink",
           "40%",
-          "8 \u2013 12 L/min"
+          "8 – 12 L/min"
         ],
         [
           "Orange",
           "50%",
-          "10 \u2013 12 L/min"
+          "10 – 12 L/min"
         ],
         [
           "Red",
           "60%",
-          "12 \u2013 15 L/min"
+          "12 – 15 L/min"
         ]
       ]
     }
@@ -918,9 +918,9 @@
     }
   },
   {
-    "id": "yankaur-suction-set",
-    "brandName": "YANKAUR SUCTION SET",
-    "genericName": "Surgical Suction Device",
+    "id": "qu-vac-suc",
+    "brandName": "QU-VAC SUC",
+    "genericName": "Yankaur Suction Set",
     "category": "surgery-suction",
     "refNo": null,
     "specs": [

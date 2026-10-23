@@ -18,7 +18,7 @@ export default function ProductCategories() {
     'qu-ciser-3ball',
     'qu-fume-kit',
     'qu-uro-with',
-    'yankaur-suction-set',
+    'qu-vac-suc',
     'qu-tubi'
   ];
 
